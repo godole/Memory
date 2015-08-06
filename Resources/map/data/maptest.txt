@@ -1,0 +1,5 @@
+
+MIRAGE 100 100 200 200 
+GROUND 0 0 map\\map1\\map_1_ground.png 
+BG map\\map1\\map_1.png 
+DESTINATION 500 133 object\\destination.png 

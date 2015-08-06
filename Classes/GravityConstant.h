@@ -1,0 +1,1 @@
+#define GRAVITY_CONSTANT 0.3f

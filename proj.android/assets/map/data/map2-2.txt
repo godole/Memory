@@ -1,0 +1,17 @@
+
+PULLEY 350 300 200 155 100 DOWN object/ped_elevator_down_on.png object/ped_elevator_down_off.png object/lever_on.png object/lever_off.png 
+PULLEY 700 300 520 345 150 UP object/ped_elevator_union.png object/ped_elevator_union_off.png object/lever_on.png object/lever_off.png 
+PULLEY 1040 440 830 495 150 UP object/ped_elevator_union.png object/ped_elevator_union_off.png object/lever_on.png object/lever_off.png 
+GROUND 480 290 map/map2/object/ped1.png 
+GROUND 530 290 map/map2/object/ped1.png 
+GROUND 580 290 map/map2/object/ped1.png 
+GROUND 850 440 map/map2/object/ped1.png 
+GROUND 900 440 map/map2/object/ped1.png 
+GROUND 800 440 map/map2/object/ped1.png 
+GROUND 1150 600 map/map2/object/ped1.png 
+GROUND 1200 600 map/map2/object/ped1.png  
+GROUND 1250 600 map/map2/object/ped1.png 
+GROUND 1280 66 map/map2/object/map_2_ground.png 
+BG map/map2/background/map_2.png 
+DESTINATION 1200 630 object/destination.png 
+NEXTSTAGE map/data/map3-1.txt 
