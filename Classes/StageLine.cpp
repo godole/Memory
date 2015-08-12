@@ -1,7 +1,6 @@
 #include "StageLine.h"
 #include "EBoxDirection.h"
 #include "ELineDirection.h"
-#include "ConstantValue.h"
 #include "Line.h"
 #include "DataManager.h"
 
@@ -19,7 +18,7 @@ CStageLine::~CStageLine()
 
 void CStageLine::SetStage()
 {
-	for (int i = 0; i < STAGENUM; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		//m_pStage[i]->setOpacity(0);
 		//m_pStage[i]->setScale(0.0);
@@ -74,7 +73,7 @@ void CStageLine::StageInit
 	m_pParentLayer		= a_pParentLayer;
 	m_Position			= a_Position;
 
-	for (int i = 0; i < STAGENUM; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		m_pStage[i] = Sprite::create();
 		a_pParentLayer->addChild(m_pStage[i],2);

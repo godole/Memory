@@ -1,6 +1,5 @@
 #include "Line.h"
 #include "ELineDirection.h"
-#include "ConstantValue.h"
 
 CLine::CLine()
 {
@@ -47,11 +46,11 @@ void CLine::ShowLine()
 void CLine::SetLine()
 {
 	// Original Rect 조절 값
-	m_pLine->setTextureRect(Rect(0, 0, LINE_WEIGHT, m_nHeight));
+	m_pLine->setTextureRect(Rect(0, 0, 50, m_nHeight));
 	m_rOriginalRect = m_pLine->getBoundingBox();
 
 	// 변화값을 주기위해 현재 RECT 를 0으로 초기화
-	m_pLine->setTextureRect(Rect(0, 0, LINE_WEIGHT, 0));
+	m_pLine->setTextureRect(Rect(0, 0, 50, 0));
 	m_rNowRect = m_pLine->getBoundingBox();
 
 	m_pLine->setPosition

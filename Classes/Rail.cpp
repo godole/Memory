@@ -6,6 +6,7 @@
 #include "Behavior.h"
 #include "LayerDefine.h"
 #include "ObjectManager.h"
+#include "CTextureFactory.h"
 
 CRail::CRail()
 {
@@ -21,15 +22,12 @@ void CRail::Init(CCLayer* a_ParentLayer, b2World* a_World, RailData a_Data)
 	m_eStartDirection = a_Data.m_eStartDirection;
 	m_eCurrentDirection = a_Data.m_eStartDirection;
 
+	string objfileroot = "map/map2/object/";
+
 	auto railleft = new CCImage;
 	railleft->initWithImageFile(a_Data.m_szRailLeftTextureName);
-	m_pRailLeftTexture = new CCTexture2D;
-	m_pRailLeftTexture->initWithImage(railleft);
-
-	auto railright = new CCImage;
-	railright->initWithImageFile(a_Data.m_szRailRightTextureName);
-	m_pRailRightTexture = new CCTexture2D;
-	m_pRailRightTexture->initWithImage(railright);
+	m_pRailLeftTexture = CTextureFactory::CreateTexture(objfileroot + "rail_left_union.png");
+	m_pRailRightTexture = CTextureFactory::CreateTexture(objfileroot + "rail_right_union.png");
 
 	if (a_Data.m_eStartDirection == e_drLeft)
 		m_pRailSprite = CCSprite::createWithTexture(m_pRailLeftTexture);
@@ -44,17 +42,8 @@ void CRail::Init(CCLayer* a_ParentLayer, b2World* a_World, RailData a_Data)
 
 	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pBodySprite);
 
-	auto leveron = new CCImage;
-	leveron->initWithImageFile(a_Data.m_szLeverOnTextureName);
-	
-	m_pLeverOnTexture = new CCTexture2D;
-	m_pLeverOnTexture->initWithImage(leveron);
-
-	auto leveroff = new CCImage;
-	leveroff->initWithImageFile(a_Data.m_szLeverOnTextureName);
-
-	m_pLeverOffTexture = new CCTexture2D;
-	m_pLeverOffTexture->initWithImage(leveroff);
+	m_pLeverOnTexture = CTextureFactory::CreateTexture(objfileroot + "button_left_on.png");
+	m_pLeverOffTexture = CTextureFactory::CreateTexture(objfileroot + "button_right_off.png");
 
 	m_pLeverSprite = CCSprite::createWithTexture(m_pLeverOffTexture);
 	m_pLeverSprite->setPosition(a_Data.m_vLeverPosition);

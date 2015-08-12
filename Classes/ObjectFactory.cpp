@@ -6,6 +6,8 @@
 #include "Mirage.h"
 #include "Rail.h"
 #include "Ground.h"
+#include "Sand.h"
+#include "Water.h"
 
 shared_ptr<CThings> CObjectFactory::CreateBox(CCLayer* a_Parent, b2World* a_World, TransectorProfile* a_Profile, BoxData data)
 {
@@ -63,6 +65,26 @@ shared_ptr<CGround> CObjectFactory::CreateGround(CCLayer* a_Parent, b2World* a_W
 	temp->Init(a_Parent, a_World, data);
 
 	CScrollManager::getInstance()->Insert(temp);
+
+	return temp;
+}
+
+shared_ptr<CSand> CObjectFactory::CreateSand(CCLayer* a_Parent, b2World* a_World, SandData data)
+{
+	shared_ptr<CSand> temp = shared_ptr<CSand>(new CSand);
+	temp->Init(a_Parent, a_World, data);
+
+	CScrollManager::getInstance()->Insert(temp);
+
+	return temp;
+}
+
+shared_ptr<CWater> CObjectFactory::CreateWater(CCLayer* a_Parent, TransectorProfile* a_Profile, WaterData data)
+{
+	shared_ptr<CWater> temp = shared_ptr<CWater>(new CWater);
+	temp->Init(a_Parent, a_Profile, data);
+
+	CommonThingsInit(temp);
 
 	return temp;
 }

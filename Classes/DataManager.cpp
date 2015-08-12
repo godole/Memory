@@ -56,6 +56,16 @@ void CDataManager::LoadMapData(string filename)
 			{
 				m_arrMirageData.push_back(_GetMirageData(temp));
 			}
+
+			if (temp.find("WATER") != string::npos)
+			{
+				m_arrWaterData.push_back(_GetWaterData(temp));
+			}
+
+			if (temp.find("SAND") != string::npos)
+			{
+				m_arrSandData.push_back(_GetSandData(temp));
+			}
 			nCharIndex = 0;
 		}
 		nCharIndex++;
@@ -460,6 +470,90 @@ MirageData CDataManager::_GetMirageData(string str)
 
 
 	//CCLog("P : %f,%f LP : %f,%f DR : %d", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_vLeverPosition.x, tempData.m_vLeverPosition.y, tempData.m_eStartDirection);
+
+	return tempData;
+}
+
+WaterData CDataManager::_GetWaterData(string str)
+{
+	WaterData tempData;
+	string tempStr = str;
+	string _temp;
+	int index = 0;
+	int indexCount = 0;
+
+	tempStr.erase(0, 7);
+
+	for (int j = 0; j < tempStr.size(); j++)
+	{
+		if (tempStr[j] == ' ')
+		{
+			float x = 0, y = 0;
+			_temp = tempStr.substr(j - indexCount, indexCount);
+
+			switch (index)
+			{
+			case 0:
+				x = atoi(_temp.c_str());
+				tempData.m_vPosition.x = x;
+				break;
+
+			case 1:
+				y = atoi(_temp.c_str());
+				tempData.m_vPosition.y = y;
+				break;
+			}
+			index++;
+			indexCount = 0;
+		}
+
+		else
+			indexCount++;
+	}
+
+	//CCLog("%f, %f, %s", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_szTextureName.c_str());
+
+	return tempData;
+}
+
+SandData CDataManager::_GetSandData(string str)
+{
+	SandData tempData;
+	string tempStr = str;
+	string _temp;
+	int index = 0;
+	int indexCount = 0;
+
+	tempStr.erase(0, 7);
+
+	for (int j = 0; j < tempStr.size(); j++)
+	{
+		if (tempStr[j] == ' ')
+		{
+			float x = 0, y = 0;
+			_temp = tempStr.substr(j - indexCount, indexCount);
+
+			switch (index)
+			{
+			case 0:
+				x = atoi(_temp.c_str());
+				tempData.m_vPosition.x = x;
+				break;
+
+			case 1:
+				y = atoi(_temp.c_str());
+				tempData.m_vPosition.y = y;
+				break;
+			}
+			index++;
+			indexCount = 0;
+		}
+
+		else
+			indexCount++;
+	}
+
+	//CCLog("%f, %f, %s", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_szTextureName.c_str());
 
 	return tempData;
 }

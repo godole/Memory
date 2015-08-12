@@ -7,6 +7,7 @@
 #include "ObjectManager.h"
 #include "UpdateManager.h"
 #include "Behavior.h"
+#include "CTextureFactory.h"
 
 
 CPulley::CPulley()
@@ -27,25 +28,22 @@ void CPulley::Init(CCLayer* a_pParentLayer, b2World* a_World, PulleyData a_Data)
 	m_fCurrentLength = a_Data.m_fLength;
 	m_drCurrentDirection = e_drNULL;
 
-	auto onimage = new CCImage;
-	onimage->initWithImageFile(a_Data.m_szPulleyOnTextureName);
-	m_pPulleyOnTexture = new CCTexture2D;
-	m_pPulleyOnTexture->initWithImage(onimage);
+	string objfileroot = "map/map2/object/";
 
-	auto offimage = new CCImage;
-	offimage->initWithImageFile(a_Data.m_szPulleyOffTextureName);
-	m_pPulleyOffTexture = new CCTexture2D;
-	m_pPulleyOffTexture->initWithImage(offimage);
+	if (a_Data.m_eStartDirection == e_drUp)
+	{
+		m_pPulleyOnTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_union.png");
+		m_pPulleyOffTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_union_off.png");
+	}
 
-	auto leveron = new CCImage;
-	leveron->initWithImageFile(a_Data.m_szLeverOnTextureName);
-	m_pLeverOnTexture = new CCTexture2D;
-	m_pLeverOnTexture->initWithImage(leveron);
+	else if (a_Data.m_eStartDirection == e_drDown)
+	{
+		m_pPulleyOnTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_down_on.png");
+		m_pPulleyOffTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_down_off.png");
+	}
 
-	auto leveroff = new CCImage;
-	leveroff->initWithImageFile(a_Data.m_szLeverOffTextureName);
-	m_pLeverOffTexture = new CCTexture2D;
-	m_pLeverOffTexture->initWithImage(leveroff);
+	m_pLeverOnTexture = CTextureFactory::CreateTexture(objfileroot + "lever_on.png");
+	m_pLeverOffTexture = CTextureFactory::CreateTexture(objfileroot + "lever_off.png");
 
 	auto pulleySprite = CCSprite::createWithTexture(m_pPulleyOffTexture);
 	a_pParentLayer->addChild(pulleySprite, OBJECT_ZORDER);

@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 #include "ThingsWithBody.h"
-#include "Update.h"
 #include "DataStructure.h"
 #include "TransectorProfile.h"
 #include "b2Structure.h"

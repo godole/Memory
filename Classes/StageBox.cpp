@@ -1,5 +1,4 @@
 #include "StageBox.h"
-#include "Scene_Play.h"
 #include "DataManager.h"
 #include "SceneManager.h"
 
@@ -115,7 +114,7 @@ void CStageBox::touch(Point a_pPoint)
 					{
 						CDataManager::getInstance()->LoadMapData(
 							StringUtils::format("map/data/map1-%d.txt", i + 1));
-						CSceneManager::getInstance()->ChangeScene(ESceneType::e_ScenePlay);
+						CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
 					}
 					else
 						continue;
@@ -126,7 +125,7 @@ void CStageBox::touch(Point a_pPoint)
 					{
 						CDataManager::getInstance()->LoadMapData(
 							StringUtils::format("map/data/map2-%d.txt", i + 1));
-						CSceneManager::getInstance()->ChangeScene(ESceneType::e_ScenePlay);
+						CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage2);
 					}
 					else
 						continue;
@@ -137,7 +136,7 @@ void CStageBox::touch(Point a_pPoint)
 					{
 						CDataManager::getInstance()->LoadMapData(
 							StringUtils::format("map/data/map3-%d.txt", i + 1));
-						CSceneManager::getInstance()->ChangeScene(ESceneType::e_ScenePlay);
+						CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage3);
 					}
 					else
 						continue;

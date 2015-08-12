@@ -61,3 +61,13 @@ typedef struct _tagDestination
 	Vec2 m_vPosition;
 	string m_szTextureName;
 }DestinationData;
+
+typedef struct _tagWater
+{
+	Vec2 m_vPosition;
+}WaterData;
+
+typedef struct _tagSand
+{
+	Vec2 m_vPosition; 
+}SandData;

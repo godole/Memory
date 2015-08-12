@@ -49,7 +49,7 @@ void Scene_SelectState::update(float dt)
 
 void Scene_SelectState::BackgroundInit()
 {
-	auto _pBackground = Sprite::create("menu_ground.png");
+	auto _pBackground = Sprite::create("stageselect/menu_ground.png");
 	_pBackground->setAnchorPoint(Point(0, 0));
 	this->addChild(_pBackground);
 
@@ -64,12 +64,12 @@ void Scene_SelectState::BackgroundInit()
 		MoveBy::create(3.0f, Point(0, 100)),
 		NULL));
 
-	m_pMenu1 = Sprite::create("menu_1.png");
+	m_pMenu1 = Sprite::create("stageselect/menu_1.png");
 	m_pMenu1->setAnchorPoint(Point(0, 0));
 	m_pMenu1->setPositionY(-100);
 	this->addChild(m_pMenu1, 0);
 
-	m_pMenu2 = Sprite::create("menu_2.png");
+	m_pMenu2 = Sprite::create("stageselect/menu_2.png");
 	m_pMenu2->setAnchorPoint(Point(0, 0));
 	m_pMenu2->setPositionY(100);
 	this->addChild(m_pMenu2, 0);
@@ -94,7 +94,7 @@ bool Scene_SelectState::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* even
 {
 	auto _pTouchpos = touch->getLocation();
 
-	auto _touchparticle = ParticleSystemQuad::create("particle_texture.plist");
+	auto _touchparticle = ParticleSystemQuad::create("stageselect/particle_texture.plist");
 	_touchparticle->setPosition(Point(_pTouchpos.x, _pTouchpos.y));
 	this->addChild(_touchparticle);
 

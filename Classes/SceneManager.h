@@ -7,7 +7,9 @@ USING_NS_CC;
 enum class ESceneType
 {
 	e_SceneTitle,
-	e_ScenePlay,
+	e_SceneStage1,
+	e_SceneStage2,
+	e_SceneStage3,
 	e_SceneTest,
 	e_SceneLoadMap
 };

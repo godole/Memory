@@ -5,6 +5,7 @@
 #include "MirageDefaultState.h"
 #include "MirageCrashedState.h"
 #include "ObjectManager.h"
+#include "CTextureFactory.h"
 
 
 CMirage::CMirage()
@@ -18,7 +19,7 @@ CMirage::~CMirage()
 
 void CMirage::Init(CCLayer* a_pParentLayer, b2World* a_World, MirageData a_Data)
 {
-	auto wallSprite = CCSprite::create(a_Data.m_szWallTextureName);
+	auto wallSprite = CCSprite::create("map/map3/object/box_wall.png");
 	wallSprite->setPosition(a_Data.m_vWallPosition);
 	a_pParentLayer->addChild(wallSprite, OBJECT_ZORDER);
 	
@@ -31,17 +32,9 @@ void CMirage::Init(CCLayer* a_pParentLayer, b2World* a_World, MirageData a_Data)
 
 	m_pBody = m_pBodySprite->getBodyStructure().body;
 
-	auto glassimage = new CCImage;
-	glassimage->initWithImageFile(a_Data.m_szGlassTextureName);
-	
-	m_pGlassTexture = new CCTexture2D;
-	m_pGlassTexture->initWithImage(glassimage);
+	m_pGlassTexture = CTextureFactory::CreateTexture("map/map3/object/glass.png");
 
-	auto brokenimage = new CCImage;
-	brokenimage->initWithImageFile(a_Data.m_szBrokenTextureName);
-
-	m_pGlassCrashedTexture = new CCTexture2D;
-	m_pGlassCrashedTexture->initWithImage(brokenimage);
+	m_pGlassCrashedTexture = CTextureFactory::CreateTexture("map/map3/object/glass_piece.png");
 
 	m_pGlassSprite = CCSprite::createWithTexture(m_pGlassTexture);
 	m_pGlassSprite->setPosition(a_Data.m_vGlassPosition);

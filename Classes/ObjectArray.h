@@ -28,6 +28,11 @@ public :
 		}
 	}
 
+	void Release()
+	{
+		m_arrObject.clear();
+	}
+
 	vector<shared_ptr<Object>> getObjectArray()
 	{
 		return m_arrObject;
