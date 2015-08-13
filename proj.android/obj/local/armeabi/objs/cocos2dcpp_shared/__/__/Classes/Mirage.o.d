@@ -396,7 +396,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Mirage.o: \
  jni/../../Classes/LayerDefine.h jni/../../Classes/MirageBehaviorState.h \
  jni/../../Classes/MirageDefaultState.h \
  jni/../../Classes/MirageCrashedState.h jni/../../Classes/ObjectManager.h \
- jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h
+ jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h \
+ jni/../../Classes/Sand.h jni/../../Classes/CTextureFactory.h
 
 jni/../../Classes/Mirage.h:
 
@@ -1213,3 +1214,7 @@ jni/../../Classes/ObjectManager.h:
 jni/../../Classes/ObjectArray.h:
 
 jni/../../Classes/Rail.h:
+
+jni/../../Classes/Sand.h:
+
+jni/../../Classes/CTextureFactory.h:

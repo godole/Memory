@@ -348,6 +348,76 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Player.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio\CocoStudio.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocosStudioExport.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrameEasing.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionManagerEx.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionObject.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionNode.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/DictionaryHelper.h \
+ jni/../../cocos2d/external/flatbuffers/../json/document.h \
+ jni/../../cocos2d/external/flatbuffers/../json/reader.h \
+ jni/../../cocos2d/external/flatbuffers/../json/rapidjson.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cstring \
+ jni/../../cocos2d/external/flatbuffers/../json/internal/pow10.h \
+ jni/../../cocos2d/external/flatbuffers/../json/internal/stack.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/csetjmp \
+ jni/../../cocos2d/external/flatbuffers/../json/internal/strfunc.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmature.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmatureDefine.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCBone.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDatas.h \
+ jni/../../cocos2d/cocos/3d/../2d/CCTweenFunction.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCTween.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCProcessBase.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDecorativeDisplay.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDisplayFactory.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCColliderDetector.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDisplayManager.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCBatchNode.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmatureAnimation.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSpriteFrameCacheHelper.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmatureDataManager.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSkin.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDataReaderHelper.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/DictionaryHelper.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCTransformHelp.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCUtilMath.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComBase.h \
+ jni/../../cocos2d/cocos/3d/../base/ObjectFactory.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoLoader.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComAttribute.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComBase.h \
+ jni/../../cocos2d/cocos/3d/../2d/CCComponent.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComAudio.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComController.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCInputDelegate.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComRender.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSGUIReader.h \
+ jni/../../cocos2d/cocos/3d/../ui/UILayout.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIWidget.h \
+ jni/../../cocos2d/cocos/3d/../2d/CCProtectedNode.h \
+ jni/../../cocos2d/cocos/3d/../ui/UILayoutParameter.h \
+ jni/../../cocos2d/cocos/3d/../ui/GUIExport.h \
+ jni/../../cocos2d/cocos/3d/../ui/GUIDefine.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/WidgetReader/WidgetReaderProtocol.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSSceneReader.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/TriggerBase.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/TriggerObj.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/TriggerMng.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimelineCache.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCTimelineMacro.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCFrame.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCTimeLine.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCFrame.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimeline.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCTimeLine.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimelineNode.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimeline.h \
+ jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h \
  jni/../../Classes/MoveDirection.h jni/../../Classes/EDirection.h \
  jni/../../Classes/ITransector.h jni/../../Classes/BehaviorState.h \
  jni/../../Classes/Update.h jni/../../Classes/UpdateManager.h \
@@ -398,7 +468,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Player.o: \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
  jni/../../Classes/ThingsWithBody.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/Box2dSprite.h jni/../../Classes/Behavior.h
+ jni/../../Classes/Sand.h jni/../../Classes/Box2dSprite.h \
+ jni/../../Classes/Behavior.h jni/../../Classes/ParticleManager.h
 
 jni/../../Classes/Player.h:
 
@@ -1098,6 +1169,146 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio\CocoStudio.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocosStudioExport.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrameEasing.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionManagerEx.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionObject.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionNode.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/DictionaryHelper.h:
+
+jni/../../cocos2d/external/flatbuffers/../json/document.h:
+
+jni/../../cocos2d/external/flatbuffers/../json/reader.h:
+
+jni/../../cocos2d/external/flatbuffers/../json/rapidjson.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cstring:
+
+jni/../../cocos2d/external/flatbuffers/../json/internal/pow10.h:
+
+jni/../../cocos2d/external/flatbuffers/../json/internal/stack.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/csetjmp:
+
+jni/../../cocos2d/external/flatbuffers/../json/internal/strfunc.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmature.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmatureDefine.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCBone.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDatas.h:
+
+jni/../../cocos2d/cocos/3d/../2d/CCTweenFunction.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCTween.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCProcessBase.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDecorativeDisplay.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDisplayFactory.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCColliderDetector.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDisplayManager.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCBatchNode.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmatureAnimation.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSpriteFrameCacheHelper.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCArmatureDataManager.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSkin.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCDataReaderHelper.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/DictionaryHelper.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCTransformHelp.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCUtilMath.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComBase.h:
+
+jni/../../cocos2d/cocos/3d/../base/ObjectFactory.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoLoader.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComAttribute.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComBase.h:
+
+jni/../../cocos2d/cocos/3d/../2d/CCComponent.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComAudio.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComController.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCInputDelegate.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCComRender.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSGUIReader.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UILayout.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIWidget.h:
+
+jni/../../cocos2d/cocos/3d/../2d/CCProtectedNode.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UILayoutParameter.h:
+
+jni/../../cocos2d/cocos/3d/../ui/GUIExport.h:
+
+jni/../../cocos2d/cocos/3d/../ui/GUIDefine.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/WidgetReader/WidgetReaderProtocol.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCSSceneReader.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/TriggerBase.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/TriggerObj.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/TriggerMng.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimelineCache.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCTimelineMacro.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCFrame.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCTimeLine.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCFrame.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimeline.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCTimeLine.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimelineNode.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCActionTimeline.h:
+
+jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h:
+
 jni/../../Classes/MoveDirection.h:
 
 jni/../../Classes/EDirection.h:
@@ -1216,6 +1427,10 @@ jni/../../Classes/ThingsWithBody.h:
 
 jni/../../Classes/DataStructure.h:
 
+jni/../../Classes/Sand.h:
+
 jni/../../Classes/Box2dSprite.h:
 
 jni/../../Classes/Behavior.h:
+
+jni/../../Classes/ParticleManager.h:

@@ -214,6 +214,9 @@
     <ClCompile Include="..\Classes\Stage3Object.cpp">
       <Filter>src\Scene\InGame\Stage3</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameSharing.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -428,6 +431,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Stage3Background.h">
       <Filter>src\Scene\InGame\Stage3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameSharing.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

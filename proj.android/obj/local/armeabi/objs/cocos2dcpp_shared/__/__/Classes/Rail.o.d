@@ -395,7 +395,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Rail.o: \
  jni/../../Classes/Behavior.h jni/../../Classes/RailProfile.h \
  jni/../../Classes/Box2dSprite.h jni/../../Classes/RailDefaultState.h \
  jni/../../Classes/RailRunState.h jni/../../Classes/LayerDefine.h \
- jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h
+ jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
+ jni/../../Classes/Sand.h jni/../../Classes/CTextureFactory.h
 
 jni/../../Classes/Rail.h:
 
@@ -1210,3 +1211,7 @@ jni/../../Classes/LayerDefine.h:
 jni/../../Classes/ObjectManager.h:
 
 jni/../../Classes/ObjectArray.h:
+
+jni/../../Classes/Sand.h:
+
+jni/../../Classes/CTextureFactory.h:

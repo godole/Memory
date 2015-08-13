@@ -360,7 +360,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ObjectManager.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/Rail.h jni/../../Classes/ThingsWithBody.h \
  jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/b2Structure.h jni/../../Classes/Box2dSprite.h
+ jni/../../Classes/b2Structure.h jni/../../Classes/Sand.h \
+ jni/../../Classes/Box2dSprite.h
 
 jni/../../Classes/ObjectManager.h:
 
@@ -1099,5 +1100,7 @@ jni/../../Classes/EDirection.h:
 jni/../../Classes/DataStructure.h:
 
 jni/../../Classes/b2Structure.h:
+
+jni/../../Classes/Sand.h:
 
 jni/../../Classes/Box2dSprite.h:

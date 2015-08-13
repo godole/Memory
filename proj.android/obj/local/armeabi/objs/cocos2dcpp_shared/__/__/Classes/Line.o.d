@@ -348,7 +348,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Line.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/ELineDirection.h jni/../../Classes/ConstantValue.h
+ jni/../../Classes/ELineDirection.h
 
 jni/../../Classes/Line.h:
 
@@ -1049,5 +1049,3 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
 jni/../../Classes/ELineDirection.h:
-
-jni/../../Classes/ConstantValue.h:

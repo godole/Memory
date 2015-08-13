@@ -350,9 +350,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/StageLine.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/Update.h jni/../../Classes/UpdateManager.h \
  jni/../../Classes/Singleton.h jni/../../Classes/EBoxDirection.h \
- jni/../../Classes/ELineDirection.h jni/../../Classes/ConstantValue.h \
- jni/../../Classes/Line.h jni/../../Classes/DataManager.h \
- jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h
+ jni/../../Classes/ELineDirection.h jni/../../Classes/Line.h \
+ jni/../../Classes/DataManager.h jni/../../Classes/EDirection.h \
+ jni/../../Classes/DataStructure.h
 
 jni/../../Classes/StageLine.h:
 
@@ -1061,8 +1061,6 @@ jni/../../Classes/Singleton.h:
 jni/../../Classes/EBoxDirection.h:
 
 jni/../../Classes/ELineDirection.h:
-
-jni/../../Classes/ConstantValue.h:
 
 jni/../../Classes/Line.h:
 
