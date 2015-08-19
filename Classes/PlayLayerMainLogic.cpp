@@ -9,6 +9,7 @@
 
 void PlayLayerMainLogic::LayerInit()
 {
+	CScrollManager::getInstance()->Release();
 	CObjectManager::getInstance()->Init();
 	settingKeyboardManager();
 
@@ -78,7 +79,23 @@ void PlayLayerMainLogic::LayerInit()
 	m_pDestination->Init(pTempSprite);
 	CScrollManager::getInstance()->Insert(m_pDestination);
 
+	m_pMenuBackground = CCSprite::create("ui/stage_dead.png");
+	m_pMenuBackground->setAnchorPoint(ccp(0, 0));
+	m_pMenuBackground->setVisible(false);
+	this->addChild(m_pMenuBackground, 4);
+
+	m_pRetryButton = CCSprite::create("ui/menu_dead_retry.png");
+	m_pRetryButton->setPosition(ccp(visibleSize.width / 2 - 300, visibleSize.height / 2));
+	m_pRetryButton->setVisible(false);
+	this->addChild(m_pRetryButton, 4);
+
+	m_pGoHomeButton = CCSprite::create("ui/menu_dead_home.png");
+	m_pGoHomeButton->setPosition(ccp(visibleSize.width / 2 + 300, visibleSize.height / 2));
+	m_pGoHomeButton->setVisible(false);
+	this->addChild(m_pGoHomeButton, 4);
+
 	m_bIsEnd = false;
+	m_bIsPaused = false;
 }
 
 void PlayLayerMainLogic::b2Init()
@@ -99,6 +116,8 @@ void PlayLayerMainLogic::settingKeyboardManager()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(PlayLayerMainLogic::onKeyReleased, this);
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+
+	setKeypadEnabled(true);
 }
 
 void PlayLayerMainLogic::settingTouchDispatcher()
@@ -168,20 +187,17 @@ void PlayLayerMainLogic::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, 
 		m_bIsRightButtonTouched = false;
 		m_LayerData.m_pPlayer->Stop();
 		break;
+
+	case EventKeyboard::KeyCode::KEY_BACK :
+	case EventKeyboard::KeyCode::KEY_BACKSPACE :
+			ShowDeadMenu();
+		break;
 	}
 }
 
 void PlayLayerMainLogic::GoNextStage()
 {
-	m_bIsEnd = true;
-	m_LayerData.m_pPlayer->Stop();
-	this->unschedule(schedule_selector(PlayLayerMainLogic::update));
-	CScrollManager::getInstance()->Release();
-	UpdateManager::getInstance()->Release();
-	m_LayerData.m_arrObject.clear();
-	CObjectManager::getInstance()->Release();
-	CDataManager::getInstance()->Release();
-	Behavior::k_bIsDoing = false;
+	Release();
 	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneTitle);
 }
 
@@ -214,8 +230,24 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 
 		for (int i = 0; i < m_pLayerData->m_arrObject.size(); i++)
 		{
-			if (m_pLayerData->m_pPlayer->Action(this, m_pLayerData->m_arrObject[i]->getBehaviorPtr(), touchPos))
+			if (m_pLayerData->m_pPlayer->Action(m_pLayerData->m_arrObject[i]->getBehaviorPtr(), touchPos))
 				break;
+		}
+
+		if (m_pRetryButton->getBoundingBox().containsPoint(touchPos) &&
+			m_bIsPaused)
+		{
+			Behavior::k_bIsDoing = false;
+			scheduleUpdate();
+			m_pLayerData->m_pPlayer->setStateToBefore();
+			CloseDeadMenu();
+		}
+
+		if (m_pGoHomeButton->getBoundingBox().containsPoint(touchPos) &&
+			m_bIsPaused)
+		{
+			Release();
+			CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneTitle);
 		}
 	}
 }
@@ -287,4 +319,35 @@ CBox2dSprite* PlayLayerMainLogic::CreateWall(string filename, CCPoint pos)
 	wall->Init(pWall1, m_pLayerData->m_pWorld, b2BodyType::b2_staticBody, ccp(0.5, 0));
 
 	return wall;
+}
+
+void PlayLayerMainLogic::ShowDeadMenu()
+{
+	m_pMenuBackground->setVisible(true);
+	m_pRetryButton->setVisible(true);
+	m_pGoHomeButton->setVisible(true);
+
+	m_bIsPaused = true;
+}
+
+void PlayLayerMainLogic::CloseDeadMenu()
+{
+	m_pMenuBackground->setVisible(false);
+	m_pRetryButton->setVisible(false);
+	m_pGoHomeButton->setVisible(false);
+
+	m_bIsPaused = false;
+}
+
+void PlayLayerMainLogic::Release()
+{
+	m_bIsEnd = true;
+	m_LayerData.m_pPlayer->Stop();
+	this->unschedule(schedule_selector(PlayLayerMainLogic::update));
+	CScrollManager::getInstance()->Release();
+	UpdateManager::getInstance()->Release();
+	m_LayerData.m_arrObject.clear();
+	CObjectManager::getInstance()->Release();
+	CDataManager::getInstance()->Release();
+	Behavior::k_bIsDoing = false;
 }

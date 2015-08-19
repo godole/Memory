@@ -36,9 +36,10 @@ public :
 	void	StopMoveAnimation();
 	void	Stop();
 	void	Jump(CCNode* a_pParticleParent);
+	void	setStateToBefore();
 	void	Release();
 	void	RunRail(EDirection dir);
-	bool	Action(CCLayer* a_pLayer, shared_ptr<Behavior> a_pBehavior, CCPoint a_Pos);
+	bool	Action(shared_ptr<Behavior> a_pBehavior, CCPoint a_Pos);
 
 	Vec2	getPosition(){ return m_pSprite->getPosition(); }
 	CCSprite* getBodySpritePtr(){ return m_pSprite; }
@@ -55,12 +56,14 @@ private :
 	bool			m_bIsOnGround;
 	bool			m_bIsDoing;
 	CCNode*			m_pCharacter;
+	CCLayer*		m_pParentLayer;
 	timeline::ActionTimeline*		m_pRunAction;
 	CCSprite*		m_pSprite;
 	CCTimer*		m_pTimer;
 	CBox2dSprite*	m_pBodySprite;
 
 	CCPoint			m_vHoldingPosition;
+	CCPoint			m_vStartPosition;
 	TransectorProfile* m_ActorProfile;
 	CActing*		m_pActing;
 

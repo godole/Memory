@@ -93,6 +93,7 @@ public:
 	virtual void update(float dt) override;
 	void PlayerObjectUpdate();
 	void b2tick(float dt);
+	void Release();
 
 private :
 	void settingKeyboardManager();
@@ -107,12 +108,19 @@ private :
 
 	void GoNextStage();
 	void Scroll();
+	void ShowDeadMenu();
+	void CloseDeadMenu();
 
 	bool m_bIsEnd;
+	bool m_bIsPaused;
 
 	CButton* m_pLeftMoveButton;
 	CButton* m_pRightMoveButton;
 	CButton* m_pJumpButton;
+
+	CCSprite* m_pMenuBackground;
+	CCSprite* m_pRetryButton;
+	CCSprite* m_pGoHomeButton;
 
 	CCNode* m_pParticleLayer;
 

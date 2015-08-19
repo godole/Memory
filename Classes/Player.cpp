@@ -6,6 +6,7 @@
 #include "Box2dSprite.h"
 #include "Behavior.h"
 #include "ParticleManager.h"
+#include "ScrollManager.h"
 
 using namespace CocosDenshion;
 
@@ -29,35 +30,10 @@ void CPlayer::Init(CCLayer* parentLayer, b2World* a_World, int ZOrder)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	/*auto standimage = new CCImage;
-	standimage->initWithImageFile("char/box_stand.png");
-
-	m_pStandTexture = new CCTexture2D;
-	m_pStandTexture->initWithImage(standimage);
-
-	m_pBodySprite = CCSprite::createWithTexture(m_pStandTexture);
-	m_pBodySprite->setPosition(ccp(m_pBodySprite->getContentSize().width / 2, m_pBodySprite->getContentSize().height / 2));
-	parentLayer->addChild(m_pBodySprite, ZOrder);
-
-	m_BodyStructure = CreateDynamicStructure(a_World, m_pBodySprite);
-	m_BodyStructure.bodyDef.allowSleep = false;
-	m_BodyStructure.bodyDef.fixedRotation = true;
-
-	auto walk1 = new CCImage;
-	walk1->initWithImageFile("char/box_1.png");
-
-	m_parrWalkTexture[0] = new CCTexture2D;
-	m_parrWalkTexture[0]->initWithImage(walk1);
-
-	auto walk2 = new CCImage;
-	walk2->initWithImageFile("char/box_2.png");
-
-	m_parrWalkTexture[1] = new CCTexture2D;
-	m_parrWalkTexture[1]->initWithImage(walk2);*/
+	m_vStartPosition = ccp(50, 300);
+	m_pParentLayer = parentLayer;
 
 	m_pCharacter = CSLoader::createNode("char/run.csb");
-	m_pCharacter->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2));
 	parentLayer->addChild(m_pCharacter);
 
 	m_pRunAction = CSLoader::createTimeline("char/run.csb");
@@ -73,6 +49,7 @@ void CPlayer::Init(CCLayer* parentLayer, b2World* a_World, int ZOrder)
 	m_ActorProfile->m_vpHoldingPosition = &m_vHoldingPosition;
 
 	m_pActing = new CActing();
+	m_pActing->Init(m_pParentLayer);
 
 	m_nRangeWidth = 500;
 	m_nRangeHeight = 250;
@@ -80,7 +57,6 @@ void CPlayer::Init(CCLayer* parentLayer, b2World* a_World, int ZOrder)
 
 void CPlayer::Move(MoveDirection dir)
 {
-	//¼öÁ¤ÇØ¾ßµÊ
 	m_bIsWalking = true;
 	
 	switch (dir)
@@ -89,7 +65,6 @@ void CPlayer::Move(MoveDirection dir)
 		if (m_pBodySprite->getBodyStructure().body->GetLinearVelocity().x > -m_fSpeed)
 			m_pBodySprite->getBodyStructure().body->ApplyForceToCenter(b2Vec2(-m_fSpeed * 7, 0), true);
 		m_pSprite->setScaleX(-1.0f);
-		
 		break;
 
 	case md_Right :
@@ -121,7 +96,6 @@ void CPlayer::Update()
 		auto obj = objarr->getObjectAt(i);
 		CCRect objRect = obj->getBoundingBox();
 		
-		
 		if (objRect.getMaxY() >charRect.getMinY())
 			continue;
 
@@ -141,7 +115,7 @@ void CPlayer::Update()
 void CPlayer::_setActorPos()
 {
 	m_vHoldingPosition.x = m_pSprite->getPositionX();
-	m_vHoldingPosition.y = m_pSprite->getPositionY() + m_pSprite->getContentSize().height;
+	m_vHoldingPosition.y = m_pSprite->getPositionY() + 80;
 
 	m_ActorProfile->m_vCurrentPosition = m_pSprite->getPosition();
 
@@ -190,9 +164,9 @@ void CPlayer::Release()
 	m_pSprite->stopAllActions();
 }
 
-bool CPlayer::Action(CCLayer* a_pLayer, shared_ptr<Behavior> a_pBehavior, CCPoint a_Pos)
+bool CPlayer::Action(shared_ptr<Behavior> a_pBehavior, CCPoint a_Pos)
 {
-	return m_pActing->Acting(a_pLayer, a_pBehavior, a_Pos);
+	return m_pActing->Acting(a_pBehavior, a_Pos);
 }
 
 void CPlayer::PlayMoveAnimation()
@@ -207,5 +181,16 @@ void CPlayer::PlayMoveAnimation()
 void CPlayer::StopMoveAnimation()
 {
 	SimpleAudioEngine::sharedEngine()->stopEffect(m_MoveEffectSoundIndex);
-	m_pRunAction->gotoFrameAndPause(0);
+	m_pRunAction->gotoFrameAndPause(16);
+}
+
+void CPlayer::setStateToBefore()
+{
+	m_pActing->setStateToDefault();
+	m_pBodySprite->setPositionTo(m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
+
+	delete m_pActing;
+
+	m_pActing = new CActing;
+	m_pActing->Init(m_pParentLayer);
 }

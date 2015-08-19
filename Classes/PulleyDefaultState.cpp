@@ -2,6 +2,7 @@
 #include "PulleyRunState.h"
 #include "EDirection.h"
 #include "Pulley.h"
+#include "ScrollManager.h"
 
 void CPulleyDefaultState::BehaviorInit()
 {
@@ -10,7 +11,7 @@ void CPulleyDefaultState::BehaviorInit()
 	m_pPulley->m_pLeverSprite->setTexture(m_pPulley->m_pLeverOffTexture);
 	m_pPulley->m_pPulleySprite->setTexture(m_pPulley->m_pPulleyOffTexture);
 
-	m_pPulley->setBodyPositionTo(m_pPulley->m_vStartPosition);
+	m_pPulley->setBodyPositionTo(m_pPulley->m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
 	m_pPulley->m_pBody->SetType(b2BodyType::b2_staticBody);
 }
 

@@ -217,6 +217,9 @@
     <ClCompile Include="..\Classes\GameSharing.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BackgroundCloud.cpp">
+      <Filter>src\Scene\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -434,6 +437,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameSharing.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BackgroundCloud.h">
+      <Filter>src\Scene\InGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

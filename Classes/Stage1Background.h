@@ -10,6 +10,7 @@ using namespace std;
 class CScrollSprite;
 class CPlayer;
 class CBox2dSprite;
+class BackgroundCloud;
 
 class Stage1Background :
 	public PlayLayerEntity
@@ -17,9 +18,10 @@ class Stage1Background :
 public:
 	CREATE_FUNC(Stage1Background);
 	void LayerInit() override;
-	void update(float dt);
 
 private :
+	void MakeTreeEffect(string texturename, CCPoint a_vPos);
+
 	vector<shared_ptr<CScrollSprite>> m_arrCloud;
 
 	int m_nCloudCount;
