@@ -6,6 +6,7 @@
 #include "DataManager.h"
 #include "ObjectFactory.h"
 #include "ObjectManager.h"
+#include "WindBox.h"
 
 
 void Stage3Object::LayerInit()
@@ -38,8 +39,21 @@ void Stage3Object::LayerInit()
 		CObjectManager::getInstance()->getSandArray()->InsertObject(sand);
 	}
 
+	for (auto itr = mgr->getWindBoxData()->begin(); itr != mgr->getWindBoxData()->end(); itr++)
+	{
+		auto windBox = factory->CreateWindBox(this, m_pLayerData->m_pWorld, profile, *itr);
+		m_pLayerData->m_arrObject.push_back(windBox);
+	}
+
 	for (auto itr = mgr->getGroundData()->begin(); itr != mgr->getGroundData()->end(); itr++)
 	{
 		factory->CreateGround(this, m_pLayerData->m_pWorld, *itr);
 	}
+
+	scheduleUpdate();
+}
+
+void Stage3Object::update(float dt)
+{
+
 }

@@ -18,20 +18,22 @@ CWindBox::~CWindBox()
 {
 }
 
-void CWindBox::Init(b2World* a_pWorld, WindBoxData a_Data)
+void CWindBox::Init(CCLayer* a_pParentLayer, b2World* a_pWorld, TransectorProfile* a_Profile, WindBoxData a_Data)
 {
-	auto parentLayer = Director::sharedDirector()->getRunningScene()->getChildByName(OBJ_LAYER);
-
 	m_pSprite = CCSprite::create("map/map3/object/box_wind.png");
-	m_pSprite->setPosition(a_Data.m_vPosition);
-	parentLayer->addChild(m_pSprite);
+	a_pParentLayer->addChild(m_pSprite);
+
+	m_pTransectorProfile = a_Profile;
 
 	m_pBox2dSprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
 	m_pBox2dSprite->Init(m_pSprite, a_pWorld, b2BodyType::b2_staticBody, 70, 70);
+	m_pBox2dSprite->setPositionTo(a_Data.m_vPosition);
 	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pBox2dSprite);
 	
 	m_ValueMap.insert({ "sprite", (void*)m_pSprite });
 	m_ValueMap.insert({ "box2dsprite", (void*)m_pBox2dSprite.get() });
+
+	m_pActionSprite = m_pSprite;
 
 	m_pBehavior = CreateBehavior();
 }
@@ -49,6 +51,7 @@ void CWindBox::Scroll(Vec2 a_vScrollVelocity)
 shared_ptr<Behavior> CWindBox::CreateBehavior()
 {
 	m_pState = shared_ptr<CWindBehaviorState>(new CWindDefaultState);
+	m_pState->Init(this, &m_ValueMap);
 	CThings::m_pBehavior = m_pState;
 
 	return m_pState;

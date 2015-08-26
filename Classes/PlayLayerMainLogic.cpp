@@ -47,7 +47,7 @@ void PlayLayerMainLogic::LayerInit()
 	jumpButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::jumpButtonCallback, this));
 
 	auto film = CCSprite::create("ui/film.png");
-	film->setPosition(ccp(170, 650));
+	film->setPosition(ccp(220, 650));
 	this->addChild(film, 3);
 
 	m_pLayerData = &m_LayerData;

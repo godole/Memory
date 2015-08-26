@@ -9,6 +9,7 @@
 #include "Ground.h"
 #include "Sand.h"
 #include "Water.h"
+#include "WindBox.h"
 
 shared_ptr<CThings> CObjectFactory::CreateBox(CCLayer* a_Parent, b2World* a_World, TransectorProfile* a_Profile, BoxData data)
 {
@@ -85,6 +86,16 @@ shared_ptr<CWater> CObjectFactory::CreateWater(CCLayer* a_Parent, TransectorProf
 {
 	shared_ptr<CWater> temp = shared_ptr<CWater>(new CWater);
 	temp->Init(a_Parent, a_Profile, data);
+
+	CommonThingsInit(temp);
+
+	return temp;
+}
+
+shared_ptr<CWindBox> CObjectFactory::CreateWindBox(CCLayer* a_Parent, b2World* a_World, TransectorProfile* a_Profile, WindBoxData data)
+{
+	shared_ptr<CWindBox> temp = shared_ptr<CWindBox>(new CWindBox);
+	temp->Init(a_Parent, a_World, a_Profile, data);
 
 	CommonThingsInit(temp);
 

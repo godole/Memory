@@ -12,7 +12,7 @@ class CWindBox :
 	public CThings
 {
 public :
-	void Init(b2World* a_pWorld, WindBoxData a_Data);
+	void Init(cocos2d::CCLayer* a_pParentLayer, b2World* a_pWorld, TransectorProfile* a_Profile, WindBoxData a_Data);
 	void ChangeState(std::shared_ptr<CWindBehaviorState> a_pState);
 
 public :	//Things

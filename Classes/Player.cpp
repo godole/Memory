@@ -128,7 +128,7 @@ void CPlayer::Jump(CCNode* a_pParent)
 	if (m_bIsOnGround)
 	{
 		m_pBodySprite->getBodyStructure().body->SetLinearVelocity(b2Vec2(m_pBodySprite->getBodyStructure().body->GetLinearVelocity().x, 7.5));
-		CParticleManager::getInstance()->addParticle(a_pParent, "char/jump_smoke.plist", m_pSprite->getPosition() - Vec2(0, 45) - a_pParent->getPosition(), 2);
+		//CParticleManager::getInstance()->addParticle(a_pParent, "char/jump_smoke.plist", m_pSprite->getPosition() - Vec2(0, 45) - a_pParent->getPosition(), 2);
 	}
 }
 

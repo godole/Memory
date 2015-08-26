@@ -51,7 +51,7 @@ void CActing::SortIcon()
 	{
 		(*itr)->runAction(CCSequence::create((CCFiniteTimeAction*)
 			CCDelayTime::create(1.0), 
-			CCMoveTo::create(0.5, ccp(120 + 80 * i, 600)), 
+			CCMoveTo::create(0.5, ccp(170 + 85 * i, 650)), 
 			NULL));
 	}
 }
@@ -59,7 +59,7 @@ void CActing::SortIcon()
 void CActing::CreateIcon(string filename)
 {
 	auto pIcon = CCSprite::create(filename.c_str());
-	pIcon->setPosition(ccp(120 + 80 * 3, 600));
+	pIcon->setPosition(ccp(150 + 80 * 3, 600));
 	CParticleManager::getInstance()->addParticle(pIcon, "ui/add_icon.plist", ccp(pIcon->getContentSize().width / 2, pIcon->getContentSize().height / 2),1);
 	m_pParentLayer->addChild(pIcon, 3);
 	m_listBehaviorIcon.push_back(pIcon);
