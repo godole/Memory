@@ -12,68 +12,6 @@
 class PlayLayerMainLogic :
 	public PlayLayerEntity
 {
-	class CButton
-	{
-	public :
-		std::function<void()> m_ButtonOnFunc;
-		std::function<void()> m_ButtonOffFunc;
-
-	public :
-		void Init(CCLayer* a_pParentLayer, string a_szOnTextureName, string a_szOffTextureName, CCPoint a_vPos, int ZOrder = 0)
-		{
-			m_pOnTexture = CTextureFactory::CreateTexture(a_szOnTextureName);
-			m_pOffTexture = CTextureFactory::CreateTexture(a_szOffTextureName);
-			m_pParentLayer = a_pParentLayer;
-
-			m_pSprite = CCSprite::createWithTexture(m_pOffTexture);
-			m_pSprite->setPosition(a_vPos);
-			a_pParentLayer->addChild(m_pSprite, ZOrder);
-		}
-
-		void OnTouchBegan(Vec2 touchPos)
-		{
-			if (m_pSprite->getBoundingBox().containsPoint(touchPos))
-			{
-				m_pSprite->setTexture(m_pOnTexture);
-				m_ButtonOnFunc();
-			}
-		}
-
-		void OnTouchMoved(Vec2 touchPos)
-		{
-			if (m_pSprite->getBoundingBox().containsPoint(touchPos))
-			{
-				m_pSprite->setTexture(m_pOnTexture);
-				m_ButtonOnFunc();
-			}
-			
-			else
-			{
-				m_pSprite->setTexture(m_pOffTexture);
-				m_ButtonOffFunc();
-			}
-		}
-
-		void OnTouchEnded(Vec2 touchPos)
-		{
-			if (m_pSprite->getBoundingBox().containsPoint(touchPos))
-			{
-				m_pSprite->setTexture(m_pOffTexture);
-				m_ButtonOffFunc();
-			}
-		}
-
-		void Release()
-		{
-			m_pParentLayer->removeChild(m_pSprite);
-		}
-
-	private :
-		CCLayer* m_pParentLayer;
-		CCSprite* m_pSprite;
-		CCTexture2D* m_pOnTexture;
-		CCTexture2D* m_pOffTexture;
-	};
 public:
 	void LayerInit();
 	void b2Init();
@@ -89,6 +27,10 @@ public:
 	virtual void onTouchesMoved(const vector<Touch*>&touches, Event* event);
 	virtual void onTouchesEnded(const vector<Touch*>&touches, Event* event);
 	virtual void onTouchesCancelled(const vector<Touch*>&touches, Event* event);
+
+	void leftButtonCallback(Ref* sender, ui::Widget::TouchEventType type);
+	void rightButtonCallback(Ref* sender, ui::Widget::TouchEventType type);
+	void jumpButtonCallback(Ref* sender, ui::Widget::TouchEventType type);
 
 	virtual void update(float dt) override;
 	void PlayerObjectUpdate();
@@ -111,12 +53,10 @@ private :
 	void ShowDeadMenu();
 	void CloseDeadMenu();
 
+	
+
 	bool m_bIsEnd;
 	bool m_bIsPaused;
-
-	CButton* m_pLeftMoveButton;
-	CButton* m_pRightMoveButton;
-	CButton* m_pJumpButton;
 
 	CCSprite* m_pMenuBackground;
 	CCSprite* m_pRetryButton;

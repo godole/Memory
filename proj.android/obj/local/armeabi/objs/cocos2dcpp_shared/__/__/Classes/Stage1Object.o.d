@@ -434,9 +434,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Stage1Object.o: \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/ScrollSprite.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/PlayLayerEntity.h jni/../../Classes/ObjectFactory.h \
- jni/../../Classes/DataManager.h
+ jni/../../Classes/DataStructure.h jni/../../Classes/PlayLayerEntity.h \
+ jni/../../Classes/ObjectFactory.h jni/../../Classes/DataManager.h
 
 jni/../../Classes/Stage1Object.h:
 
@@ -1323,8 +1322,6 @@ jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h:
 jni/../../Classes/Things.h:
 
 jni/../../Classes/Rail.h:
-
-jni/../../Classes/ThingsWithBody.h:
 
 jni/../../Classes/DataStructure.h:
 

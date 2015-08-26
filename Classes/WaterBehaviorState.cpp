@@ -19,5 +19,5 @@ void CWaterBehaviorState::Init(CWater* a_pWater)
 
 void CWaterBehaviorState::setStateToDefault()
 {
-
+	m_pWater->setStateToDefault();
 }

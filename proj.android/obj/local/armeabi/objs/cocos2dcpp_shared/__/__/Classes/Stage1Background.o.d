@@ -466,9 +466,11 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Stage1Background.o: \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/ScrollSprite.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/PlayLayerEntity.h jni/../../Classes/DataManager.h \
- jni/../../Classes/Box2dSprite.h jni/../../Classes/ParticleManager.h
+ jni/../../Classes/DataStructure.h jni/../../Classes/PlayLayerEntity.h \
+ jni/../../Classes/DataManager.h jni/../../Classes/Box2dSprite.h \
+ jni/../../Classes/ParticleManager.h jni/../../Classes/BackgroundCloud.h \
+ jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
+ jni/../../cocos2d/cocos/audio/android/../include/Export.h
 
 jni/../../Classes/Stage1Background.h:
 
@@ -1418,8 +1420,6 @@ jni/../../Classes/Things.h:
 
 jni/../../Classes/Rail.h:
 
-jni/../../Classes/ThingsWithBody.h:
-
 jni/../../Classes/DataStructure.h:
 
 jni/../../Classes/PlayLayerEntity.h:
@@ -1429,3 +1429,9 @@ jni/../../Classes/DataManager.h:
 jni/../../Classes/Box2dSprite.h:
 
 jni/../../Classes/ParticleManager.h:
+
+jni/../../Classes/BackgroundCloud.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/Export.h:

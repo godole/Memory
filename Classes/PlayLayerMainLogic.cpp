@@ -5,6 +5,11 @@
 #include "Box2dSprite.h"
 #include "DataManager.h"
 #include "Behavior.h"
+#include "ui\CocosGUI.h"
+#include "SimpleAudioEngine.h"
+
+using namespace ui;
+using namespace CocosDenshion;
 
 
 void PlayLayerMainLogic::LayerInit()
@@ -29,40 +34,20 @@ void PlayLayerMainLogic::LayerInit()
 	m_bIsLeftButtonTouched = false;
 	m_bIsRightButtonTouched = false;
 
-	m_pLeftMoveButton = new CButton;
-	m_pLeftMoveButton->Init(this, "ui/left_on.png", "ui/left_off.png", Vec2(100, 80), 3);
-	m_pLeftMoveButton->m_ButtonOnFunc = [&]{
-		m_bIsLeftButtonTouched = true;
-		m_pLayerData->m_pPlayer->PlayMoveAnimation();
-	};
+	auto button = CSLoader::createNode("ui/button.csb");
+	this->addChild(button, 3);
 
-	m_pLeftMoveButton->m_ButtonOffFunc = [&]{
-		m_pLayerData->m_pPlayer->Stop();
-		m_bIsLeftButtonTouched = false;
-	};
+	auto leftButton = (Button*)(button->getChildByName("left"));
+	leftButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::leftButtonCallback, this));
 
-	m_pRightMoveButton = new CButton;
-	m_pRightMoveButton->Init(this, "ui/right_on.png", "ui/right_off.png", Vec2(185, 80), 3);
-	m_pRightMoveButton->m_ButtonOnFunc = [&]{
-		m_bIsRightButtonTouched = true;
-		m_pLayerData->m_pPlayer->PlayMoveAnimation();
-	};
+	auto rightButton = (Button*)(button->getChildByName("right"));
+	rightButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::rightButtonCallback, this));
 
-	m_pRightMoveButton->m_ButtonOffFunc = [&]{
-		m_pLayerData->m_pPlayer->Stop();
-		m_bIsRightButtonTouched = false;
-	};
-
-	//Vec2(1100, 80)
-	m_pJumpButton = new CButton;
-	m_pJumpButton->Init(this, "ui/jump_on.png", "ui/jump_off.png", Vec2(1100, 80), 3);
-	m_pJumpButton->m_ButtonOnFunc = [&]{
-		m_pLayerData->m_pPlayer->Jump(m_pParticleLayer);
-	};
-	m_pJumpButton->m_ButtonOffFunc = []{};
+	auto jumpButton = (Button*)(button->getChildByName("jump"));
+	jumpButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::jumpButtonCallback, this));
 
 	auto film = CCSprite::create("ui/film.png");
-	film->setPosition(ccp(200, 600));
+	film->setPosition(ccp(170, 650));
 	this->addChild(film, 3);
 
 	m_pLayerData = &m_LayerData;
@@ -198,7 +183,9 @@ void PlayLayerMainLogic::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, 
 void PlayLayerMainLogic::GoNextStage()
 {
 	Release();
-	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneTitle);
+	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneSelectStage);
+	CDataManager::getInstance()->SavePlayerData();
+	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 }
 
 void PlayLayerMainLogic::update(float dt)
@@ -224,14 +211,13 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 	{
 		CCPoint touchPos = (*itr)->getLocation();
 
-		m_pLeftMoveButton->OnTouchBegan(touchPos);
-		m_pRightMoveButton->OnTouchBegan(touchPos);
-		m_pJumpButton->OnTouchBegan(touchPos);
-
-		for (int i = 0; i < m_pLayerData->m_arrObject.size(); i++)
+		if (!m_bIsPaused)
 		{
-			if (m_pLayerData->m_pPlayer->Action(m_pLayerData->m_arrObject[i]->getBehaviorPtr(), touchPos))
-				break;
+			for (int i = 0; i < m_pLayerData->m_arrObject.size(); i++)
+			{
+				if (m_pLayerData->m_pPlayer->Action(m_pLayerData->m_arrObject[i]->getBehaviorPtr(), touchPos))
+					break;
+			}
 		}
 
 		if (m_pRetryButton->getBoundingBox().containsPoint(touchPos) &&
@@ -246,8 +232,7 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 		if (m_pGoHomeButton->getBoundingBox().containsPoint(touchPos) &&
 			m_bIsPaused)
 		{
-			Release();
-			CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneTitle);
+			GoNextStage();
 		}
 	}
 }
@@ -257,10 +242,6 @@ void PlayLayerMainLogic::onTouchesMoved(const vector<Touch*>&touches, Event* eve
 	for (auto itr = touches.begin(); itr != touches.end(); itr++)
 	{
 		CCPoint touchPos = (*itr)->getLocation();
-
-		m_pLeftMoveButton->OnTouchMoved(touchPos);
-		m_pRightMoveButton->OnTouchMoved(touchPos);
-		m_pJumpButton->OnTouchMoved(touchPos);
 	}
 }
 
@@ -269,10 +250,6 @@ void PlayLayerMainLogic::onTouchesEnded(const vector<Touch*>&touches, Event* eve
 	for (auto itr = touches.begin(); itr != touches.end(); itr++)
 	{
 		CCPoint touchPos = (*itr)->getLocation();
-
-		m_pLeftMoveButton->OnTouchEnded(touchPos);
-		m_pRightMoveButton->OnTouchEnded(touchPos);
-		m_pJumpButton->OnTouchEnded(touchPos);
 	}
 }
 
@@ -327,6 +304,8 @@ void PlayLayerMainLogic::ShowDeadMenu()
 	m_pRetryButton->setVisible(true);
 	m_pGoHomeButton->setVisible(true);
 
+	unscheduleUpdate();
+
 	m_bIsPaused = true;
 }
 
@@ -335,6 +314,8 @@ void PlayLayerMainLogic::CloseDeadMenu()
 	m_pMenuBackground->setVisible(false);
 	m_pRetryButton->setVisible(false);
 	m_pGoHomeButton->setVisible(false);
+
+	scheduleUpdate();
 
 	m_bIsPaused = false;
 }
@@ -350,4 +331,60 @@ void PlayLayerMainLogic::Release()
 	CObjectManager::getInstance()->Release();
 	CDataManager::getInstance()->Release();
 	Behavior::k_bIsDoing = false;
+}
+
+void PlayLayerMainLogic::leftButtonCallback(Ref* sender, Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case cocos2d::ui::Widget::TouchEventType::BEGAN:
+		m_bIsLeftButtonTouched = true;
+		m_pLayerData->m_pPlayer->PlayMoveAnimation();
+		break;
+	case cocos2d::ui::Widget::TouchEventType::ENDED:
+		m_pLayerData->m_pPlayer->Stop();
+		m_bIsLeftButtonTouched = false;
+		break;
+	case cocos2d::ui::Widget::TouchEventType::MOVED :
+		break;
+	case cocos2d::ui::Widget::TouchEventType::CANCELED:
+		m_pLayerData->m_pPlayer->Stop();
+		m_bIsLeftButtonTouched = false;
+		break;
+	default:
+		break;
+	}
+}
+
+void PlayLayerMainLogic::rightButtonCallback(Ref* sender, Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case cocos2d::ui::Widget::TouchEventType::BEGAN:
+		m_bIsRightButtonTouched = true;
+		m_pLayerData->m_pPlayer->PlayMoveAnimation();
+		break;
+	case cocos2d::ui::Widget::TouchEventType::ENDED:
+		m_pLayerData->m_pPlayer->Stop();
+		m_bIsRightButtonTouched = false;
+		break;
+	case cocos2d::ui::Widget::TouchEventType::CANCELED:
+		m_pLayerData->m_pPlayer->Stop();
+		m_bIsRightButtonTouched = false;
+		break;
+	default:
+		break;
+	}
+}
+
+void PlayLayerMainLogic::jumpButtonCallback(Ref* sender, Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case cocos2d::ui::Widget::TouchEventType::BEGAN:
+		m_pLayerData->m_pPlayer->Jump(m_pParticleLayer);
+		break;
+	default:
+		break;
+	}
 }

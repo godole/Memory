@@ -32,30 +32,30 @@ void CPulley::Init(CCLayer* a_pParentLayer, b2World* a_World, PulleyData a_Data)
 
 	if (a_Data.m_eStartDirection == e_drUp)
 	{
-		m_pPulleyOnTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_union.png");
-		m_pPulleyOffTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_union_off.png");
+		m_pPulleyOnTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator.png");
+		m_pPulleyOffTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_off.png");
 	}
 
 	else if (a_Data.m_eStartDirection == e_drDown)
 	{
-		m_pPulleyOnTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_down_on.png");
+		m_pPulleyOnTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_down.png");
 		m_pPulleyOffTexture = CTextureFactory::CreateTexture(objfileroot + "ped_elevator_down_off.png");
 	}
 
 	m_pLeverOnTexture = CTextureFactory::CreateTexture(objfileroot + "lever_on.png");
 	m_pLeverOffTexture = CTextureFactory::CreateTexture(objfileroot + "lever_off.png");
 
-	auto pulleySprite = CCSprite::createWithTexture(m_pPulleyOffTexture);
-	a_pParentLayer->addChild(pulleySprite, OBJECT_ZORDER);
+	for (int i = 0; i < a_Data.m_nPulleyCount; i++)
+	{
+		auto pulleySprite = CCSprite::createWithTexture(m_pPulleyOffTexture);
+		a_pParentLayer->addChild(pulleySprite, OBJECT_ZORDER);
 
-	m_pPulleySprite = pulleySprite;
+		auto box2dSprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
+		box2dSprite->Init(pulleySprite, a_World, b2BodyType::b2_staticBody, 45, 45);
 
-	m_pBodySprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
-	m_pBodySprite->Init(pulleySprite, a_World, b2BodyType::b2_staticBody);
-
-	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pBodySprite);
-
-	m_pBody = m_pBodySprite->getBodyStructure().body;
+		m_parrPulleySprite.push_back(box2dSprite);
+		CObjectManager::getInstance()->getBox2dSprite()->InsertObject(box2dSprite);
+	}
 
 	m_pLeverSprite = CCSprite::createWithTexture(m_pLeverOffTexture);
 	m_pLeverSprite->setPosition(a_Data.m_vLeverPosition);
@@ -68,7 +68,10 @@ void CPulley::Init(CCLayer* a_pParentLayer, b2World* a_World, PulleyData a_Data)
 
 void CPulley::Scroll(Vec2 a_vScrollVelocity)
 {
-	setBodyPositionBy(a_vScrollVelocity);
+	for (int i = 0; i < m_parrPulleySprite.size(); i++)
+	{
+		m_parrPulleySprite[i]->setPositionBy(a_vScrollVelocity);
+	}
 	m_pLeverSprite->setPosition(m_pLeverSprite->getPosition() + a_vScrollVelocity);
 }
 

@@ -2,6 +2,7 @@
 #include "Things.h"
 #include "ObjectManager.h"
 #include "TransectorProfile.h"
+#include "ParticleManager.h"
 #include "Behavior.h"
 
 
@@ -59,6 +60,7 @@ void CActing::CreateIcon(string filename)
 {
 	auto pIcon = CCSprite::create(filename.c_str());
 	pIcon->setPosition(ccp(120 + 80 * 3, 600));
+	CParticleManager::getInstance()->addParticle(pIcon, "ui/add_icon.plist", ccp(pIcon->getContentSize().width / 2, pIcon->getContentSize().height / 2),1);
 	m_pParentLayer->addChild(pIcon, 3);
 	m_listBehaviorIcon.push_back(pIcon);
 }
@@ -77,7 +79,8 @@ void CActing::RemoveFirstMemory()
 
 void CActing::RemoveAllMemory()
 {
-	for (auto itr = m_listBehavior.begin(); itr != m_listBehavior.end(); itr++)
+	auto arr = CObjectManager::getInstance()->getObjectArray()->getObjectArray();
+	for (auto itr = arr.begin(); itr != arr.end(); itr++)
 	{
 		(*itr)->setStateToDefault();
 	}

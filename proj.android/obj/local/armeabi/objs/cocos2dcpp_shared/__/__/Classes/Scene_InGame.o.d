@@ -348,7 +348,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Scene_InGame.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/Stage1Background.h \
+ jni/../../Classes/PlayLayerMainLogic.h \
+ jni/../../Classes/PlayLayerEntity.h \
  jni/../../Classes/PlayLayerShareData.h jni/../../Classes/Player.h \
  jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio\CocoStudio.h \
  jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h \
@@ -466,10 +467,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Scene_InGame.o: \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/ScrollSprite.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/PlayLayerEntity.h jni/../../Classes/Stage1Object.h \
- jni/../../Classes/PlayLayerMainLogic.h jni/../../Classes/DataManager.h \
- jni/../../Classes/CTextureFactory.h
+ jni/../../Classes/DataStructure.h jni/../../Classes/DataManager.h \
+ jni/../../Classes/CTextureFactory.h jni/../../Classes/LayerDefine.h
 
 jni/../../Classes/Scene_InGame.h:
 
@@ -1169,7 +1168,9 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
-jni/../../Classes/Stage1Background.h:
+jni/../../Classes/PlayLayerMainLogic.h:
+
+jni/../../Classes/PlayLayerEntity.h:
 
 jni/../../Classes/PlayLayerShareData.h:
 
@@ -1421,16 +1422,10 @@ jni/../../Classes/Things.h:
 
 jni/../../Classes/Rail.h:
 
-jni/../../Classes/ThingsWithBody.h:
-
 jni/../../Classes/DataStructure.h:
-
-jni/../../Classes/PlayLayerEntity.h:
-
-jni/../../Classes/Stage1Object.h:
-
-jni/../../Classes/PlayLayerMainLogic.h:
 
 jni/../../Classes/DataManager.h:
 
 jni/../../Classes/CTextureFactory.h:
+
+jni/../../Classes/LayerDefine.h:

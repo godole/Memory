@@ -1,7 +1,7 @@
 
-PULLEY 350 300 200 155 100 DOWN object/ped_elevator_down_on.png object/ped_elevator_down_off.png object/lever_on.png object/lever_off.png 
-PULLEY 700 300 520 345 150 UP object/ped_elevator_union.png object/ped_elevator_union_off.png object/lever_on.png object/lever_off.png 
-PULLEY 1040 440 830 495 150 UP object/ped_elevator_union.png object/ped_elevator_union_off.png object/lever_on.png object/lever_off.png 
+PULLEY 302 300 200 155 100 DOWN 3 
+PULLEY 752 300 520 345 150 UP 3 
+PULLEY 992 440 830 495 150 UP 3 
 GROUND 480 290 map/map2/object/ped1.png 
 GROUND 530 290 map/map2/object/ped1.png 
 GROUND 580 290 map/map2/object/ped1.png 

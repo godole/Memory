@@ -24,9 +24,13 @@ void CRailDefaultState::BehaviorInit()
 	m_pRail->m_eCurrentDirection = m_pRail->m_eStartDirection;
 	m_pRail->m_pLeverSprite->setTexture(m_pRail->m_pLeverOffTexture);
 
-	if (m_pRail->m_eStartDirection == EDirection::e_drLeft)
-		m_pRail->m_pRailSprite->setTexture(m_pRail->m_pRailLeftTexture);
+	for (int i = 0; i < m_pRail->m_parrRailSprite.size(); i++)
+	{
+		auto sprite = m_pRail->m_parrRailSprite[i]->getSpritePtr();
+		if (m_pRail->m_eStartDirection == EDirection::e_drLeft)
+			sprite->setTexture(m_pRail->m_pRailLeftTexture);
 
-	if (m_pRail->m_eStartDirection == EDirection::e_drRight)
-		m_pRail->m_pRailSprite->setTexture(m_pRail->m_pRailRightTexture);
+		if (m_pRail->m_eStartDirection == EDirection::e_drRight)
+			sprite->setTexture(m_pRail->m_pRailRightTexture);
+	}
 }

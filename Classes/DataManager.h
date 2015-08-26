@@ -15,6 +15,8 @@ class CDataManager :
 {
 public :
 	void				LoadMapData(string filename);
+	void				LoadPlayerData();
+	void				SavePlayerData();
 	void				LoadNextMapData();
 	void				Release();
 
@@ -25,6 +27,7 @@ public :
 	vector<MirageData>*	getMirageData(){ return &m_arrMirageData; }
 	vector<WaterData>*	getWaterData(){ return &m_arrWaterData; }
 	vector<SandData>*	getSandData(){ return &m_arrSandData; }
+	vector<WindBoxData>* getWindBoxData(){ return &m_arrWindBoxData; }
 	DestinationData*	getDestinationData(){ return &m_DestinationData; }
 	string				getBackgroundTextureName(){ return m_szBackgroundTextureName; }
 	string				getNextStageFileName(){ return m_szNextStageFileName; }
@@ -37,9 +40,12 @@ private :
 	vector<MirageData>		m_arrMirageData;
 	vector<SandData>		m_arrSandData;
 	vector<WaterData>		m_arrWaterData;
+	vector<PedData>			m_arrPedData;
+	vector<WindBoxData>		m_arrWindBoxData;
 	DestinationData			m_DestinationData;
 	string					m_szBackgroundTextureName;
 	string					m_szNextStageFileName;
+	PlayerData				m_PlayerData;
 
 	BoxData					_GetBoxData(string str);
 	RailData				_GetRailData(string str);
@@ -49,6 +55,9 @@ private :
 	DestinationData			_GetDestinationData(string str);
 	WaterData				_GetWaterData(string str);
 	SandData				_GetSandData(string str);
+	PedData					_GetPedData(string str);
+	WindBoxData				_GetWindBoxData(string str);
+
 	string					_GetBackgroundTextureName(string str);
 	string					_GetNextSceneFileName(string str);
 };

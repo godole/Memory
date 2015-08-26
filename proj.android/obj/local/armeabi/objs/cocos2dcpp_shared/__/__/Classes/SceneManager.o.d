@@ -466,13 +466,13 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/SceneManager.o: \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/ScrollSprite.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/PlayLayerEntity.h jni/../../Classes/Stage1Object.h \
- jni/../../Classes/Stage2Background.h jni/../../Classes/Stage2Object.h \
- jni/../../Classes/Stage3Object.h jni/../../Classes/Stage3Background.h \
+ jni/../../Classes/DataStructure.h jni/../../Classes/PlayLayerEntity.h \
+ jni/../../Classes/Stage1Object.h jni/../../Classes/Stage2Background.h \
+ jni/../../Classes/Stage2Object.h jni/../../Classes/Stage3Object.h \
+ jni/../../Classes/Stage3Background.h \
  jni/../../Classes/PlayLayerMainLogic.h jni/../../Classes/DataManager.h \
  jni/../../Classes/CTextureFactory.h \
- jni/../../Classes/Scene_SelectState.h
+ jni/../../Classes/Scene_SelectState.h jni/../../Classes/Scene_Title.h
 
 jni/../../Classes/SceneManager.h:
 
@@ -1426,8 +1426,6 @@ jni/../../Classes/Things.h:
 
 jni/../../Classes/Rail.h:
 
-jni/../../Classes/ThingsWithBody.h:
-
 jni/../../Classes/DataStructure.h:
 
 jni/../../Classes/PlayLayerEntity.h:
@@ -1449,3 +1447,5 @@ jni/../../Classes/DataManager.h:
 jni/../../Classes/CTextureFactory.h:
 
 jni/../../Classes/Scene_SelectState.h:
+
+jni/../../Classes/Scene_Title.h:

@@ -52,6 +52,9 @@
     <Filter Include="src\Scene\InGame\Stage3">
       <UniqueIdentifier>{8e748e8f-bf83-4cf3-b498-49ce43955427}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Object\Things\WindBox">
+      <UniqueIdentifier>{7c2fe7b7-41d4-46a0-8487-e236e5c6c348}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -214,11 +217,23 @@
     <ClCompile Include="..\Classes\Stage3Object.cpp">
       <Filter>src\Scene\InGame\Stage3</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameSharing.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\BackgroundCloud.cpp">
       <Filter>src\Scene\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene_Title.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WindBox.cpp">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WindDefaultState.cpp">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WindRunState.cpp">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WindBehaviorState.cpp">
+      <Filter>src\Object\Things\WindBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,9 +244,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\BehaviorState.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\DataManager.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\DataStructure.h">
@@ -435,11 +447,26 @@
     <ClInclude Include="..\Classes\Stage3Background.h">
       <Filter>src\Scene\InGame\Stage3</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GameSharing.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\BackgroundCloud.h">
       <Filter>src\Scene\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene_Title.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WindBox.h">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WindDefaultState.h">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WindRunState.h">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DataManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WindBehaviorState.h">
+      <Filter>src\Object\Things\WindBox</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

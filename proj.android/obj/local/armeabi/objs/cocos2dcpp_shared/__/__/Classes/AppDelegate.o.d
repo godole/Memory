@@ -348,7 +348,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/Scene_SelectState.h jni/../../Classes/DataManager.h \
+ jni/../../Classes/Scene_Title.h jni/../../Classes/DataManager.h \
  jni/../../Classes/Singleton.h jni/../../Classes/EDirection.h \
  jni/../../Classes/DataStructure.h
 
@@ -1050,7 +1050,7 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
-jni/../../Classes/Scene_SelectState.h:
+jni/../../Classes/Scene_Title.h:
 
 jni/../../Classes/DataManager.h:
 

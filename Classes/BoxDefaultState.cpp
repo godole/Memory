@@ -25,5 +25,7 @@ void CBoxDefaultState::Update()
 
 void CBoxDefaultState::BehaviorInit()
 {
+	m_pBox->m_pBody->SetActive(true);
 	m_pBox->setBodyPositionTo(m_pBox->m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
+	m_pBox->m_pBoxSprite->setZOrder(0);
 }

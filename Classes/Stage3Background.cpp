@@ -1,6 +1,9 @@
 #include "Stage3Background.h"
 #include "ScrollSprite.h"
 #include "ScrollManager.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 
 void Stage3Background::LayerInit()
@@ -15,4 +18,6 @@ void Stage3Background::LayerInit()
 	CScrollManager::getInstance()->Insert(background);
 
 	m_pLayerData->m_pBackground = background;
+
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music/stage_3.mp3", true);
 }

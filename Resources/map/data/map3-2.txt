@@ -1,0 +1,10 @@
+
+GROUND 1280 66 map/map1/object/map_1_ground.png 
+BOX 400 172 map/map3/object/box_ob.png 
+BOX 500 172 map/map3/object/box_ob.png 
+BOX 600 172 map/map3/object/box_ob.png 
+WIND 800 157 
+WATER 900 157 
+SAND 1000 157 
+DESTINATION 2200 470 object/destination.png 
+NEXTSTAGE map/data/map3-2.txt 

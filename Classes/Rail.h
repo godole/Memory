@@ -1,11 +1,12 @@
 #pragma once
 #include "cocos2d.h"
-#include "ThingsWithBody.h"
+#include "Things.h"
 #include "EDirection.h"
 #include "DataStructure.h"
 #include "b2Structure.h"
 #include "PhysicsDefine.h"
 #include <memory>
+#include <vector>
 
 USING_NS_CC;
 using namespace std;
@@ -16,7 +17,7 @@ class CRailRunState;
 class Behavior;
 
 class CRail :
-	public CThingsWithBody
+	public CThings
 {
 	friend class CRailDefaultState;
 	friend class CRailRunState;
@@ -28,7 +29,7 @@ public :
 	void Init(CCLayer* a_ParentLayer, b2World* a_World, RailData a_Data);
 	bool Action(CCPoint a_vPos);
 	void setStateToDefault(){}
-	CCSprite* getSpritePtr(){ return m_pRailSprite; }
+	vector<shared_ptr<CBox2dSprite>>* getRailSpriteArr(){ return &m_parrRailSprite; }
 	EDirection getDirection(){ return m_eCurrentDirection; }
 	void ChangeState(shared_ptr<CRailBehaviorState> a_ptr);
 
@@ -42,7 +43,7 @@ private:
 	void DisActive() override{}
 
 	CCSprite*	m_pLeverSprite;
-	CCSprite*	m_pRailSprite;
+	vector<shared_ptr<CBox2dSprite>>	m_parrRailSprite;
 	CCTexture2D* m_pRailLeftTexture;
 	CCTexture2D* m_pRailRightTexture;
 	CCTexture2D* m_pLeverOnTexture;

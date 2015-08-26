@@ -1,5 +1,5 @@
  
-MIRAGE 870 255 520 440 map/map3/object/box_wall.png map/map3/object/glass.png map/map3/object/glass_piece.png 
+MIRAGE 870 255 520 440  
 BOX 400 172 map/map3/object/box_ob.png 
 GROUND 200 280 map/map3/object/ped1.png 
 GROUND 250 280 map/map3/object/ped1.png 

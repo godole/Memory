@@ -2,6 +2,7 @@
 #include "ObjectFactory.h"
 #include "DataManager.h"
 #include "UpdateManager.h"
+#include "Box2dSprite.h"
 
 
 void Stage2Object::LayerInit()
@@ -41,13 +42,17 @@ void Stage2Object::update(float dt)
 {
 	for (auto itr = m_arrRail.begin(); itr != m_arrRail.end(); itr++)
 	{
-		CCRect r;
-		r.setRect(itr->get()->getSpritePtr()->getBoundingBox().getMinX(), itr->get()->getSpritePtr()->getBoundingBox().getMaxY(),
-			itr->get()->getSpritePtr()->getContentSize().width, itr->get()->getSpritePtr()->getContentSize().height + 3);
-
-		if (m_pLayerData->m_pPlayer->getBodySpritePtr()->getBoundingBox().intersectsRect(r))
+		for (auto itr2 = itr->get()->getRailSpriteArr()->begin(); itr2 != itr->get()->getRailSpriteArr()->end(); itr2++)
 		{
-			m_pLayerData->m_pPlayer->RunRail(itr->get()->getDirection());
+			CCRect r;
+			r.setRect(itr2->get()->getSpritePtr()->getBoundingBox().getMinX(), itr2->get()->getSpritePtr()->getBoundingBox().getMaxY(),
+				itr2->get()->getSpritePtr()->getContentSize().width, itr2->get()->getSpritePtr()->getContentSize().height + 3);
+
+			if (m_pLayerData->m_pPlayer->getBodySpritePtr()->getBoundingBox().intersectsRect(r))
+			{
+				m_pLayerData->m_pPlayer->RunRail(itr->get()->getDirection());
+				break;
+			}
 		}
 	}
 }

@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "Scene_SelectState.h"
+#include "Scene_Title.h"
 #include "DataManager.h"
 
 USING_NS_CC;
@@ -33,7 +33,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 	/*CDataManager::getInstance()->LoadMapData(
 		StringUtils::format("map/data/map1-1.txt"));*/
-	auto scene = Scene_SelectState::createScene();
+	auto scene = Scene_Title::createScene();
 	//auto scene = Scene_SelectState::createScene();
 
     // run

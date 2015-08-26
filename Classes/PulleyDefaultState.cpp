@@ -9,10 +9,15 @@ void CPulleyDefaultState::BehaviorInit()
 	m_pPulley->m_drCurrentDirection = EDirection::e_drNULL;
 	m_pPulley->m_fCurrentLength = m_pPulley->m_fStartLength;
 	m_pPulley->m_pLeverSprite->setTexture(m_pPulley->m_pLeverOffTexture);
-	m_pPulley->m_pPulleySprite->setTexture(m_pPulley->m_pPulleyOffTexture);
 
-	m_pPulley->setBodyPositionTo(m_pPulley->m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
-	m_pPulley->m_pBody->SetType(b2BodyType::b2_staticBody);
+	for (int i = 0; i < m_pPulley->m_parrPulleySprite.size(); i++)
+	{
+		m_pPulley->m_parrPulleySprite[i]->getSpritePtr()->setTexture(m_pPulley->m_pPulleyOffTexture);
+		m_pPulley->m_parrPulleySprite[i]->setPositionTo(ccp(m_pPulley->m_vStartPosition.x +
+			m_pPulley->m_parrPulleySprite[i]->getSpritePtr()->getContentSize().width * i, m_pPulley->m_vStartPosition.y) +
+			CScrollManager::getInstance()->getDeltaPosition());
+		m_pPulley->m_parrPulleySprite[i]->getBodyStructure().body->SetType(b2BodyType::b2_staticBody);
+	}
 }
 
 bool CPulleyDefaultState::Action(CCPoint a_vPos)

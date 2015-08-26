@@ -348,11 +348,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Rail.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/Things.h \
- jni/../../Classes/IScroll.h jni/../../Classes/ScrollManager.h \
- jni/../../Classes/Singleton.h jni/../../Classes/Update.h \
- jni/../../Classes/UpdateManager.h jni/../../Classes/TransectorProfile.h \
- jni/../../Classes/physicsDefine.h \
+ jni/../../Classes/Things.h jni/../../Classes/IScroll.h \
+ jni/../../Classes/ScrollManager.h jni/../../Classes/Singleton.h \
+ jni/../../Classes/Update.h jni/../../Classes/UpdateManager.h \
+ jni/../../Classes/TransectorProfile.h jni/../../Classes/physicsDefine.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Box2D.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Common/b2Settings.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Common/b2Draw.h \
@@ -1095,8 +1094,6 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCString.h:
 jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
-
-jni/../../Classes/ThingsWithBody.h:
 
 jni/../../Classes/Things.h:
 

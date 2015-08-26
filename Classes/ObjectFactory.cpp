@@ -1,5 +1,6 @@
 #include "ObjectFactory.h"
 #include "DataManager.h"
+#include "ObjectManager.h"
 #include "Things.h"
 #include "Box.h"
 #include "Pulley.h"
@@ -57,6 +58,7 @@ void CObjectFactory::CommonThingsInit(shared_ptr<CThings> obj)
 {
 	CScrollManager::getInstance()->Insert(obj);
 	UpdateManager::getInstance()->Insert(obj);
+	CObjectManager::getInstance()->getObjectArray()->InsertObject(obj);
 }
 
 shared_ptr<CGround> CObjectFactory::CreateGround(CCLayer* a_Parent, b2World* a_World, GroundData data)

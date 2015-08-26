@@ -1,7 +1,6 @@
 obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Pulley.o: \
  jni/../../Classes/Pulley.cpp jni/../../Classes/Pulley.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/Things.h \
- jni/../../cocos2d/cocos/3d/../cocos2d.h \
+ jni/../../Classes/Things.h jni/../../cocos2d/cocos/3d/../cocos2d.h \
  jni/../../cocos2d/cocos/3d/../base/ccConfig.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
  jni/../../cocos2d/cocos/3d/../base/CCRef.h \
@@ -400,8 +399,6 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Pulley.o: \
  jni/../../Classes/Sand.h jni/../../Classes/CTextureFactory.h
 
 jni/../../Classes/Pulley.h:
-
-jni/../../Classes/ThingsWithBody.h:
 
 jni/../../Classes/Things.h:
 

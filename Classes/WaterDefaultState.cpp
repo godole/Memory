@@ -1,6 +1,7 @@
 #include "WaterDefaultState.h"
 #include "WaterHoldingState.h"
 #include "ScrollManager.h"
+#include "Sand.h"
 
 
 CWaterDefaultState::CWaterDefaultState()
@@ -31,5 +32,10 @@ bool CWaterDefaultState::Action(Vec2 a_TouchPos)
 
 void CWaterDefaultState::BehaviorInit()
 {
-	m_pWater->m_pSprite->setPosition(m_pWater->m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
+	m_pWater->m_pWaterSprite->setPosition(m_pWater->m_pSprite->getPosition());
+	if (m_pWater->m_pSand != nullptr)
+	{
+		m_pWater->m_pSand->Off();
+		m_pWater->m_pSand = nullptr;
+	}
 }

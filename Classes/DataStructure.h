@@ -17,10 +17,7 @@ typedef struct _tagRailData
 	Vec2 m_vPosition;
 	Vec2 m_vLeverPosition;
 	EDirection m_eStartDirection;
-	string m_szRailLeftTextureName;
-	string m_szRailRightTextureName;
-	string m_szLeverOnTextureName;
-	string m_szLeverOffTextureName;
+	int m_nRailCount;
 }RailData;
 
 typedef struct _tagPulleyData
@@ -29,10 +26,7 @@ typedef struct _tagPulleyData
 	Vec2 m_vLeverPosition;
 	EDirection m_eStartDirection;
 	float m_fLength;
-	string m_szPulleyOnTextureName;
-	string m_szPulleyOffTextureName;
-	string m_szLeverOnTextureName;
-	string m_szLeverOffTextureName;
+	int m_nPulleyCount;
 }PulleyData;
 
 typedef struct _tagGroundData
@@ -45,9 +39,6 @@ typedef struct _tagMirageData
 {
 	Vec2 m_vWallPosition;
 	Vec2 m_vGlassPosition;
-	string m_szWallTextureName;
-	string m_szGlassTextureName;
-	string m_szBrokenTextureName;
 }MirageData;
 
 typedef struct _tagObjectData
@@ -71,3 +62,22 @@ typedef struct _tagSand
 {
 	Vec2 m_vPosition; 
 }SandData;
+
+typedef struct _tagPlayerData
+{
+	string m_szName;
+	int m_nStage1Count;
+	int m_nStage2Count;
+	int m_nStage3Count;
+}PlayerData;
+
+typedef struct _tagWindBoxData
+{
+	CCPoint m_vPosition;
+}WindBoxData;
+
+typedef struct _tagPedData
+{
+	CCPoint m_vPosition;
+	string m_szTextureName;
+}PedData;

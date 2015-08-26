@@ -1,5 +1,5 @@
 #pragma once
-#include "ThingsWithBody.h"
+#include "Things.h"
 #include "Update.h"
 #include "EDirection.h"
 #include "DataStructure.h"
@@ -7,6 +7,9 @@
 #include "PhysicsDefine.h"
 #include "b2Structure.h"
 #include <memory>
+#include <vector>
+
+using namespace std;
 
 class CPulleyBehaviorState;
 class CPulleyDefaultState;
@@ -14,7 +17,7 @@ class CPulleyRunState;
 class Behavior;
 
 class CPulley :
-	public CThingsWithBody
+	public CThings
 {
 	friend class CPulleyDefaultState;
 	friend class CPulleyRunState;
@@ -39,8 +42,7 @@ private :
 
 	shared_ptr<CPulleyBehaviorState> m_pPulleyState;
 
-	b2Body* m_pBody;
-	CCSprite* m_pPulleySprite;
+	vector<shared_ptr<CBox2dSprite>> m_parrPulleySprite;
 	CCTexture2D* m_pPulleyOnTexture;
 	CCTexture2D* m_pPulleyOffTexture;
 	CCSprite* m_pLeverSprite;

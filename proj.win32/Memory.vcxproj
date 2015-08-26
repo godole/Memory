@@ -148,7 +148,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\BoxDefaultState.cpp" />
     <ClCompile Include="..\Classes\BoxHoldOnState.cpp" />
     <ClCompile Include="..\Classes\DataManager.cpp" />
-    <ClCompile Include="..\Classes\GameSharing.cpp" />
     <ClCompile Include="..\Classes\Ground.cpp" />
     <ClCompile Include="..\Classes\Line.cpp" />
     <ClCompile Include="..\Classes\Mirage.cpp" />
@@ -170,6 +169,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\SceneManager.cpp" />
     <ClCompile Include="..\Classes\Scene_SelectState.cpp" />
     <ClCompile Include="..\Classes\Scene_InGame.cpp" />
+    <ClCompile Include="..\Classes\Scene_Title.cpp" />
     <ClCompile Include="..\Classes\Stage1Background.cpp" />
     <ClCompile Include="..\Classes\PlayLayerEntity.cpp" />
     <ClCompile Include="..\Classes\PlayLayerMainLogic.cpp" />
@@ -192,6 +192,10 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\WaterBehaviorState.cpp" />
     <ClCompile Include="..\Classes\WaterDefaultState.cpp" />
     <ClCompile Include="..\Classes\WaterHoldingState.cpp" />
+    <ClCompile Include="..\Classes\WindBehaviorState.cpp" />
+    <ClCompile Include="..\Classes\WindBox.cpp" />
+    <ClCompile Include="..\Classes\WindDefaultState.cpp" />
+    <ClCompile Include="..\Classes\WindRunState.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +216,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\EBoxDirection.h" />
     <ClInclude Include="..\Classes\EDirection.h" />
     <ClInclude Include="..\Classes\ELineDirection.h" />
-    <ClInclude Include="..\Classes\GameSharing.h" />
     <ClInclude Include="..\Classes\Ground.h" />
     <ClInclude Include="..\Classes\IScroll.h" />
     <ClInclude Include="..\Classes\ITransector.h" />
@@ -242,6 +245,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\SceneManager.h" />
     <ClInclude Include="..\Classes\Scene_SelectState.h" />
     <ClInclude Include="..\Classes\Scene_InGame.h" />
+    <ClInclude Include="..\Classes\Scene_Title.h" />
     <ClInclude Include="..\Classes\Stage1Background.h" />
     <ClInclude Include="..\Classes\PlayLayerEntity.h" />
     <ClInclude Include="..\Classes\PlayLayerMainLogic.h" />
@@ -267,6 +271,10 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\WaterBehaviorState.h" />
     <ClInclude Include="..\Classes\WaterDefaultState.h" />
     <ClInclude Include="..\Classes\WaterHoldingState.h" />
+    <ClInclude Include="..\Classes\WindBehaviorState.h" />
+    <ClInclude Include="..\Classes\WindBox.h" />
+    <ClInclude Include="..\Classes\WindDefaultState.h" />
+    <ClInclude Include="..\Classes\WindRunState.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

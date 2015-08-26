@@ -6,6 +6,9 @@
 #include "Box2dSprite.h"
 #include "ParticleManager.h"
 #include "BackgroundCloud.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 void Stage1Background::LayerInit()
 {
@@ -18,7 +21,7 @@ void Stage1Background::LayerInit()
 
 	CScrollManager::getInstance()->Insert(m_pLayerData->m_pBackground);
 
-	auto treeTexture = CCSprite::create("map/map1/background/map_1_tree.png");
+	auto treeTexture = CCSprite::create("map/map1/background/map_1_tree_2.png");
 	treeTexture->setAnchorPoint(ccp(0, 0));
 	this->addChild(treeTexture, 2);
 
@@ -45,6 +48,10 @@ void Stage1Background::LayerInit()
 	MakeTreeEffect("map/map1/effect/map_1_treebox1.png", ccp(900, 350));
 	MakeTreeEffect("map/map1/effect/map_1_treebox1.png", ccp(1500, 400));
 	MakeTreeEffect("map/map1/effect/map_1_treebox1.png", ccp(1900, 400));
+
+	//CParticleManager::getInstance()->addParticle(treeTexture, "map/map1/effect/tree.plist", ccp(300, 400), 1);
+
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music/stage_1.mp3", true);
 }
 
 void Stage1Background::MakeTreeEffect(string texturename, CCPoint a_vPos)

@@ -34,6 +34,7 @@ public :
 public :
 	void Active() override{}
 	void DisActive() override{}
+	void ObjectUpdate() override;
 
 private :
 	virtual shared_ptr<Behavior> CreateBehavior() override;

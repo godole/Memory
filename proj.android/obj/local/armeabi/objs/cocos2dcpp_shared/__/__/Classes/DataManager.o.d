@@ -349,7 +349,19 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/DataManager.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/Singleton.h jni/../../Classes/EDirection.h \
- jni/../../Classes/DataStructure.h
+ jni/../../Classes/DataStructure.h \
+ jni/../../cocos2d/external/flatbuffers/../json\document.h \
+ jni/../../cocos2d/external/flatbuffers/../json\reader.h \
+ jni/../../cocos2d/external/flatbuffers/../json\rapidjson.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cstring \
+ jni/../../cocos2d/external/flatbuffers/../json\internal/pow10.h \
+ jni/../../cocos2d/external/flatbuffers/../json\internal/stack.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/csetjmp \
+ jni/../../cocos2d/external/flatbuffers/../json\internal/strfunc.h \
+ jni/../../cocos2d/external/flatbuffers/../json\prettywriter.h \
+ jni/../../cocos2d/external/flatbuffers/../json\writer.h \
+ jni/../../cocos2d/external/flatbuffers/../json\filestream.h \
+ jni/../../cocos2d/external/flatbuffers/../json\stringbuffer.h
 
 jni/../../Classes/DataManager.h:
 
@@ -1054,3 +1066,27 @@ jni/../../Classes/Singleton.h:
 jni/../../Classes/EDirection.h:
 
 jni/../../Classes/DataStructure.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\document.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\reader.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\rapidjson.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cstring:
+
+jni/../../cocos2d/external/flatbuffers/../json\internal/pow10.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\internal/stack.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/csetjmp:
+
+jni/../../cocos2d/external/flatbuffers/../json\internal/strfunc.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\prettywriter.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\writer.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\filestream.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\stringbuffer.h:

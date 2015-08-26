@@ -1,4 +1,11 @@
 #include "DataManager.h"
+#include "json\document.h"
+#include "json\prettywriter.h"
+#include "json\filestream.h"
+#include "json\stringbuffer.h"
+
+using namespace cocos2d;
+using namespace rapidjson;
 
 void CDataManager::LoadMapData(string filename)
 {
@@ -66,6 +73,11 @@ void CDataManager::LoadMapData(string filename)
 			{
 				m_arrSandData.push_back(_GetSandData(temp));
 			}
+
+			if (temp.find("WIND") != string::npos)
+			{
+				m_arrWindBoxData.push_back(_GetWindBoxData(temp));
+			}
 			nCharIndex = 0;
 		}
 		nCharIndex++;
@@ -77,6 +89,79 @@ void CDataManager::LoadNextMapData()
 {
 	Release();
 	LoadMapData(m_szNextStageFileName);
+}
+
+void CDataManager::LoadPlayerData()
+{
+	FileUtils* Utils = FileUtils::sharedFileUtils();
+	string fString = FileUtils::sharedFileUtils()->getWritablePath() + "player_data.json";
+	string szData;
+
+	ssize_t fileSize;
+	const char* stream = (char*)Utils->getFileData(fString, "rb", &fileSize);
+
+	if (stream == NULL)
+	{
+		m_PlayerData.m_szName = "Guest";
+		m_PlayerData.m_nStage1Count = 0;
+		m_PlayerData.m_nStage2Count = 0;
+		m_PlayerData.m_nStage3Count = 0;
+	}
+	else
+	{
+		string data = string((const char*)stream, fileSize);
+		CC_SAFE_DELETE_ARRAY(stream);
+
+		Document doc;
+
+		if (doc.Parse<0>(data.c_str()).HasParseError())
+			CCLOG(doc.GetParseError());
+		else
+		{
+			m_PlayerData.m_szName = doc["PlayerName"].GetString();
+			m_PlayerData.m_nStage1Count = doc["Stage1"].GetInt();
+			m_PlayerData.m_nStage2Count = doc["Stage2"].GetInt();
+			m_PlayerData.m_nStage3Count = doc["Stage3"].GetInt();
+		}
+	}
+}
+
+void CDataManager::SavePlayerData()
+{
+	//json 오브젝트 생성
+	Document doc;
+
+	doc.SetObject();
+	rapidjson::Value playername(rapidjson::kStringType);
+	playername.SetString("Godole");
+	doc.AddMember("PlayerName", playername, doc.GetAllocator());
+
+	rapidjson::Value stage1(rapidjson::kNumberType);
+	stage1.SetInt(m_PlayerData.m_nStage1Count);
+	doc.AddMember("Stage1", stage1, doc.GetAllocator());
+
+	rapidjson::Value stage2(rapidjson::kNumberType);
+	stage2.SetInt(m_PlayerData.m_nStage2Count);
+	doc.AddMember("Stage2", stage2, doc.GetAllocator());
+
+	rapidjson::Value stage3(rapidjson::kNumberType);
+	stage3.SetInt(m_PlayerData.m_nStage3Count);
+	doc.AddMember("Stage3", stage3, doc.GetAllocator());
+
+	//파일 저장
+	string path = CCFileUtils::sharedFileUtils()->getWritablePath();
+	string filename = path + "player_data.json";
+
+	rapidjson::GenericStringBuffer<UTF8<>> buffer;
+	rapidjson::PrettyWriter<rapidjson::GenericStringBuffer<UTF8<>>> writer(buffer);
+	doc.Accept(writer);
+
+	CCLOG("%s", buffer.GetString());
+	CCLOG("%s", filename.c_str());
+
+	FILE* f = fopen(filename.c_str(), "wb");
+	fputs(buffer.GetString(), f);
+	fclose(f);
 }
 
 void CDataManager::Release()
@@ -148,29 +233,24 @@ RailData	CDataManager::_GetRailData(string str)
 	{
 		if (tempStr[j] == ' ')
 		{
-			float x = 0, y = 0;
  			_temp = tempStr.substr(j - indexCount, indexCount);
 
 			switch (index)
 			{
 			case 0:
-				x = atoi(_temp.c_str());
-				tempData.m_vPosition.x = x;
+				tempData.m_vPosition.x = atoi(_temp.c_str());
 				break;
 
 			case 1:
-				y = atoi(_temp.c_str());
-				tempData.m_vPosition.y = y;
+				tempData.m_vPosition.y = atoi(_temp.c_str());
 				break;
 
 			case 2:
-				x = atoi(_temp.c_str());
-				tempData.m_vLeverPosition.x = x;
+				tempData.m_vLeverPosition.x = atoi(_temp.c_str());
 				break;
 
 			case 3 :
-				y = atoi(_temp.c_str());
-				tempData.m_vLeverPosition.y = y;
+				tempData.m_vLeverPosition.y = atoi(_temp.c_str());
 				break;
 
 			case 4:
@@ -182,21 +262,10 @@ RailData	CDataManager::_GetRailData(string str)
 
 				break;
 
-			case 5:
-				tempData.m_szRailLeftTextureName = _temp;
+			case 5 :
+				tempData.m_nRailCount = atoi(_temp.c_str());
 				break;
 
-			case 6:
-				tempData.m_szRailRightTextureName = _temp;
-				break;
-
-			case 7:
-				tempData.m_szLeverOnTextureName = _temp;
-				break;
-
-			case 8 :
-				tempData.m_szLeverOffTextureName = _temp;
-				break;
 			}
 			index++;
 			indexCount = 0;
@@ -262,23 +331,12 @@ PulleyData	CDataManager::_GetPulleyData(string str)
 				else if (_temp == "DOWN")
 					tempData.m_eStartDirection = e_drDown;
 
-				break;
+				break; 
 
 			case 6 :
-				tempData.m_szPulleyOnTextureName = _temp;
+				tempData.m_nPulleyCount = atoi(_temp.c_str());
 				break;
 
-			case 7 :
-				tempData.m_szPulleyOffTextureName = _temp;
-				break;
-
-			case 8:
-				tempData.m_szLeverOnTextureName = _temp;
-				break;
-
-			case 9 :
-				tempData.m_szLeverOffTextureName = _temp;
-				break;
 			}
 			index++;
 			indexCount = 0;
@@ -447,18 +505,6 @@ MirageData CDataManager::_GetMirageData(string str)
 				tempData.m_vGlassPosition.y = y;
 
 				break;
-
-			case 4 :
-				tempData.m_szWallTextureName = _temp;
-				break;
-
-			case 5 :
-				tempData.m_szGlassTextureName = _temp;
-				break;
-
-			case 6 :
-				tempData.m_szBrokenTextureName = _temp;
-				break;
 			}
 			index++;
 			indexCount = 0;
@@ -524,7 +570,7 @@ SandData CDataManager::_GetSandData(string str)
 	int index = 0;
 	int indexCount = 0;
 
-	tempStr.erase(0, 7);
+	tempStr.erase(0, 6);
 
 	for (int j = 0; j < tempStr.size(); j++)
 	{
@@ -554,6 +600,46 @@ SandData CDataManager::_GetSandData(string str)
 	}
 
 	//CCLog("%f, %f, %s", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_szTextureName.c_str());
+
+	return tempData;
+}
+
+WindBoxData CDataManager::_GetWindBoxData(string str)
+{
+	WindBoxData tempData;
+	string tempStr = str;
+	string _temp;
+	int index = 0;
+	int indexCount = 0;
+
+	tempStr.erase(0, 6);
+
+	for (int j = 0; j < tempStr.size(); j++)
+	{
+		if (tempStr[j] == ' ')
+		{
+			float x = 0, y = 0;
+			_temp = tempStr.substr(j - indexCount, indexCount);
+
+			switch (index)
+			{
+			case 0:
+				x = atoi(_temp.c_str());
+				tempData.m_vPosition.x = x;
+				break;
+
+			case 1:
+				y = atoi(_temp.c_str());
+				tempData.m_vPosition.y = y;
+				break;
+			}
+			index++;
+			indexCount = 0;
+		}
+
+		else
+			indexCount++;
+	}
 
 	return tempData;
 }

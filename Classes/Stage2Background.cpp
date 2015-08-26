@@ -3,9 +3,11 @@
 #include "ScrollManager.h"
 #include "BackgroundCloud.h"
 #include "UpdateManager.h"
+#include "SimpleAudioEngine.h"
 #include <memory>
 
 using namespace std;
+using namespace CocosDenshion;
 
 
 void Stage2Background::LayerInit()
@@ -35,4 +37,6 @@ void Stage2Background::LayerInit()
 		string filename = StringUtils::format("map/map2/effect/map_2_cloud%d.png", i + 1);
 		this->addChild(cloudInst->InsertCloud(filename, ccp(random(100, 1500), random(600, 900))), 1);
 	}
+
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music/stage_2.mp3", true);
 }

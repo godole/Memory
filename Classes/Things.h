@@ -25,13 +25,14 @@ public :
 	bool Action(Vec2 a_vTouchPos);
 	shared_ptr<Behavior> getBehaviorPtr(){ return m_pBehavior; }
 
+	virtual void	setStateToDefault() = 0;
+
 public:
 	CThings();
 	~CThings();
 
 protected :
 	virtual shared_ptr<Behavior> CreateBehavior() = 0;
-	virtual void	setStateToDefault() = 0;
 	virtual void	Active() = 0;
 	virtual void	DisActive() = 0;
 	virtual void	ObjectUpdate(){}

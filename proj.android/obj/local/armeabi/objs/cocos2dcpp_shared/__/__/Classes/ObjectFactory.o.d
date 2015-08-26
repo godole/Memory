@@ -388,14 +388,15 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ObjectFactory.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/DataManager.h \
+ jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Things.h jni/../../Classes/IScroll.h \
  jni/../../Classes/ScrollManager.h jni/../../Classes/Update.h \
- jni/../../Classes/UpdateManager.h jni/../../Classes/Box.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/b2Structure.h \
+ jni/../../Classes/UpdateManager.h jni/../../Classes/Rail.h \
+ jni/../../Classes/b2Structure.h jni/../../Classes/Sand.h \
+ jni/../../Classes/Box.h jni/../../Classes/ThingsWithBody.h \
  jni/../../Classes/Pulley.h jni/../../Classes/PulleyProfile.h \
  jni/../../Classes/Box2dSprite.h jni/../../Classes/Mirage.h \
- jni/../../Classes/MirageProfile.h jni/../../Classes/Rail.h \
- jni/../../Classes/Ground.h jni/../../Classes/Sand.h \
+ jni/../../Classes/MirageProfile.h jni/../../Classes/Ground.h \
  jni/../../Classes/Water.h
 
 jni/../../Classes/ObjectFactory.h:
@@ -1182,6 +1183,10 @@ jni/../../Classes/TransectorProfile.h:
 
 jni/../../Classes/DataManager.h:
 
+jni/../../Classes/ObjectManager.h:
+
+jni/../../Classes/ObjectArray.h:
+
 jni/../../Classes/Things.h:
 
 jni/../../Classes/IScroll.h:
@@ -1192,11 +1197,15 @@ jni/../../Classes/Update.h:
 
 jni/../../Classes/UpdateManager.h:
 
+jni/../../Classes/Rail.h:
+
+jni/../../Classes/b2Structure.h:
+
+jni/../../Classes/Sand.h:
+
 jni/../../Classes/Box.h:
 
 jni/../../Classes/ThingsWithBody.h:
-
-jni/../../Classes/b2Structure.h:
 
 jni/../../Classes/Pulley.h:
 
@@ -1208,10 +1217,6 @@ jni/../../Classes/Mirage.h:
 
 jni/../../Classes/MirageProfile.h:
 
-jni/../../Classes/Rail.h:
-
 jni/../../Classes/Ground.h:
-
-jni/../../Classes/Sand.h:
 
 jni/../../Classes/Water.h:

@@ -20,6 +20,4 @@ void CWaterAfterState::BehaviorInit()
 {
 	m_pWater->m_pWaterSprite->setPosition(m_pWater->m_pSprite->getPosition());
 	m_pWater->m_pWaterSprite->setVisible(false);
-	m_pWater->m_pSand->Off();
-	m_pWater->m_pSand = nullptr;
 }

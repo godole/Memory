@@ -8,7 +8,7 @@ class CWaterBehaviorState :
 public :
 	void Init(CWater* a_pWater);
 	void setStateToDefault();
-	string getIconFileName() override{ return "ui/motion.png"; }
+	string getIconFileName() override{ return "ui/motion_water.png"; }
 	virtual void Update() = 0;
 
 public:

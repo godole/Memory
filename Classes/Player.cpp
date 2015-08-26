@@ -186,8 +186,10 @@ void CPlayer::StopMoveAnimation()
 
 void CPlayer::setStateToBefore()
 {
-	m_pActing->setStateToDefault();
+	m_pBodySprite->getBodyStructure().body->SetLinearVelocity(b2Vec2(0, 0));
 	m_pBodySprite->setPositionTo(m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
+
+	m_pActing->setStateToDefault();
 
 	delete m_pActing;
 

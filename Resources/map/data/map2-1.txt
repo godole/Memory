@@ -2,7 +2,7 @@
 BOX 300 172 map/map2/object/box_ob.png 
 BOX 600 350 map/map2/object/box_ob.png 
 BOX 700 350 map/map2/object/box_ob.png 
-RAIL 1100 350 270 390 LEFT object/rail_left_union.png object/rail_right_union.png object/button_right_on.png object/button_right_off.png 
+RAIL 1004 350 270 390 LEFT 5 
 GROUND 200 350 map/map2/object/ped1.png 
 GROUND 250 350 map/map2/object/ped1.png 
 GROUND 300 350 map/map2/object/ped1.png 
