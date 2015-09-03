@@ -12,6 +12,7 @@ class CBox2dSprite
 public :
 	void Init(CCSprite* a_Sprite, b2World* a_World, b2BodyType type, CCPoint a_vAnchor = CCPoint(CCPoint::ANCHOR_MIDDLE));
 	void Init(CCSprite* a_Sprite, b2World* a_World, b2BodyType type, float width, float height, CCPoint a_vAnchor = CCPoint(CCPoint::ANCHOR_MIDDLE));
+	void Init(CCSprite* a_Sprite, string jsonData, b2World* a_World, b2BodyType type);
 	
 	CCSprite* getSpritePtr(){ return m_pSprite; }
 	b2Structure getBodyStructure(){ return m_b2Structure; }

@@ -362,7 +362,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/BoxAfterState.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
  jni/../../Classes/b2Structure.h jni/../../Classes/Behavior.h \
- jni/../../Classes/BoxDefaultState.h
+ jni/../../Classes/BoxDefaultState.h jni/../../Classes/ParticleManager.h \
+ jni/../../Classes/LayerDefine.h
 
 jni/../../Classes/BoxAfterState.h:
 
@@ -1107,3 +1108,7 @@ jni/../../Classes/b2Structure.h:
 jni/../../Classes/Behavior.h:
 
 jni/../../Classes/BoxDefaultState.h:
+
+jni/../../Classes/ParticleManager.h:
+
+jni/../../Classes/LayerDefine.h:

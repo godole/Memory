@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
@@ -147,6 +148,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\BoxBehaviorState.cpp" />
     <ClCompile Include="..\Classes\BoxDefaultState.cpp" />
     <ClCompile Include="..\Classes\BoxHoldOnState.cpp" />
+    <ClCompile Include="..\Classes\BoxReadyState.cpp" />
     <ClCompile Include="..\Classes\DataManager.cpp" />
     <ClCompile Include="..\Classes\Ground.cpp" />
     <ClCompile Include="..\Classes\Line.cpp" />
@@ -170,6 +172,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Scene_SelectState.cpp" />
     <ClCompile Include="..\Classes\Scene_InGame.cpp" />
     <ClCompile Include="..\Classes\Scene_Title.cpp" />
+    <ClCompile Include="..\Classes\ShaderNode.cpp" />
     <ClCompile Include="..\Classes\Stage1Background.cpp" />
     <ClCompile Include="..\Classes\PlayLayerEntity.cpp" />
     <ClCompile Include="..\Classes\PlayLayerMainLogic.cpp" />
@@ -211,6 +214,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\BoxBehaviorState.h" />
     <ClInclude Include="..\Classes\BoxDefaultState.h" />
     <ClInclude Include="..\Classes\BoxHoldOnState.h" />
+    <ClInclude Include="..\Classes\BoxReadyState.h" />
+    <ClInclude Include="..\Classes\Canfly.h" />
     <ClInclude Include="..\Classes\DataManager.h" />
     <ClInclude Include="..\Classes\DataStructure.h" />
     <ClInclude Include="..\Classes\EBoxDirection.h" />
@@ -246,6 +251,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Scene_SelectState.h" />
     <ClInclude Include="..\Classes\Scene_InGame.h" />
     <ClInclude Include="..\Classes\Scene_Title.h" />
+    <ClInclude Include="..\Classes\ShaderNode.h" />
     <ClInclude Include="..\Classes\Stage1Background.h" />
     <ClInclude Include="..\Classes\PlayLayerEntity.h" />
     <ClInclude Include="..\Classes\PlayLayerMainLogic.h" />

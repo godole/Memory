@@ -23,6 +23,7 @@ void CBox::Init(CCLayer* a_ParentLayer, b2World* a_World, BoxData a_Data)
 {
 	m_vStartPosition = a_Data.m_vStartPosition;
 	m_pBoxSprite = CCSprite::create(a_Data.m_szTextureName);
+	m_ValueMap["spriteName"] = (void*)&a_Data.m_szTextureName;
 	
 	m_pTransProfile = m_pTransectorProfile;
 
@@ -45,7 +46,7 @@ void CBox::setStateToDefault()
 
 void CBox::ChangeState(shared_ptr<CBoxBehaviorState> a_Ptr)
 {
-	a_Ptr->Init(this);
+	a_Ptr->Init(this, &m_ValueMap);
 
 	m_pBehavior = a_Ptr;
 	m_pBoxState = a_Ptr;
@@ -54,7 +55,7 @@ void CBox::ChangeState(shared_ptr<CBoxBehaviorState> a_Ptr)
 shared_ptr<Behavior> CBox::CreateBehavior()
 {
 	m_pBoxState = shared_ptr<CBoxDefaultState>(new CBoxDefaultState);
-	m_pBoxState->Init(this);
+	m_pBoxState->Init(this, &m_ValueMap);
 
 	return m_pBoxState;
 }

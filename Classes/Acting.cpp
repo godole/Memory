@@ -6,7 +6,8 @@
 #include "Behavior.h"
 
 
-CActing::CActing()
+CActing::CActing(int a_nMaxCount) :
+m_nMaxBehaviorCount(a_nMaxCount)
 {
 	m_pCurrentBehavior = nullptr;
 	m_nBehaviorCount = 0;
@@ -28,7 +29,10 @@ void CActing::Init(CCLayer* a_pParentLayer)
 
 bool CActing::Acting(shared_ptr<Behavior> a_Behavior, CCPoint a_Pos)
 {
-	if (a_Behavior->Action(a_Pos) && m_nBehaviorCount < 9)
+	if (m_nBehaviorCount > m_nMaxBehaviorCount && !Behavior::k_bIsDoing)
+		return false;
+
+	if (a_Behavior->Action(a_Pos))
 	{
 		m_listBehavior.push_back(a_Behavior);
 		CreateIcon(a_Behavior->getIconFileName());
@@ -59,8 +63,8 @@ void CActing::SortIcon()
 void CActing::CreateIcon(string filename)
 {
 	auto pIcon = CCSprite::create(filename.c_str());
-	pIcon->setPosition(ccp(150 + 80 * 3, 600));
-	CParticleManager::getInstance()->addParticle(pIcon, "ui/add_icon.plist", ccp(pIcon->getContentSize().width / 2, pIcon->getContentSize().height / 2),1);
+	pIcon->setPosition(ccp(150 + 80 * 3, 650));
+	//CParticleManager::getInstance()->addParticle(pIcon, "ui/add_icon.plist", ccp(pIcon->getContentSize().width / 2, pIcon->getContentSize().height / 2),1);
 	m_pParentLayer->addChild(pIcon, 3);
 	m_listBehaviorIcon.push_back(pIcon);
 }

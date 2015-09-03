@@ -170,6 +170,11 @@ void CDataManager::Release()
 	m_arrRailData.clear();
 	m_arrPulleyData.clear();
 	m_arrGroundData.clear();
+	m_arrMirageData.clear();
+	m_arrSandData.clear();
+	m_arrWaterData.clear();
+	m_arrPedData.clear();
+	m_arrWindBoxData.clear();
 	m_szBackgroundTextureName = "";
 }
 

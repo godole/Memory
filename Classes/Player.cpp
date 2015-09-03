@@ -1,6 +1,5 @@
 #include "Player.h"
 #include "LayerDefine.h"
-#include "Acting.h"
 #include "SimpleAudioEngine.h"
 #include "ObjectManager.h"
 #include "Box2dSprite.h"
@@ -26,7 +25,7 @@ CPlayer::~CPlayer()
 {
 }
 
-void CPlayer::Init(CCLayer* parentLayer, b2World* a_World, int ZOrder)
+void CPlayer::Init(CCLayer* parentLayer, b2World* a_World, int a_nMaxBehaviorCount, int ZOrder)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -42,17 +41,20 @@ void CPlayer::Init(CCLayer* parentLayer, b2World* a_World, int ZOrder)
 	m_pSprite = static_cast<CCSprite*>(m_pCharacter);
 
 	m_pBodySprite = new CBox2dSprite;
-	m_pBodySprite->Init(m_pSprite, a_World, b2BodyType::b2_dynamicBody, 80, 80);
+	//m_pBodySprite->Init(m_pSprite, a_World, b2BodyType::b2_dynamicBody, 80, 80);
+	m_pBodySprite->Init(m_pSprite, "char/character.json", a_World, b2BodyType::b2_dynamicBody);
 
 	m_ActorProfile = new TransectorProfile();
 	m_ActorProfile->m_vCurrentPosition = m_pSprite->getPosition();
 	m_ActorProfile->m_vpHoldingPosition = &m_vHoldingPosition;
 
-	m_pActing = new CActing();
+	m_pActing = new CActing(a_nMaxBehaviorCount);
 	m_pActing->Init(m_pParentLayer);
 
 	m_nRangeWidth = 500;
 	m_nRangeHeight = 250;
+
+	Move(MoveDirection::md_Right);
 }
 
 void CPlayer::Move(MoveDirection dir)
@@ -89,7 +91,9 @@ void CPlayer::Update()
 {
 	auto objarr = CObjectManager::getInstance()->getBox2dSprite();
 	float maxY = 0;
-	CCRect charRect = m_pBodySprite->getBoundingBox();
+	static int jumpCount = 0;
+	CCRect charRect;
+	charRect.setRect(m_pSprite->getPositionX() - 40, m_pSprite->getPositionY() - 38, 80, 90);
 
 	for (int i = 0; i < objarr->getSize(); i++)
 	{
@@ -106,8 +110,27 @@ void CPlayer::Update()
 			maxY = objRect.getMaxY();
 		}
 	}
+	//
 
-	m_bIsOnGround = charRect.getMinY() - 2 <= maxY ? true : false;
+	bool bIsGround = charRect.getMinY() - 2 <= maxY ? true : false;
+
+	if (!bIsGround)
+		jumpCount++;
+
+	if (bIsGround &&
+		!m_bIsOnGround &&
+		jumpCount > 20)
+	{
+		auto parentLayer = Director::getInstance()->getRunningScene()->getChildByName(MAIN_LAYER);
+		if (parentLayer != nullptr)
+		{
+			auto parent = parentLayer->getChildByName("particlelayer");
+			CParticleManager::getInstance()->addParticle(parent, "char/jump_smoke.plist", m_pSprite->getPosition() - Vec2(0, 45) - parent->getPosition(), 2);
+			jumpCount = 0;
+		}
+	}
+
+	m_bIsOnGround = bIsGround;
 
 	_setActorPos();
 }
@@ -123,12 +146,11 @@ void CPlayer::_setActorPos()
 		m_nRangeWidth, m_nRangeHeight);
 }
 
-void CPlayer::Jump(CCNode* a_pParent)
+void CPlayer::Jump()
 {
 	if (m_bIsOnGround)
 	{
 		m_pBodySprite->getBodyStructure().body->SetLinearVelocity(b2Vec2(m_pBodySprite->getBodyStructure().body->GetLinearVelocity().x, 7.5));
-		//CParticleManager::getInstance()->addParticle(a_pParent, "char/jump_smoke.plist", m_pSprite->getPosition() - Vec2(0, 45) - a_pParent->getPosition(), 2);
 	}
 }
 
@@ -175,7 +197,7 @@ void CPlayer::PlayMoveAnimation()
 	{
 		m_pRunAction->gotoFrameAndPlay(0, true);
 	}
-	m_MoveEffectSoundIndex = SimpleAudioEngine::sharedEngine()->playEffect("music/step.wav", true);
+	m_MoveEffectSoundIndex = SimpleAudioEngine::sharedEngine()->playEffect("char/step.wav", true);
 }
 
 void CPlayer::StopMoveAnimation()
@@ -186,6 +208,7 @@ void CPlayer::StopMoveAnimation()
 
 void CPlayer::setStateToBefore()
 {
+	int maxBehaviorCount = m_pActing->getMaxBehaviorCount();
 	m_pBodySprite->getBodyStructure().body->SetLinearVelocity(b2Vec2(0, 0));
 	m_pBodySprite->setPositionTo(m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
 
@@ -193,6 +216,24 @@ void CPlayer::setStateToBefore()
 
 	delete m_pActing;
 
-	m_pActing = new CActing;
+	m_pActing = new CActing(maxBehaviorCount);
 	m_pActing->Init(m_pParentLayer);
+}
+
+void CPlayer::Fly(Vec2 a_vVelocity)
+{
+	//m_pBodySprite->getBodyStructure().body->ApplyForceToCenter(ChangeVecTob2Vec2(a_vVelocity), true);
+	//m_pBodySprite->getBodyStructure().body->SetLinearVelocity(b2Vec2(m_pBodySprite->getBodyStructure().body->GetLinearVelocity().x, ChangeVecTob2Vec2(a_vVelocity).y));
+	if (m_pBodySprite->getBodyStructure().body->GetLinearVelocity().y < a_vVelocity.y)
+		m_pBodySprite->getBodyStructure().body->ApplyForceToCenter(b2Vec2(0, a_vVelocity.y * 7), true);
+}
+
+CCRect CPlayer::getCanFlyRect()
+{
+	return m_pSprite->getBoundingBox();
+}
+
+bool CPlayer::Isfall()
+{
+	return m_pSprite->getPositionY() - CScrollManager::getInstance()->getDeltaPosition().y < 0 ? true : false;
 }

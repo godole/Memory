@@ -5,7 +5,6 @@
 #include "Box2dSprite.h"
 #include "DataManager.h"
 #include "Behavior.h"
-#include "ui\CocosGUI.h"
 #include "SimpleAudioEngine.h"
 
 using namespace ui;
@@ -28,7 +27,7 @@ void PlayLayerMainLogic::LayerInit()
 	CScrollManager::getInstance()->Insert(m_LayerData.m_pPlayer);
 
 	m_pParticleLayer = CCLayer::create();
-	this->addChild(m_pParticleLayer, 3);
+	this->addChild(m_pParticleLayer, 3, "particlelayer");
 
 	m_bIsJumpButtonTouched = false;
 	m_bIsLeftButtonTouched = false;
@@ -37,14 +36,14 @@ void PlayLayerMainLogic::LayerInit()
 	auto button = CSLoader::createNode("ui/button.csb");
 	this->addChild(button, 3);
 
-	auto leftButton = (Button*)(button->getChildByName("left"));
-	leftButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::leftButtonCallback, this));
+	m_pLeftMoveButton = (Button*)(button->getChildByName("left"));
+	m_pLeftMoveButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::leftButtonCallback, this));
 
-	auto rightButton = (Button*)(button->getChildByName("right"));
-	rightButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::rightButtonCallback, this));
+	m_pRightMoveButton = (Button*)(button->getChildByName("right"));
+	m_pRightMoveButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::rightButtonCallback, this));
 
-	auto jumpButton = (Button*)(button->getChildByName("jump"));
-	jumpButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::jumpButtonCallback, this));
+	m_pJumpButton = (Button*)(button->getChildByName("jump"));
+	m_pJumpButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::jumpButtonCallback, this));
 
 	auto film = CCSprite::create("ui/film.png");
 	film->setPosition(ccp(220, 650));
@@ -79,8 +78,16 @@ void PlayLayerMainLogic::LayerInit()
 	m_pGoHomeButton->setVisible(false);
 	this->addChild(m_pGoHomeButton, 4);
 
+	m_pPlayerBehaviorCount = Label::createWithTTF("fonts/arial.ttf", to_string(m_pLayerData->m_pPlayer->getCurrentBehaviorCount()));
+	m_pPlayerBehaviorCount->setPosition(ccp(90, 650));
+	m_pPlayerBehaviorCount->setColor(Color3B(0, 0, 0));
+	m_pPlayerBehaviorCount->setSystemFontSize(40);
+	this->addChild(m_pPlayerBehaviorCount, 3);
+
 	m_bIsEnd = false;
 	m_bIsPaused = false;
+
+	m_LayerData.m_pMainLayer = this;
 }
 
 void PlayLayerMainLogic::b2Init()
@@ -150,7 +157,7 @@ void PlayLayerMainLogic::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, c
 		break;
 
 	case EventKeyboard::KeyCode::KEY_SPACE:
-		m_LayerData.m_pPlayer->Jump(m_pParticleLayer);
+		m_LayerData.m_pPlayer->Jump();
 		break;
 
 	case EventKeyboard::KeyCode::KEY_F12:
@@ -201,6 +208,9 @@ void PlayLayerMainLogic::update(float dt)
 	if (m_bIsRightButtonTouched)
 		m_LayerData.m_pPlayer->Move(MoveDirection::md_Right);
 
+	if (m_LayerData.m_pPlayer->Isfall())
+		ShowDeadMenu();
+
 	UpdateManager::getInstance()->Updating();
 	Scroll();
 }
@@ -216,7 +226,10 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 			for (int i = 0; i < m_pLayerData->m_arrObject.size(); i++)
 			{
 				if (m_pLayerData->m_pPlayer->Action(m_pLayerData->m_arrObject[i]->getBehaviorPtr(), touchPos))
+				{
+					m_pPlayerBehaviorCount->setString(to_string(m_pLayerData->m_pPlayer->getCurrentBehaviorCount()));
 					break;
+				}
 			}
 		}
 
@@ -233,6 +246,7 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 			m_bIsPaused)
 		{
 			GoNextStage();
+			Director::sharedDirector()->resume();
 		}
 	}
 }
@@ -305,8 +319,13 @@ void PlayLayerMainLogic::ShowDeadMenu()
 	m_pGoHomeButton->setVisible(true);
 
 	unscheduleUpdate();
+	Director::sharedDirector()->pause();
 
 	m_bIsPaused = true;
+
+	m_pLeftMoveButton->setEnabled(false);
+	m_pRightMoveButton->setEnabled(false);
+	m_pJumpButton->setEnabled(false);
 }
 
 void PlayLayerMainLogic::CloseDeadMenu()
@@ -316,8 +335,13 @@ void PlayLayerMainLogic::CloseDeadMenu()
 	m_pGoHomeButton->setVisible(false);
 
 	scheduleUpdate();
+	Director::sharedDirector()->resume();
 
 	m_bIsPaused = false;
+
+	m_pLeftMoveButton->setEnabled(true);
+	m_pRightMoveButton->setEnabled(true);
+	m_pJumpButton->setEnabled(true);
 }
 
 void PlayLayerMainLogic::Release()
@@ -382,9 +406,15 @@ void PlayLayerMainLogic::jumpButtonCallback(Ref* sender, Widget::TouchEventType 
 	switch (type)
 	{
 	case cocos2d::ui::Widget::TouchEventType::BEGAN:
-		m_pLayerData->m_pPlayer->Jump(m_pParticleLayer);
+		m_pLayerData->m_pPlayer->Jump();
 		break;
 	default:
 		break;
 	}
+}
+
+void PlayLayerMainLogic::draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated)
+{
+	glEnableVertexAttribArray(0);
+	m_pLayerData->m_pWorld->DrawDebugData();
 }

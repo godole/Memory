@@ -15,9 +15,11 @@ public :
 	void		Init(CCLayer* a_pParentLayer);
 	bool		Acting(shared_ptr<Behavior> a_Behavior, CCPoint a_Pos);
 	void		setStateToDefault();
+	int			getBehaviorCount(){ return m_nBehaviorCount; }
+	int			getMaxBehaviorCount(){ return m_nMaxBehaviorCount; }
 
 public:
-	CActing();
+	CActing(int a_nMaxCount);
 	~CActing();
 
 private :
@@ -32,6 +34,7 @@ private :
 	CCLayer*			m_pParentLayer;
 
 	int					m_nBehaviorCount;
+	int					m_nMaxBehaviorCount;
 	bool				m_bIsDoing;
 };
 

@@ -43,6 +43,7 @@ void Stage3Object::LayerInit()
 	{
 		auto windBox = factory->CreateWindBox(this, m_pLayerData->m_pWorld, profile, *itr);
 		m_pLayerData->m_arrObject.push_back(windBox);
+		m_arrWindBox.push_back(windBox);
 	}
 
 	for (auto itr = mgr->getGroundData()->begin(); itr != mgr->getGroundData()->end(); itr++)
@@ -55,5 +56,8 @@ void Stage3Object::LayerInit()
 
 void Stage3Object::update(float dt)
 {
-
+	for (auto itr = m_arrWindBox.begin(); itr != m_arrWindBox.end(); ++itr)
+	{
+		(*itr)->MakeFly(m_pLayerData->m_pPlayer.get());
+	}
 }

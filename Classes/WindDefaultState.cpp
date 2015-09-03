@@ -1,6 +1,7 @@
 #include "WindDefaultState.h"
 #include "WindRunState.h"
 #include "WindBox.h"
+#include "LayerDefine.h"
 
 
 CWindDefaultState::CWindDefaultState()
@@ -32,5 +33,12 @@ void CWindDefaultState::Update()
 
 void CWindDefaultState::BehaviorInit()
 {
-
+	*(bool*)m_pValueMap->at("bIsRun") = false;
+	if (m_pValueMap->at("particle") != nullptr)
+	{
+		auto parent = Director::getInstance()->getRunningScene()->getChildByName(BG_LAYER)->getChildByName("background");
+		//parent->removeChild((CCParticleSystemQuad*)m_pValueMap->at("particle"), true);
+		auto particle = (CCParticleSystemQuad*)m_pValueMap->at("particle");
+		particle->stopSystem();
+	}
 }

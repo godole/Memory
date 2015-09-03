@@ -21,7 +21,7 @@ void Stage1Background::LayerInit()
 
 	CScrollManager::getInstance()->Insert(m_pLayerData->m_pBackground);
 
-	auto treeTexture = CCSprite::create("map/map1/background/map_1_tree_2.png");
+	auto treeTexture = CCSprite::create("map/map1/background/map_1_tree.png");
 	treeTexture->setAnchorPoint(ccp(0, 0));
 	this->addChild(treeTexture, 2);
 

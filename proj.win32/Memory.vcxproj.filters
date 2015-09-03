@@ -235,6 +235,12 @@
     <ClCompile Include="..\Classes\WindBehaviorState.cpp">
       <Filter>src\Object\Things\WindBox</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\ShaderNode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoxReadyState.cpp">
+      <Filter>src\Object\Things\Box</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -467,6 +473,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\WindBehaviorState.h">
       <Filter>src\Object\Things\WindBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Canfly.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShaderNode.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoxReadyState.h">
+      <Filter>src\Object\Things\Box</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

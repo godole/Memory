@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>angle</key>
-	<real>90</real>
+	<real>-90</real>
 	<key>angleVariance</key>
-	<real>5</real>
+	<real>90</real>
 	<key>blendFuncDestination</key>
 	<integer>771</integer>
 	<key>blendFuncSource</key>
@@ -15,7 +15,7 @@
 	<key>emitterType</key>
 	<real>0</real>
 	<key>finishColorAlpha</key>
-	<real>0.3</real>
+	<real>0</real>
 	<key>finishColorBlue</key>
 	<real>0</real>
 	<key>finishColorGreen</key>
@@ -39,7 +39,7 @@
 	<key>gravityy</key>
 	<real>0</real>
 	<key>maxParticles</key>
-	<real>23</real>
+	<real>40</real>
 	<key>maxRadius</key>
 	<real>0</real>
 	<key>maxRadiusVariance</key>
@@ -47,7 +47,7 @@
 	<key>minRadius</key>
 	<real>0</real>
 	<key>particleLifespan</key>
-	<real>0.46</real>
+	<real>0.4</real>
 	<key>particleLifespanVariance</key>
 	<real>0.1</real>
 	<key>radialAccelVariance</key>
@@ -67,19 +67,19 @@
 	<key>rotationStartVariance</key>
 	<real>0</real>
 	<key>sourcePositionVariancex</key>
-	<real>20</real>
+	<real>40</real>
 	<key>sourcePositionVariancey</key>
-	<real>0</real>
-	<key>sourcePositionx</key>
-	<real>233.41176470588235</real>
-	<key>sourcePositiony</key>
-	<real>227.76470588235293</real>
-	<key>speed</key>
-	<real>25</real>
-	<key>speedVariance</key>
 	<real>10</real>
+	<key>sourcePositionx</key>
+	<real>297.4117647058824</real>
+	<key>sourcePositiony</key>
+	<real>423.52941176470586</real>
+	<key>speed</key>
+	<real>50</real>
+	<key>speedVariance</key>
+	<real>0</real>
 	<key>startColorAlpha</key>
-	<real>0.5</real>
+	<real>0.69</real>
 	<key>startColorBlue</key>
 	<real>0.8</real>
 	<key>startColorGreen</key>
@@ -89,13 +89,13 @@
 	<key>startColorVarianceAlpha</key>
 	<real>0</real>
 	<key>startColorVarianceBlue</key>
-	<real>0.01</real>
+	<real>0</real>
 	<key>startColorVarianceGreen</key>
-	<real>0.01</real>
+	<real>0</real>
 	<key>startColorVarianceRed</key>
-	<real>0.01</real>
+	<real>0</real>
 	<key>startParticleSize</key>
-	<real>42</real>
+	<real>29</real>
 	<key>startParticleSizeVariance</key>
 	<real>10</real>
 	<key>tangentialAccelVariance</key>

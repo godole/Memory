@@ -397,7 +397,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/ObjectFactory.o: \
  jni/../../Classes/Pulley.h jni/../../Classes/PulleyProfile.h \
  jni/../../Classes/Box2dSprite.h jni/../../Classes/Mirage.h \
  jni/../../Classes/MirageProfile.h jni/../../Classes/Ground.h \
- jni/../../Classes/Water.h
+ jni/../../Classes/Water.h jni/../../Classes/WindBox.h
 
 jni/../../Classes/ObjectFactory.h:
 
@@ -1220,3 +1220,5 @@ jni/../../Classes/MirageProfile.h:
 jni/../../Classes/Ground.h:
 
 jni/../../Classes/Water.h:
+
+jni/../../Classes/WindBox.h:

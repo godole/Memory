@@ -362,9 +362,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/BoxHoldOnState.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
  jni/../../Classes/b2Structure.h jni/../../Classes/Behavior.h \
- jni/../../Classes/BoxAfterState.h jni/../../Classes/ObjectManager.h \
+ jni/../../Classes/BoxReadyState.h jni/../../Classes/ObjectManager.h \
  jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h \
- jni/../../Classes/Sand.h jni/../../Classes/Box2dSprite.h
+ jni/../../Classes/Sand.h jni/../../Classes/Box2dSprite.h \
+ jni/../../Classes/ParticleManager.h jni/../../Classes/LayerDefine.h
 
 jni/../../Classes/BoxHoldOnState.h:
 
@@ -1108,7 +1109,7 @@ jni/../../Classes/b2Structure.h:
 
 jni/../../Classes/Behavior.h:
 
-jni/../../Classes/BoxAfterState.h:
+jni/../../Classes/BoxReadyState.h:
 
 jni/../../Classes/ObjectManager.h:
 
@@ -1119,3 +1120,7 @@ jni/../../Classes/Rail.h:
 jni/../../Classes/Sand.h:
 
 jni/../../Classes/Box2dSprite.h:
+
+jni/../../Classes/ParticleManager.h:
+
+jni/../../Classes/LayerDefine.h:

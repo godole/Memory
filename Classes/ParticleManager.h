@@ -10,6 +10,7 @@ class CParticleManager :
 	public Singleton<CParticleManager>
 {
 public:
-	void addParticle(CCNode* a_pLayer, string plistName, CCPoint a_Pos, int ZOrder = 0);
+	CCParticleSystemQuad* addParticle(CCNode* a_pLayer, string plistName, CCPoint a_Pos, int ZOrder = 0);
+	void addParticle(CCNode* a_pLayer, string plistName, CCPoint a_Pos, string childTag, int ZOrder = 0);
 };
 

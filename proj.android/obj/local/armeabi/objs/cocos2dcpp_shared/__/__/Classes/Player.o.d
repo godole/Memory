@@ -461,8 +461,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Player.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2RopeJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
- jni/../../Classes/TransectorProfile.h jni/../../Classes/LayerDefine.h \
- jni/../../Classes/Acting.h \
+ jni/../../Classes/TransectorProfile.h jni/../../Classes/Canfly.h \
+ jni/../../Classes/Acting.h jni/../../Classes/LayerDefine.h \
  jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
  jni/../../cocos2d/cocos/audio/android/../include/Export.h \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
@@ -1407,9 +1407,11 @@ jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h:
 
 jni/../../Classes/TransectorProfile.h:
 
-jni/../../Classes/LayerDefine.h:
+jni/../../Classes/Canfly.h:
 
 jni/../../Classes/Acting.h:
+
+jni/../../Classes/LayerDefine.h:
 
 jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
 

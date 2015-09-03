@@ -3,12 +3,14 @@
 #include "Box.h"
 #include "Behavior.h"
 #include "Update.h"
+#include <map>
+#include <string>
 
 class CBoxBehaviorState :
 	public Behavior
 {
 public:
-	void Init(CBox* a_pBox);
+	void Init(CBox* a_pBox, std::map<string, void* >* a_pValueMap);
 	void setStateToDefault();
 	string getIconFileName() override{ return "ui/motion.png"; }
 	virtual void Update() = 0;
@@ -18,5 +20,8 @@ public :
 	~CBoxBehaviorState(){}
 
 protected :
+	bool IsPutable(CCSprite* sprite, CCPoint touchPos, CCPoint& avaliablePos);
+
 	CBox* m_pBox;
+	std::map<string, void* >* m_pValueMap;
 };

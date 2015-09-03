@@ -5,6 +5,8 @@
 #include "TransectorProfile.h"
 #include "b2Structure.h"
 #include "PhysicsDefine.h"
+#include <map>
+#include <string>
 
 USING_NS_CC;
 
@@ -43,5 +45,7 @@ private :
 	TransectorProfile* m_pTransProfile;
 	CCPoint m_vStartPosition;
 	shared_ptr<CBoxBehaviorState> m_pBoxState;
+
+	std::map<std::string, void*> m_ValueMap;
 };
 

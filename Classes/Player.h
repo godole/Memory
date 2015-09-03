@@ -9,18 +9,24 @@
 #include "b2Structure.h"
 #include "PhysicsDefine.h"
 #include "TransectorProfile.h"
+#include "Canfly.h" 
+#include "Acting.h"
 
 USING_NS_CC;
 using namespace cocostudio;
 
 class Behavior;
-class CActing;
 class CBox2dSprite;
 
 class CPlayer :
 	public IUpdate,
-	public IScroll
+	public IScroll,
+	public ICanfly
 {
+public :
+	virtual void		Fly(cocos2d::Vec2 a_vVelocity) override;
+	virtual cocos2d::CCRect getCanFlyRect() override;
+
 public :	//IScroll
 	virtual void		Scroll(Vec2 a_vScrollVelocity) override;
 
@@ -28,14 +34,14 @@ public :	//Update
 	virtual void		Update() override;
 
 public :
-	void	Init(CCLayer* parentLayer, b2World* a_World, int ZOrder = 0);
+	void	Init(CCLayer* parentLayer, b2World* a_World, int a_nMaxBehaviorCount = 9, int ZOrder = 0);
 	void	setPositionTo(CCPoint pos);
 	void	setPositionBy(CCPoint pos);
 	void	Move(MoveDirection dir);
 	void	PlayMoveAnimation();
 	void	StopMoveAnimation();
 	void	Stop();
-	void	Jump(CCNode* a_pParticleParent);
+	void	Jump();
 	void	setStateToBefore();
 	void	Release();
 	void	RunRail(EDirection dir);
@@ -44,6 +50,11 @@ public :
 	Vec2	getPosition(){ return m_pSprite->getPosition(); }
 	CCSprite* getBodySpritePtr(){ return m_pSprite; }
 	TransectorProfile* getActorProfile(){ return m_ActorProfile; }
+
+	int		getCurrentBehaviorCount(){ return m_pActing->getBehaviorCount(); }
+	int		getMaxBehaviorCount(){ return m_pActing->getMaxBehaviorCount(); }
+	int		getLatestCount(){ return m_pActing->getMaxBehaviorCount() - m_pActing->getBehaviorCount(); }
+	bool	Isfall();
 
 public:
 	CPlayer();

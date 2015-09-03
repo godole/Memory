@@ -8,6 +8,7 @@
 #include <memory>
 #include <functional>
 #include "CTextureFactory.h"
+#include "ui\CocosGUI.h"
 
 class PlayLayerMainLogic :
 	public PlayLayerEntity
@@ -32,6 +33,8 @@ public:
 	void rightButtonCallback(Ref* sender, ui::Widget::TouchEventType type);
 	void jumpButtonCallback(Ref* sender, ui::Widget::TouchEventType type);
 
+	virtual void draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated);
+
 	virtual void update(float dt) override;
 	void PlayerObjectUpdate();
 	void b2tick(float dt);
@@ -53,7 +56,7 @@ private :
 	void ShowDeadMenu();
 	void CloseDeadMenu();
 
-	
+	Label* m_pPlayerBehaviorCount;
 
 	bool m_bIsEnd;
 	bool m_bIsPaused;
@@ -61,6 +64,10 @@ private :
 	CCSprite* m_pMenuBackground;
 	CCSprite* m_pRetryButton;
 	CCSprite* m_pGoHomeButton;
+
+	cocos2d::ui::Button* m_pLeftMoveButton;
+	cocos2d::ui::Button* m_pRightMoveButton;
+	cocos2d::ui::Button* m_pJumpButton;
 
 	CCNode* m_pParticleLayer;
 

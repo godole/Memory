@@ -14,4 +14,5 @@ struct PlayLayerShareData
 	b2World* m_pWorld;
 	shared_ptr<CScrollSprite> m_pBackground;
 	vector<shared_ptr<CThings>> m_arrObject;
+	cocos2d::CCLayer* m_pMainLayer;
 };

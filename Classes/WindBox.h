@@ -7,10 +7,14 @@
 
 class CWindBehaviorState;
 class CBox2dSprite;
+class ICanfly;
 
 class CWindBox :
 	public CThings
 {
+public :
+	void MakeFly(ICanfly* a_pCanfly);
+
 public :
 	void Init(cocos2d::CCLayer* a_pParentLayer, b2World* a_pWorld, TransectorProfile* a_Profile, WindBoxData a_Data);
 	void ChangeState(std::shared_ptr<CWindBehaviorState> a_pState);
@@ -34,5 +38,6 @@ private :
 	std::shared_ptr<CWindBehaviorState> m_pState;
 
 	std::map<string, void*> m_ValueMap;
+	bool m_bIsRun;
 };
 

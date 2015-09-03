@@ -386,7 +386,15 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Box2dSprite.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2RopeJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
- jni/../../Classes/b2Structure.h
+ jni/../../Classes/b2Structure.h \
+ jni/../../cocos2d/external/flatbuffers/../json\document.h \
+ jni/../../cocos2d/external/flatbuffers/../json\reader.h \
+ jni/../../cocos2d/external/flatbuffers/../json\rapidjson.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cstring \
+ jni/../../cocos2d/external/flatbuffers/../json\internal/pow10.h \
+ jni/../../cocos2d/external/flatbuffers/../json\internal/stack.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/csetjmp \
+ jni/../../cocos2d/external/flatbuffers/../json\internal/strfunc.h
 
 jni/../../Classes/Box2dSprite.h:
 
@@ -1163,3 +1171,19 @@ jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h:
 jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h:
 
 jni/../../Classes/b2Structure.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\document.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\reader.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\rapidjson.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cstring:
+
+jni/../../cocos2d/external/flatbuffers/../json\internal/pow10.h:
+
+jni/../../cocos2d/external/flatbuffers/../json\internal/stack.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/csetjmp:
+
+jni/../../cocos2d/external/flatbuffers/../json\internal/strfunc.h:
