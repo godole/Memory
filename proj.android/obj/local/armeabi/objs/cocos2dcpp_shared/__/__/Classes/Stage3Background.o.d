@@ -465,12 +465,13 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Stage3Background.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/Canfly.h \
- jni/../../Classes/ScrollSprite.h \
+ jni/../../Classes/Acting.h jni/../../Classes/ScrollSprite.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
  jni/../../Classes/DataStructure.h \
  jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
- jni/../../cocos2d/cocos/audio/android/../include/Export.h
+ jni/../../cocos2d/cocos/audio/android/../include/Export.h \
+ jni/../../Classes/ParticleManager.h jni/../../Classes/ShaderNode.h
 
 jni/../../Classes/Stage3Background.h:
 
@@ -1416,6 +1417,8 @@ jni/../../Classes/TransectorProfile.h:
 
 jni/../../Classes/Canfly.h:
 
+jni/../../Classes/Acting.h:
+
 jni/../../Classes/ScrollSprite.h:
 
 jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h:
@@ -1429,3 +1432,7 @@ jni/../../Classes/DataStructure.h:
 jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
 
 jni/../../cocos2d/cocos/audio/android/../include/Export.h:
+
+jni/../../Classes/ParticleManager.h:
+
+jni/../../Classes/ShaderNode.h:

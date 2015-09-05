@@ -351,7 +351,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Scene_SelectState.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/UpdateManager.h jni/../../Classes/Singleton.h \
  jni/../../Classes/DataManager.h jni/../../Classes/EDirection.h \
- jni/../../Classes/DataStructure.h jni/../../Classes/StageBox.h
+ jni/../../Classes/DataStructure.h jni/../../Classes/StageBox.h \
+ jni/../../Classes/GameSharing.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream \
+ jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h
 
 jni/../../Classes/Scene_SelectState.h:
 
@@ -1062,3 +1065,9 @@ jni/../../Classes/EDirection.h:
 jni/../../Classes/DataStructure.h:
 
 jni/../../Classes/StageBox.h:
+
+jni/../../Classes/GameSharing.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream:
+
+jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h:

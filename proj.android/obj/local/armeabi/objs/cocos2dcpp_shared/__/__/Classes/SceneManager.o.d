@@ -464,7 +464,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/SceneManager.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/Canfly.h \
- jni/../../Classes/ScrollSprite.h \
+ jni/../../Classes/Acting.h jni/../../Classes/ScrollSprite.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/PlayLayerEntity.h \
@@ -473,6 +473,31 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/SceneManager.o: \
  jni/../../Classes/Stage3Background.h \
  jni/../../Classes/PlayLayerMainLogic.h jni/../../Classes/DataManager.h \
  jni/../../Classes/CTextureFactory.h \
+ jni/../../cocos2d/cocos/3d/../ui\CocosGUI.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIButton.h \
+ jni/../../cocos2d/cocos/3d/../ui/UICheckBox.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIImageView.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIText.h \
+ jni/../../cocos2d/cocos/3d/../ui/UITextAtlas.h \
+ jni/../../cocos2d/cocos/3d/../ui/UILoadingBar.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIScrollView.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIListView.h \
+ jni/../../cocos2d/cocos/3d/../ui/UISlider.h \
+ jni/../../cocos2d/cocos/3d/../ui/UITextField.h \
+ jni/../../cocos2d/cocos/3d/../2d/CCTextFieldTTF.h \
+ jni/../../cocos2d/cocos/3d/../ui/UITextBMFont.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIPageView.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIHelper.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIRichText.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIHBox.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIVBox.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIRelativeBox.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIVideoPlayer.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIWebView.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIDeprecated.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIScale9Sprite.h \
+ jni/../../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h \
+ jni/../../cocos2d/cocos/3d/../ui/UILayoutComponent.h \
  jni/../../Classes/Scene_SelectState.h jni/../../Classes/Scene_Title.h
 
 jni/../../Classes/SceneManager.h:
@@ -1421,6 +1446,8 @@ jni/../../Classes/TransectorProfile.h:
 
 jni/../../Classes/Canfly.h:
 
+jni/../../Classes/Acting.h:
+
 jni/../../Classes/ScrollSprite.h:
 
 jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h:
@@ -1448,6 +1475,56 @@ jni/../../Classes/PlayLayerMainLogic.h:
 jni/../../Classes/DataManager.h:
 
 jni/../../Classes/CTextureFactory.h:
+
+jni/../../cocos2d/cocos/3d/../ui\CocosGUI.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIButton.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UICheckBox.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIImageView.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIText.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UITextAtlas.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UILoadingBar.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIScrollView.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIListView.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UISlider.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UITextField.h:
+
+jni/../../cocos2d/cocos/3d/../2d/CCTextFieldTTF.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UITextBMFont.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIPageView.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIHelper.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIRichText.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIHBox.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIVBox.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIRelativeBox.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIVideoPlayer.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIWebView.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIDeprecated.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIScale9Sprite.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h:
+
+jni/../../cocos2d/cocos/3d/../ui/UILayoutComponent.h:
 
 jni/../../Classes/Scene_SelectState.h:
 

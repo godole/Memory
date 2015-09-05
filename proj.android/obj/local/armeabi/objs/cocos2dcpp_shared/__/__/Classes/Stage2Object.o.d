@@ -464,7 +464,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Stage2Object.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/TransectorProfile.h jni/../../Classes/Canfly.h \
- jni/../../Classes/ScrollSprite.h \
+ jni/../../Classes/Acting.h jni/../../Classes/ScrollSprite.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D\Box2D.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/ObjectFactory.h \
@@ -1413,6 +1413,8 @@ jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h:
 jni/../../Classes/TransectorProfile.h:
 
 jni/../../Classes/Canfly.h:
+
+jni/../../Classes/Acting.h:
 
 jni/../../Classes/ScrollSprite.h:
 

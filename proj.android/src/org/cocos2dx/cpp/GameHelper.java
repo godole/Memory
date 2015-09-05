@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.example.games.basegameutils;
+package org.cocos2dx.cpp;
 
 import java.util.ArrayList;
 
@@ -44,6 +44,7 @@ import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;
 import com.google.android.gms.games.request.GameRequest;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.Plus.PlusOptions;
+import com.Unify.Memory.R;
 
 public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {

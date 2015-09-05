@@ -1,4 +1,4 @@
-package com.google.example.games.basegameutils;
+package org.cocos2dx.cpp;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.games.GamesActivityResultCodes;
+import com.Unify.Memory.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

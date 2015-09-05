@@ -150,6 +150,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\BoxHoldOnState.cpp" />
     <ClCompile Include="..\Classes\BoxReadyState.cpp" />
     <ClCompile Include="..\Classes\DataManager.cpp" />
+    <ClCompile Include="..\Classes\GameSharing.cpp" />
     <ClCompile Include="..\Classes\Ground.cpp" />
     <ClCompile Include="..\Classes\Line.cpp" />
     <ClCompile Include="..\Classes\Mirage.cpp" />
@@ -221,6 +222,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\EBoxDirection.h" />
     <ClInclude Include="..\Classes\EDirection.h" />
     <ClInclude Include="..\Classes\ELineDirection.h" />
+    <ClInclude Include="..\Classes\GameSharing.h" />
     <ClInclude Include="..\Classes\Ground.h" />
     <ClInclude Include="..\Classes\IScroll.h" />
     <ClInclude Include="..\Classes\ITransector.h" />

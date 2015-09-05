@@ -241,6 +241,7 @@
     <ClCompile Include="..\Classes\BoxReadyState.cpp">
       <Filter>src\Object\Things\Box</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameSharing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -483,6 +484,7 @@
     <ClInclude Include="..\Classes\BoxReadyState.h">
       <Filter>src\Object\Things\Box</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\GameSharing.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

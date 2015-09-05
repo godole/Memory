@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package com.google.example.games.basegameutils;
+package org.cocos2dx.cpp;
+
+import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -40,7 +41,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
  *
  * @author Bruno Oliveira (Google)
  */
-public abstract class BaseGameActivity extends FragmentActivity implements
+public abstract class BaseGameActivity extends Cocos2dxActivity implements
         GameHelper.GameHelperListener {
 
     // The game helper object. This class is mainly a wrapper around this object.

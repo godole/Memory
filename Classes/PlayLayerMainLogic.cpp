@@ -6,8 +6,10 @@
 #include "DataManager.h"
 #include "Behavior.h"
 #include "SimpleAudioEngine.h"
+#include <string>
 
 using namespace ui;
+using namespace std;
 using namespace CocosDenshion;
 
 
@@ -78,7 +80,10 @@ void PlayLayerMainLogic::LayerInit()
 	m_pGoHomeButton->setVisible(false);
 	this->addChild(m_pGoHomeButton, 4);
 
-	m_pPlayerBehaviorCount = Label::createWithTTF("fonts/arial.ttf", to_string(m_pLayerData->m_pPlayer->getCurrentBehaviorCount()));
+	stringstream s;
+	s << m_pLayerData->m_pPlayer->getMaxBehaviorCount();
+	string ss = s.str();
+	m_pPlayerBehaviorCount = Label::createWithTTF("fonts/arial.ttf", ss);
 	m_pPlayerBehaviorCount->setPosition(ccp(90, 650));
 	m_pPlayerBehaviorCount->setColor(Color3B(0, 0, 0));
 	m_pPlayerBehaviorCount->setSystemFontSize(40);
@@ -227,7 +232,10 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 			{
 				if (m_pLayerData->m_pPlayer->Action(m_pLayerData->m_arrObject[i]->getBehaviorPtr(), touchPos))
 				{
-					m_pPlayerBehaviorCount->setString(to_string(m_pLayerData->m_pPlayer->getCurrentBehaviorCount()));
+					stringstream s;
+					s << m_pLayerData->m_pPlayer->getLatestCount();
+					string ss = s.str();
+					m_pPlayerBehaviorCount->setString(ss);
 					break;
 				}
 			}

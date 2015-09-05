@@ -1,4 +1,4 @@
-package com.google.example.games.basegameutils;
+package org.cocos2dx.cpp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +10,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.GamesActivityResultCodes;
+import com.Unify.Memory.R;
 
 public class BaseGameUtils {
 

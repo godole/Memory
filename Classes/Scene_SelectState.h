@@ -37,5 +37,6 @@ private:
 
 	Sprite * m_pMenu1;
 	Sprite * m_pMenu2;
+	Sprite* m_pShowLeaderBoard;
 };
 

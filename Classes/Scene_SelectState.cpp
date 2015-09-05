@@ -2,6 +2,7 @@
 #include "UpdateManager.h"
 #include "DataManager.h"
 #include "StageBox.h"
+#include "GameSharing.h"
 
 USING_NS_CC;
 
@@ -74,6 +75,10 @@ void Scene_SelectState::BackgroundInit()
 	m_pMenu2->setPositionY(100);
 	this->addChild(m_pMenu2, 0);
 
+	m_pShowLeaderBoard = Sprite::create("stageselect/rank_menu.png");
+	m_pShowLeaderBoard->setPosition(ccp(1100, 650));
+	this->addChild(m_pShowLeaderBoard, 2);
+
 	m_pMenu1->runAction(_RepeatAction_m1);
 	m_pMenu2->runAction(_RepeatAction_m2);
 }
@@ -97,6 +102,12 @@ bool Scene_SelectState::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* even
 	auto _touchparticle = ParticleSystemQuad::create("stageselect/particle_texture.plist");
 	_touchparticle->setPosition(Point(_pTouchpos.x, _pTouchpos.y));
 	this->addChild(_touchparticle);
+
+	if (m_pShowLeaderBoard->getBoundingBox().containsPoint(_pTouchpos))
+	{
+		if (GameSharing::IsGPGAvailable())
+			GameSharing::ShowLeaderboards();
+	}
 
 	m_pStageBox->touch(_pTouchpos);
 

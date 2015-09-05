@@ -350,7 +350,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/WindRunState.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/ParticleManager.h jni/../../Classes/Singleton.h \
- jni/../../Classes/LayerDefine.h
+ jni/../../Classes/LayerDefine.h jni/../../Classes/ScrollManager.h
 
 jni/../../Classes/WindRunState.h:
 
@@ -1059,3 +1059,5 @@ jni/../../Classes/ParticleManager.h:
 jni/../../Classes/Singleton.h:
 
 jni/../../Classes/LayerDefine.h:
+
+jni/../../Classes/ScrollManager.h:
