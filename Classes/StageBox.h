@@ -1,30 +1,48 @@
 #pragma once
 #include "cocos2d.h"
+#include "Update.h"
+
 USING_NS_CC;
 
-class CStageBox
+class CSelectMapLayer;
+class CStageBox : 
+	public IUpdate
 {
 public:
 	CStageBox();
 	~CStageBox();
 
 	void init(Layer *);
-	void touch(Point);
+	void Update() override;
 
-	// 績獣 けいしけい
-	Layer * m_pPiece;
-	Layer * m_pStages;
+	void StageTouchBegan(Point);
+	void StageTouchMoved(Point);
+	void StageTouchEnded(Point);
+private:
+	void VisibleMap(bool);
+	void PieceMove(float);
+	void PieceAutoMove();
+	void PiecePositionScaling();
 
-	Sprite * m_pPieceLeft;
-	Sprite * m_pPieceRight;
-	Sprite * m_pPieceDown;
+	// 
+	std::shared_ptr<CSelectMapLayer> m_pSelectMapLayer;
+	Layer * m_pStageBoxLayer;
 
-	Sprite * m_pStage[10];
+	// BOX STAGE - LEFT - RIGHT - DOWN
+	Sprite * m_pBoxPiece[3][3];
+	EaseInOut  * m_pPieceMove[3];
+	Sequence * m_pPieceDownAction;
 
-	int m_nStageNum;
-	bool m_isCheck;
-	bool m_isVisible;
-	bool m_isTouch;
+	MenuItemImage * m_pBackStageMain;
+
+	Point m_ptBeganTouchPosition;
+
+	//
+	int  m_nNowStageNumber;
+	int  m_nPieceAutoMoving;
+
+	bool m_isCanTouch;
+	bool m_isEndedTouch;
+	bool m_isSelectMapLayer;
 
 };
-
