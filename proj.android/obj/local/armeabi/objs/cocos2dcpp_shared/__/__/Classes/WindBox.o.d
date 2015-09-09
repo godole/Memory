@@ -395,7 +395,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/WindBox.o: \
  jni/../../Classes/Box2dSprite.h jni/../../Classes/b2Structure.h \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Rail.h jni/../../Classes/Sand.h \
- jni/../../Classes/Canfly.h
+ jni/../../Classes/Door.h jni/../../Classes/Canfly.h
 
 jni/../../Classes/WindBox.h:
 
@@ -1208,5 +1208,7 @@ jni/../../Classes/ObjectArray.h:
 jni/../../Classes/Rail.h:
 
 jni/../../Classes/Sand.h:
+
+jni/../../Classes/Door.h:
 
 jni/../../Classes/Canfly.h:

@@ -17,8 +17,8 @@ FriendList::FriendList()
 
 FriendList::~FriendList()
 {
-	Achieve_Request->release();
-	Img_Request->release();
+	//Achieve_Request->release();
+	//Img_Request->release();
 
 	auto itr_list = m_vFriendLists.begin();
 	for (itr_list; itr_list != m_vFriendLists.end(); itr_list++)

@@ -6,15 +6,12 @@
 
 class CScrollSprite;
 
-class BackgroundCloud :
-	public IUpdate
+class BackgroundCloud
 {
-public :
-	virtual void Update();
-
 public :
 	void Init(float a_fSpeed, int a_nMaxWidth);
 	cocos2d::CCSprite* InsertCloud(std::string filename, cocos2d::CCPoint a_Pos);
+	void Update();
 
 public:
 	BackgroundCloud();

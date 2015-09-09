@@ -55,6 +55,12 @@
     <Filter Include="src\Object\Things\WindBox">
       <UniqueIdentifier>{7c2fe7b7-41d4-46a0-8487-e236e5c6c348}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Object\Things\Door">
+      <UniqueIdentifier>{299c3f81-6d6f-415d-8331-1b5ff87174fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Object\Things\Spanner">
+      <UniqueIdentifier>{6995a449-c4f5-497c-a91f-01d1ab52348a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -154,25 +160,13 @@
     <ClCompile Include="..\Classes\RailRunState.cpp">
       <Filter>src\Object\Things\Rail</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Stage1Background.cpp">
-      <Filter>src\Scene\InGame\Stage1</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PlayLayerEntity.cpp">
-      <Filter>src\Scene\InGame</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\PlayLayerMainLogic.cpp">
       <Filter>src\Scene\InGame</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Stage1Object.cpp">
-      <Filter>src\Scene\InGame\Stage1</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\StageBox.cpp">
       <Filter>src\Scene\SelectStage</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\StageLine.cpp">
-      <Filter>src\Scene\SelectStage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Scene_SelectState.cpp">
       <Filter>src\Scene\SelectStage</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Line.cpp">
@@ -199,23 +193,11 @@
     <ClCompile Include="..\Classes\WaterHoldingState.cpp">
       <Filter>src\Object\Things\Water</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Stage2Background.cpp">
-      <Filter>src\Scene\InGame\Stage2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Stage2Object.cpp">
-      <Filter>src\Scene\InGame\Stage2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene_InGame.cpp">
       <Filter>src\Scene\InGame</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Sand.cpp">
       <Filter>src\Object\Things</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Stage3Background.cpp">
-      <Filter>src\Scene\InGame\Stage3</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Stage3Object.cpp">
-      <Filter>src\Scene\InGame\Stage3</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\BackgroundCloud.cpp">
       <Filter>src\Scene\InGame</Filter>
@@ -242,6 +224,57 @@
       <Filter>src\Object\Things\Box</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameSharing.cpp" />
+    <ClCompile Include="..\Classes\FriendList.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Network.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Option.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OptionLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SceneSelectScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SelectMapLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UserData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ped.cpp">
+      <Filter>src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Door.cpp">
+      <Filter>src\Object\Things\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpannerBehaviorState.cpp">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpannerDefaultState.cpp">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Spanner.cpp">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpannerHoldOnState.cpp">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpannerUsedState.cpp">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene_Stage1.cpp">
+      <Filter>src\Scene\InGame\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene_Stage2.cpp">
+      <Filter>src\Scene\InGame\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene_Stage3.cpp">
+      <Filter>src\Scene\InGame\Stage3</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -388,28 +421,13 @@
     <ClInclude Include="..\Classes\ITransector.h">
       <Filter>src\Scene\InGame\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Stage1Background.h">
-      <Filter>src\Scene\InGame\Stage1</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PlayLayerEntity.h">
-      <Filter>src\Scene\InGame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PlayLayerShareData.h">
-      <Filter>src\Scene\InGame</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\PlayLayerMainLogic.h">
       <Filter>src\Scene\InGame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Stage1Object.h">
-      <Filter>src\Scene\InGame\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StageBox.h">
       <Filter>src\Scene\SelectStage</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StageLine.h">
-      <Filter>src\Scene\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Scene_SelectState.h">
       <Filter>src\Scene\SelectStage</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Line.h">
@@ -436,23 +454,11 @@
     <ClInclude Include="..\Classes\WaterHoldingState.h">
       <Filter>src\Object\Things\Water</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Stage2Background.h">
-      <Filter>src\Scene\InGame\Stage2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Stage2Object.h">
-      <Filter>src\Scene\InGame\Stage2</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Scene_InGame.h">
       <Filter>src\Scene\InGame</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Sand.h">
       <Filter>src\Object\Things</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Stage3Object.h">
-      <Filter>src\Scene\InGame\Stage3</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Stage3Background.h">
-      <Filter>src\Scene\InGame\Stage3</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\BackgroundCloud.h">
       <Filter>src\Scene\InGame</Filter>
@@ -485,6 +491,69 @@
       <Filter>src\Object\Things\Box</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameSharing.h" />
+    <ClInclude Include="..\Classes\ELayerState.h">
+      <Filter>src\Scene\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ESoundState.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FriendList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameData.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OptionLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Define.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Network.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Option.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SelectMapLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SceneSelectScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UserData.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ped.h">
+      <Filter>src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Door.h">
+      <Filter>src\Object\Things\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpannerBehaviorState.h">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpannerDefaultState.h">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Spanner.h">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpannerHoldOnState.h">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpannerUsedState.h">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene_Stage1.h">
+      <Filter>src\Scene\InGame\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene_Stage2.h">
+      <Filter>src\Scene\InGame\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene_Stage3.h">
+      <Filter>src\Scene\InGame\Stage3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

@@ -396,7 +396,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Pulley.o: \
  jni/../../Classes/PulleyDefaultState.h \
  jni/../../Classes/PulleyRunState.h jni/../../Classes/ObjectManager.h \
  jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h \
- jni/../../Classes/Sand.h jni/../../Classes/CTextureFactory.h
+ jni/../../Classes/Sand.h jni/../../Classes/Door.h \
+ jni/../../Classes/CTextureFactory.h
 
 jni/../../Classes/Pulley.h:
 
@@ -1213,5 +1214,7 @@ jni/../../Classes/ObjectArray.h:
 jni/../../Classes/Rail.h:
 
 jni/../../Classes/Sand.h:
+
+jni/../../Classes/Door.h:
 
 jni/../../Classes/CTextureFactory.h:

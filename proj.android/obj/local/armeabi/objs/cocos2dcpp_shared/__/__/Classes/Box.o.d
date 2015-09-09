@@ -396,8 +396,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Box.o: \
  jni/../../Classes/BoxDefaultState.h jni/../../Classes/BoxHoldOnState.h \
  jni/../../Classes/BoxAfterState.h jni/../../Classes/ObjectManager.h \
  jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h \
- jni/../../Classes/Sand.h jni/../../Classes/Box2dSprite.h \
- jni/../../Classes/LayerDefine.h
+ jni/../../Classes/Sand.h jni/../../Classes/Door.h \
+ jni/../../Classes/Box2dSprite.h jni/../../Classes/LayerDefine.h
 
 jni/../../Classes/Box.h:
 
@@ -1214,6 +1214,8 @@ jni/../../Classes/ObjectArray.h:
 jni/../../Classes/Rail.h:
 
 jni/../../Classes/Sand.h:
+
+jni/../../Classes/Door.h:
 
 jni/../../Classes/Box2dSprite.h:
 

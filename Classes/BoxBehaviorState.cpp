@@ -17,7 +17,7 @@ void CBoxBehaviorState::setStateToDefault()
 	m_pBox->ChangeState(shared_ptr<CBoxBehaviorState>(new CBoxDefaultState));
 }
 
-bool CBoxBehaviorState::IsPutable(CCSprite* sprite, CCPoint touchPos, CCPoint& avaliablePos)
+bool CBoxBehaviorState::IsPutable(TransectorProfile* profile, CCSprite* sprite, CCPoint touchPos, CCPoint& avaliablePos)
 {
 	auto arr = CObjectManager::getInstance()->getBox2dSprite();
 	CCPoint setPos;
@@ -43,9 +43,15 @@ bool CBoxBehaviorState::IsPutable(CCSprite* sprite, CCPoint touchPos, CCPoint& a
 	{
 		auto anothersprite = arr->getObjectAt(i)->getSpritePtr();
 
+		if (anothersprite == sprite)
+			continue;
+
 		if (rect.intersectsRect(anothersprite->getBoundingBox()))
 			bIsEnable = false;
 	}
+
+	if (!profile->m_TransectRange.containsPoint(touchPos))
+		bIsEnable = false;
 
 	avaliablePos = setPos;
 	return bIsEnable;

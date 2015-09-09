@@ -7,7 +7,7 @@
 
 SceneSelectScene::SceneSelectScene(){}
 SceneSelectScene::~SceneSelectScene(){
-	UpdateManager::getInstance()->Release();
+	//UpdateManager::getInstance()->Release();
 }
 
 Scene* SceneSelectScene::createScene()
