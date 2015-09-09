@@ -2,15 +2,15 @@
 PULLEY 302 300 200 155 100 DOWN 3 
 PULLEY 752 300 520 345 150 UP 3 
 PULLEY 992 440 830 495 150 UP 3 
-GROUND 480 290 map/map2/object/ped1.png 
-GROUND 530 290 map/map2/object/ped1.png 
-GROUND 580 290 map/map2/object/ped1.png 
-GROUND 850 440 map/map2/object/ped1.png 
-GROUND 900 440 map/map2/object/ped1.png 
-GROUND 800 440 map/map2/object/ped1.png 
-GROUND 1150 600 map/map2/object/ped1.png 
-GROUND 1200 600 map/map2/object/ped1.png  
-GROUND 1250 600 map/map2/object/ped1.png 
+PED 480 290 map/map2/object/ped1.png 
+PED 530 290 map/map2/object/ped1.png 
+PED 580 290 map/map2/object/ped1.png 
+PED 850 440 map/map2/object/ped1.png 
+PED 900 440 map/map2/object/ped1.png 
+PED 800 440 map/map2/object/ped1.png 
+PED 1150 600 map/map2/object/ped1.png 
+PED 1200 600 map/map2/object/ped1.png 
+PED 1250 600 map/map2/object/ped1.png 
 GROUND 1280 66 map/map2/object/map_2_ground.png 
 BG map/map2/background/map_2.png 
 DESTINATION 1200 630 object/destination.png 

@@ -30,3 +30,8 @@ void CScrollManager::Release()
 	m_arrScroll.clear();
 	m_vDeltaPosition = Vec2::ZERO;
 }
+
+void CScrollManager::Remove(shared_ptr<IScroll> a_pScrl)
+{
+	m_arrScroll.remove(a_pScrl);
+}

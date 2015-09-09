@@ -20,7 +20,6 @@ void CWindBehaviorState::Init(CWindBox* a_pThings, map<string, void*>* a_pvalueM
 	m_pValueMap = a_pvalueMap;
 
 	CCSprite* sprite = (CCSprite*)a_pvalueMap->at("sprite");
-	sprite->setPosition(sprite->getPosition() + ccp(100, 0));
 
 	BehaviorInit();
 }

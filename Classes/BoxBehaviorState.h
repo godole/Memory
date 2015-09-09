@@ -20,7 +20,7 @@ public :
 	~CBoxBehaviorState(){}
 
 protected :
-	bool IsPutable(CCSprite* sprite, CCPoint touchPos, CCPoint& avaliablePos);
+	bool IsPutable(TransectorProfile* profile, CCSprite* sprite, CCPoint touchPos, CCPoint& avaliablePos);
 
 	CBox* m_pBox;
 	std::map<string, void* >* m_pValueMap;

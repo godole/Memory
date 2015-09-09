@@ -5,16 +5,36 @@
 #include "Box2dSprite.h"
 #include "DataManager.h"
 #include "Behavior.h"
+#include "BackgroundCloud.h"
 #include "SimpleAudioEngine.h"
+#include "ScrollSprite.h"
+#include "Player.h"
+#include "ObjectFactory.h"
+#include "LayerDefine.h"
 #include <string>
+#include "GameSharing.h"
 
 using namespace ui;
 using namespace std;
 using namespace CocosDenshion;
 
-
-void PlayLayerMainLogic::LayerInit()
+bool PlayLayerMainLogic::init()
 {
+	if (!Layer::init())
+	{
+		return false;
+	}
+
+	m_bIsJumpButtonTouched = false;
+	m_bIsLeftButtonTouched = false;
+	m_bIsRightButtonTouched = false;
+
+	visibleSize = Director::getInstance()->getVisibleSize();
+	origin = Director::getInstance()->getVisibleOrigin();
+
+	this->setTouchEnabled(true);
+
+	UpdateManager::getInstance()->Release();
 	CScrollManager::getInstance()->Release();
 	CObjectManager::getInstance()->Init();
 	settingKeyboardManager();
@@ -22,21 +42,20 @@ void PlayLayerMainLogic::LayerInit()
 	b2Init();
 	scheduleUpdate();
 
-	m_LayerData.m_pPlayer = shared_ptr<CPlayer>(new CPlayer);
-	m_LayerData.m_pPlayer->Init(this, m_LayerData.m_pWorld, 1);
-	m_LayerData.m_pPlayer->setPositionTo(ccp(50, 300));
-	UpdateManager::getInstance()->Insert(m_LayerData.m_pPlayer);
-	CScrollManager::getInstance()->Insert(m_LayerData.m_pPlayer);
+	m_pPlayer = shared_ptr<CPlayer>(new CPlayer);
+	m_pPlayer->Init(this, m_pWorld, CDataManager::getInstance()->getMapBehaviorCount().m_nMaxCount, CHARACTER_ZORDER);
+	m_pPlayer->setPositionTo(ccp(50, 300));
+	UpdateManager::getInstance()->Insert(m_pPlayer);
+	CScrollManager::getInstance()->Insert(m_pPlayer);
 
-	m_pParticleLayer = CCLayer::create();
-	this->addChild(m_pParticleLayer, 3, "particlelayer");
+	m_pCharParticleNode = CCNode::create();
+	this->addChild(m_pCharParticleNode, CHARACTER_ZORDER, CHAR_PARTICLE_NODE);
 
-	m_bIsJumpButtonTouched = false;
-	m_bIsLeftButtonTouched = false;
-	m_bIsRightButtonTouched = false;
+	m_pScreenParticleNode = CCNode::create();
+	this->addChild(m_pScreenParticleNode, PARTICLE_ZORDER, SCR_PARTICLE_NODE);
 
 	auto button = CSLoader::createNode("ui/button.csb");
-	this->addChild(button, 3);
+	this->addChild(button, UI_ZORDER);
 
 	m_pLeftMoveButton = (Button*)(button->getChildByName("left"));
 	m_pLeftMoveButton->addTouchEventListener(CC_CALLBACK_2(PlayLayerMainLogic::leftButtonCallback, this));
@@ -49,13 +68,17 @@ void PlayLayerMainLogic::LayerInit()
 
 	auto film = CCSprite::create("ui/film.png");
 	film->setPosition(ccp(220, 650));
-	this->addChild(film, 3);
+	this->addChild(film, UI_ZORDER);
 
-	m_pLayerData = &m_LayerData;
-
-	m_pZeroWall = CreateWall("object/20.png", ccp(0, 100));
-	m_pMaxWall = CreateWall("object/20.png", ccp(1920, 100));
-
+	stringstream s;
+	s << m_pPlayer->getLatestCount();
+	string ss = s.str();
+	m_pPlayerBehaviorCount = Label::createWithTTF("fonts/arial.ttf", ss);
+	m_pPlayerBehaviorCount->setPosition(ccp(85, 650));
+	m_pPlayerBehaviorCount->setColor(Color3B(0, 0, 0));
+	m_pPlayerBehaviorCount->setSystemFontSize(40);
+	this->addChild(m_pPlayerBehaviorCount, UI_ZORDER);
+	
 	auto pTempSprite = CCSprite::create(CDataManager::getInstance()->getDestinationData()->m_szTextureName);
 	pTempSprite->setPosition(CDataManager::getInstance()->getDestinationData()->m_vPosition);
 	pTempSprite->setAnchorPoint(ccp(0.5, 0));
@@ -68,40 +91,34 @@ void PlayLayerMainLogic::LayerInit()
 	m_pMenuBackground = CCSprite::create("ui/stage_dead.png");
 	m_pMenuBackground->setAnchorPoint(ccp(0, 0));
 	m_pMenuBackground->setVisible(false);
-	this->addChild(m_pMenuBackground, 4);
+	this->addChild(m_pMenuBackground, MENU_ZORDER);
 
 	m_pRetryButton = CCSprite::create("ui/menu_dead_retry.png");
 	m_pRetryButton->setPosition(ccp(visibleSize.width / 2 - 300, visibleSize.height / 2));
 	m_pRetryButton->setVisible(false);
-	this->addChild(m_pRetryButton, 4);
+	this->addChild(m_pRetryButton, MENU_ZORDER);
 
 	m_pGoHomeButton = CCSprite::create("ui/menu_dead_home.png");
 	m_pGoHomeButton->setPosition(ccp(visibleSize.width / 2 + 300, visibleSize.height / 2));
 	m_pGoHomeButton->setVisible(false);
-	this->addChild(m_pGoHomeButton, 4);
+	this->addChild(m_pGoHomeButton, MENU_ZORDER);
 
-	stringstream s;
-	s << m_pLayerData->m_pPlayer->getMaxBehaviorCount();
-	string ss = s.str();
-	m_pPlayerBehaviorCount = Label::createWithTTF("fonts/arial.ttf", ss);
-	m_pPlayerBehaviorCount->setPosition(ccp(90, 650));
-	m_pPlayerBehaviorCount->setColor(Color3B(0, 0, 0));
-	m_pPlayerBehaviorCount->setSystemFontSize(40);
-	this->addChild(m_pPlayerBehaviorCount, 3);
+	ObjInit();
+	BGInit();
 
 	m_bIsEnd = false;
 	m_bIsPaused = false;
 
-	m_LayerData.m_pMainLayer = this;
+	return true;
 }
 
 void PlayLayerMainLogic::b2Init()
 {
 	b2Vec2 gravity;
 	gravity.Set(0.0f, -15.0f);
-	m_LayerData.m_pWorld = new b2World(gravity);
-	m_LayerData.m_pWorld->SetAllowSleeping(true);
-	m_LayerData.m_pWorld->SetContinuousPhysics(true);
+	m_pWorld = new b2World(gravity);
+	m_pWorld->SetAllowSleeping(true);
+	m_pWorld->SetContinuousPhysics(true);
 
 	this->schedule(schedule_selector(PlayLayerMainLogic::b2tick));
 }
@@ -134,9 +151,9 @@ void PlayLayerMainLogic::b2tick(float dt)
 	int32 velocityIterator = 8;
 	int32 positionIterator = 3;
 
-	m_LayerData.m_pWorld->Step(dt, velocityIterator, positionIterator);
+	m_pWorld->Step(dt, velocityIterator, positionIterator);
 
-	for (b2Body *b = m_LayerData.m_pWorld->GetBodyList(); b; b = b->GetNext())
+	for (b2Body *b = m_pWorld->GetBodyList(); b; b = b->GetNext())
 	{
 		if (b->GetUserData() != NULL)
 		{
@@ -153,16 +170,16 @@ void PlayLayerMainLogic::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, c
 	{
 	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 		m_bIsLeftButtonTouched = true;
-		m_LayerData.m_pPlayer->Move(md_Left);
+		m_pPlayer->Move(md_Left);
 		break;
 
 	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 		m_bIsRightButtonTouched = true;
-		m_LayerData.m_pPlayer->Move(md_Right);
+		m_pPlayer->Move(md_Right);
 		break;
 
 	case EventKeyboard::KeyCode::KEY_SPACE:
-		m_LayerData.m_pPlayer->Jump();
+		m_pPlayer->Jump();
 		break;
 
 	case EventKeyboard::KeyCode::KEY_F12:
@@ -177,43 +194,64 @@ void PlayLayerMainLogic::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, 
 	{
 	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 		m_bIsLeftButtonTouched = false;
-		m_LayerData.m_pPlayer->Stop();
+		m_pPlayer->Stop();
 		break;
 
 	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 		m_bIsRightButtonTouched = false;
-		m_LayerData.m_pPlayer->Stop();
+		m_pPlayer->Stop();
 		break;
 
 	case EventKeyboard::KeyCode::KEY_BACK :
 	case EventKeyboard::KeyCode::KEY_BACKSPACE :
-			ShowDeadMenu();
+		ShowDeadMenu();
 		break;
 	}
 }
 
 void PlayLayerMainLogic::GoNextStage()
 {
+	int Score;
+	if (m_pPlayer->getCurrentBehaviorCount() < CDataManager::getInstance()->getMapBehaviorCount().m_nFirstScore)
+		Score = 3;
+
+	else if (m_pPlayer->getCurrentBehaviorCount() < CDataManager::getInstance()->getMapBehaviorCount().m_nSecondScore)
+		Score = 2;
+
+	else
+		Score = 1;
+
+	if (CDataManager::getInstance()->getCurrentStageScoreSum() >= 30)
+		GameSharing::UnlockAchivement(2);
+
+	else if (CDataManager::getInstance()->getCurrentStageScoreSum() >= 20)
+		GameSharing::UnlockAchivement(3);
+
+	else if (CDataManager::getInstance()->getCurrentStageScoreSum() >= 10)
+		GameSharing::UnlockAchivement(4);
+
 	Release();
 	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneSelectStage);
-	CDataManager::getInstance()->SavePlayerData();
+	CDataManager::getInstance()->SavePlayerData(Score);
 	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 }
 
 void PlayLayerMainLogic::update(float dt)
 {
-	if (m_pDestination->getSpritePtr()->getBoundingBox().containsPoint(m_LayerData.m_pPlayer->getPosition()) && !m_bIsEnd)
+	ObjectUpdate();
+	BackgroundUpdate();
+	if (m_pDestination->getSpritePtr()->getBoundingBox().containsPoint(m_pPlayer->getPosition()) && !m_bIsEnd)
 	{
 		GoNextStage();
 	}
 
 	if (m_bIsLeftButtonTouched)
-		m_LayerData.m_pPlayer->Move(MoveDirection::md_Left);
+		m_pPlayer->Move(MoveDirection::md_Left);
 
 	if (m_bIsRightButtonTouched)
-		m_LayerData.m_pPlayer->Move(MoveDirection::md_Right);
+		m_pPlayer->Move(MoveDirection::md_Right);
 
-	if (m_LayerData.m_pPlayer->Isfall())
+	if (m_pPlayer->Isfall())
 		ShowDeadMenu();
 
 	UpdateManager::getInstance()->Updating();
@@ -228,12 +266,12 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 
 		if (!m_bIsPaused)
 		{
-			for (int i = 0; i < m_pLayerData->m_arrObject.size(); i++)
+			for (int i = 0; i < m_arrObject.size(); i++)
 			{
-				if (m_pLayerData->m_pPlayer->Action(m_pLayerData->m_arrObject[i]->getBehaviorPtr(), touchPos))
+				if (m_pPlayer->Action(m_arrObject[i]->getBehaviorPtr(), touchPos))
 				{
 					stringstream s;
-					s << m_pLayerData->m_pPlayer->getLatestCount();
+					s << m_pPlayer->getLatestCount();
 					string ss = s.str();
 					m_pPlayerBehaviorCount->setString(ss);
 					break;
@@ -246,7 +284,7 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 		{
 			Behavior::k_bIsDoing = false;
 			scheduleUpdate();
-			m_pLayerData->m_pPlayer->setStateToBefore();
+			m_pPlayer->setStateToBefore();
 			CloseDeadMenu();
 		}
 
@@ -283,28 +321,32 @@ void PlayLayerMainLogic::onTouchesCancelled(const vector<Touch*>&touches, Event*
 void PlayLayerMainLogic::Scroll()
 {
 	Vec2 cv = visibleSize / 2;
-	Vec2 sv = cv - m_LayerData.m_pPlayer->getPosition();
+	Vec2 sv = cv - m_pPlayer->getPosition();
 	sv = sv / 9;
 
-	if (m_LayerData.m_pBackground->getSpritePtr()->getPositionX() + sv.x > 0)
+	if (m_pBackground->getSpritePtr()->getPositionX() + sv.x > 0)
 	{
-		sv.x = -m_LayerData.m_pBackground->getSpritePtr()->getPositionX();
+		sv.x = -m_pBackground->getSpritePtr()->getPositionX();
 	}
 
-	if (m_LayerData.m_pBackground->getSpritePtr()->getPositionX() + m_LayerData.m_pBackground->getSpritePtr()->getContentSize().width + sv.x < visibleSize.width)
+	if (m_pBackground->getSpritePtr()->getPositionX() + m_pBackground->getSpritePtr()->getContentSize().width + sv.x < visibleSize.width)
 	{
-		sv.x = visibleSize.width - m_LayerData.m_pBackground->getSpritePtr()->getBoundingBox().getMaxX();
+		sv.x = visibleSize.width - m_pBackground->getSpritePtr()->getBoundingBox().getMaxX();
 	}
 
-	if (m_LayerData.m_pBackground->getSpritePtr()->getPositionY() + sv.y > 0)
+	if (m_pBackground->getSpritePtr()->getPositionY() + sv.y > 0)
 	{
-		sv.y = -m_LayerData.m_pBackground->getSpritePtr()->getPositionY();
+		sv.y = -m_pBackground->getSpritePtr()->getPositionY();
 	}
 
 	m_pZeroWall->setPositionBy(sv);
 	m_pMaxWall->setPositionBy(sv);
 
-	m_pParticleLayer->setPosition(m_pParticleLayer->getPosition() + sv);
+	m_pBGParticleNode->setPosition(m_pBGParticleNode->getPosition() + sv);
+	m_pObjParticleNode->setPosition(m_pObjParticleNode->getPosition() + sv);
+	m_pCharParticleNode->setPosition(m_pCharParticleNode->getPosition() + sv);
+	m_pScreenParticleNode->setPosition(m_pScreenParticleNode->getPosition() + sv);
+
 	CScrollManager::getInstance()->Scroll(sv);
 }
 
@@ -315,7 +357,7 @@ CBox2dSprite* PlayLayerMainLogic::CreateWall(string filename, CCPoint pos)
 	this->addChild(pWall1);
 
 	auto wall = new CBox2dSprite;
-	wall->Init(pWall1, m_pLayerData->m_pWorld, b2BodyType::b2_staticBody, ccp(0.5, 0));
+	wall->Init(pWall1, m_pWorld, b2BodyType::b2_staticBody, ccp(0.5, 0));
 
 	return wall;
 }
@@ -327,13 +369,14 @@ void PlayLayerMainLogic::ShowDeadMenu()
 	m_pGoHomeButton->setVisible(true);
 
 	unscheduleUpdate();
-	Director::sharedDirector()->pause();
 
 	m_bIsPaused = true;
 
 	m_pLeftMoveButton->setEnabled(false);
 	m_pRightMoveButton->setEnabled(false);
 	m_pJumpButton->setEnabled(false);
+
+	m_pPlayer->Stop();
 }
 
 void PlayLayerMainLogic::CloseDeadMenu()
@@ -343,7 +386,6 @@ void PlayLayerMainLogic::CloseDeadMenu()
 	m_pGoHomeButton->setVisible(false);
 
 	scheduleUpdate();
-	Director::sharedDirector()->resume();
 
 	m_bIsPaused = false;
 
@@ -355,11 +397,11 @@ void PlayLayerMainLogic::CloseDeadMenu()
 void PlayLayerMainLogic::Release()
 {
 	m_bIsEnd = true;
-	m_LayerData.m_pPlayer->Stop();
+	m_pPlayer->Stop();
 	this->unschedule(schedule_selector(PlayLayerMainLogic::update));
 	CScrollManager::getInstance()->Release();
 	UpdateManager::getInstance()->Release();
-	m_LayerData.m_arrObject.clear();
+	m_arrObject.clear();
 	CObjectManager::getInstance()->Release();
 	CDataManager::getInstance()->Release();
 	Behavior::k_bIsDoing = false;
@@ -367,20 +409,22 @@ void PlayLayerMainLogic::Release()
 
 void PlayLayerMainLogic::leftButtonCallback(Ref* sender, Widget::TouchEventType type)
 {
+	if (m_bIsPaused)
+		return;
 	switch (type)
 	{
 	case cocos2d::ui::Widget::TouchEventType::BEGAN:
 		m_bIsLeftButtonTouched = true;
-		m_pLayerData->m_pPlayer->PlayMoveAnimation();
+		m_pPlayer->PlayMoveAnimation();
 		break;
 	case cocos2d::ui::Widget::TouchEventType::ENDED:
-		m_pLayerData->m_pPlayer->Stop();
+		m_pPlayer->Stop();
 		m_bIsLeftButtonTouched = false;
 		break;
 	case cocos2d::ui::Widget::TouchEventType::MOVED :
 		break;
 	case cocos2d::ui::Widget::TouchEventType::CANCELED:
-		m_pLayerData->m_pPlayer->Stop();
+		m_pPlayer->Stop();
 		m_bIsLeftButtonTouched = false;
 		break;
 	default:
@@ -390,18 +434,20 @@ void PlayLayerMainLogic::leftButtonCallback(Ref* sender, Widget::TouchEventType 
 
 void PlayLayerMainLogic::rightButtonCallback(Ref* sender, Widget::TouchEventType type)
 {
+	if (m_bIsPaused)
+		return;
 	switch (type)
 	{
 	case cocos2d::ui::Widget::TouchEventType::BEGAN:
 		m_bIsRightButtonTouched = true;
-		m_pLayerData->m_pPlayer->PlayMoveAnimation();
+		m_pPlayer->PlayMoveAnimation();
 		break;
 	case cocos2d::ui::Widget::TouchEventType::ENDED:
-		m_pLayerData->m_pPlayer->Stop();
+		m_pPlayer->Stop();
 		m_bIsRightButtonTouched = false;
 		break;
 	case cocos2d::ui::Widget::TouchEventType::CANCELED:
-		m_pLayerData->m_pPlayer->Stop();
+		m_pPlayer->Stop();
 		m_bIsRightButtonTouched = false;
 		break;
 	default:
@@ -411,10 +457,12 @@ void PlayLayerMainLogic::rightButtonCallback(Ref* sender, Widget::TouchEventType
 
 void PlayLayerMainLogic::jumpButtonCallback(Ref* sender, Widget::TouchEventType type)
 {
+	if (m_bIsPaused)
+		return;
 	switch (type)
 	{
 	case cocos2d::ui::Widget::TouchEventType::BEGAN:
-		m_pLayerData->m_pPlayer->Jump();
+		m_pPlayer->Jump();
 		break;
 	default:
 		break;
@@ -424,5 +472,51 @@ void PlayLayerMainLogic::jumpButtonCallback(Ref* sender, Widget::TouchEventType 
 void PlayLayerMainLogic::draw(Renderer *renderer, const kmMat4& transform, bool transformUpdated)
 {
 	glEnableVertexAttribArray(0);
-	m_pLayerData->m_pWorld->DrawDebugData();
+	m_pWorld->DrawDebugData();
+}
+
+void PlayLayerMainLogic::ObjInit()
+{
+	auto factory = CObjectFactory::getInstance();
+	auto mgr = CDataManager::getInstance();
+	auto profile = m_pPlayer->getActorProfile();
+
+	for (auto itr = mgr->getBoxData()->begin(); itr != mgr->getBoxData()->end(); itr++)
+	{
+		auto box = factory->CreateBox(this, m_pWorld, profile, *itr);
+		m_arrObject.push_back(box);
+	}
+
+	ObjectInit();
+
+	for (auto itr = mgr->getPedData()->begin(); itr != mgr->getPedData()->end(); itr++)
+	{
+		factory->CreatePed(this, m_pWorld, *itr);
+	}
+
+	for (auto itr = mgr->getGroundData()->begin(); itr != mgr->getGroundData()->end(); itr++)
+	{
+		factory->CreateGround(this, m_pWorld, *itr);
+	}
+
+	m_pZeroWall = CreateWall("object/20.png", ccp(0, 100));
+	m_pMaxWall = CreateWall("object/20.png", ccp(1920, 100));
+
+	m_pObjParticleNode = CCNode::create();
+	this->addChild(m_pObjParticleNode, OBJECT_ZORDER, OBJ_PARTICLE_NODE);
+}
+
+void PlayLayerMainLogic::BGInit()
+{
+	BackgroundInit();
+
+	m_pBGParticleNode = CCNode::create();
+	this->addChild(m_pBGParticleNode, BACKGROUND_ZORDER, BG_PARTICLE_NODE);
+}
+
+void PlayLayerMainLogic::ObjUpdate()
+{
+	m_pBackgroundCloud->Update();
+
+	ObjectUpdate();
 }

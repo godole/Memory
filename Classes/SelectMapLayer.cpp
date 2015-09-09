@@ -52,7 +52,7 @@ void CSelectMapLayer::TouchMap(Point a_ptTouchPosition)
 
 	bool check = false;
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		if (m_pStagePuzzle[m_nNowShowStage][i]
 			->getBoundingBox().containsPoint(a_ptTouchPosition))
@@ -61,9 +61,23 @@ void CSelectMapLayer::TouchMap(Point a_ptTouchPosition)
 				(m_nNowShowStage * 10 + i);*/
 			//check = true;
 
+			Director::sharedDirector()->getEventDispatcher()->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
 			CDataManager::getInstance()->LoadMapData(
 				StringUtils::format("map/data/map%d-%d.txt", m_nNowShowStage + 1, i + 1));
-			CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+			CDataManager::getInstance()->setCurrentStage(m_nNowShowStage + 1, i + 1);
+			switch (m_nNowShowStage)
+			{
+			case 0 :
+				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+				break;
+			case 1 :
+				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage2);
+				break;
+			case 2 :
+				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage3);
+				break;
+			}
+			
 
 			break;
 		}

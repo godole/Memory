@@ -11,8 +11,8 @@ CUserData::CUserData()
 
 CUserData::~CUserData()
 {
-	UserImageRequest->release();
-	UserPlayTimeRequest->release();
+	//UserImageRequest->release();
+	//UserPlayTimeRequest->release();
 }
 
 void CUserData::CreateUserPlayTime(Layer * a_ParentLayer)
@@ -29,12 +29,12 @@ void CUserData::CreateUI(Layer * a_pParentLayer)
 	m_pParentLayer = a_pParentLayer;
 
 	// 
-	m_pUserProfileImage = Sprite::create("profileimage.png");
+	m_pUserProfileImage = Sprite::create("a.png");
 	m_pUserProfileImage->setAnchorPoint(Point(0, 1));
 	m_pUserProfileImage->setPosition(Point(5, 715));
 	m_pParentLayer->addChild(m_pUserProfileImage);
 	
-	auto profileback = Sprite::create("profileback.png");
+	auto profileback = Sprite::create("a.png");
 	profileback->setAnchorPoint(Point(0, 0));
 	profileback->setPosition(Point(130, 595));
 	m_pParentLayer->addChild(profileback);

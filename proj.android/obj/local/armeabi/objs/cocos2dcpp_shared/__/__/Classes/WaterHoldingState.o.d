@@ -395,7 +395,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/WaterHoldingState.o: \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Rail.h jni/../../Classes/b2Structure.h \
- jni/../../Classes/Sand.h jni/../../Classes/WaterAfterState.h
+ jni/../../Classes/Sand.h jni/../../Classes/Door.h \
+ jni/../../Classes/WaterAfterState.h
 
 jni/../../Classes/WaterHoldingState.h:
 
@@ -1204,5 +1205,7 @@ jni/../../Classes/Rail.h:
 jni/../../Classes/b2Structure.h:
 
 jni/../../Classes/Sand.h:
+
+jni/../../Classes/Door.h:
 
 jni/../../Classes/WaterAfterState.h:

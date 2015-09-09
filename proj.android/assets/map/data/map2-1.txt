@@ -3,18 +3,18 @@ BOX 300 172 map/map2/object/box_ob.png
 BOX 600 350 map/map2/object/box_ob.png 
 BOX 700 350 map/map2/object/box_ob.png 
 RAIL 1004 350 270 390 LEFT 5 
-GROUND 200 350 map/map2/object/ped1.png 
-GROUND 250 350 map/map2/object/ped1.png 
-GROUND 300 350 map/map2/object/ped1.png 
-GROUND 350 350 map/map2/object/ped1.png 
-GROUND 400 350 map/map2/object/ped1.png 
-GROUND 450 350 map/map2/object/ped1.png 
-GROUND 500 350 map/map2/object/ped1.png 
-GROUND 800 350 map/map2/object/ped1.png 
-GROUND 850 350 map/map2/object/ped1.png 
-GROUND 900 350 map/map2/object/ped1.png 
-GROUND 1245 350 map/map2/object/ped1.png 
-GROUND 1295 350 map/map2/object/ped1.png 
+PED 200 350 map/map2/object/ped1.png 
+PED 250 350 map/map2/object/ped1.png 
+PED 300 350 map/map2/object/ped1.png 
+PED 350 350 map/map2/object/ped1.png 
+PED 400 350 map/map2/object/ped1.png  
+PED 450 350 map/map2/object/ped1.png 
+PED 500 350 map/map2/object/ped1.png 
+PED 800 350 map/map2/object/ped1.png 
+PED 850 350 map/map2/object/ped1.png 
+PED 900 350 map/map2/object/ped1.png 
+PED 1245 350 map/map2/object/ped1.png 
+PED 1295 350 map/map2/object/ped1.png 
 GROUND 1280 66 map/map2/object/map_2_ground.png 
 BG map/map2/background/map_2.png 
 DESTINATION 1280 380 object/destination.png 

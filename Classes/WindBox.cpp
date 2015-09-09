@@ -22,7 +22,7 @@ CWindBox::~CWindBox()
 void CWindBox::Init(CCLayer* a_pParentLayer, b2World* a_pWorld, TransectorProfile* a_Profile, WindBoxData a_Data)
 {
 	m_pSprite = CCSprite::create("map/map3/object/box_wind.png");
-	a_pParentLayer->addChild(m_pSprite);
+	a_pParentLayer->addChild(m_pSprite, OBJECT_ZORDER);
 
 	m_pTransectorProfile = a_Profile;
 
