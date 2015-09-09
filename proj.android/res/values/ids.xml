@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_id">866017143504</string>
-  <string name="achievement_stage1">CgkI0NWTlZoZEAIQAQ</string>
-  <string name="achievement_stage2">CgkI0NWTlZoZEAIQAw</string>
-  <string name="achievement_stage3">CgkI0NWTlZoZEAIQBA</string>
-  <string name="achievement_stage4">CgkI0NWTlZoZEAIQBQ</string>
-  <string name="achievement_stage5">CgkI0NWTlZoZEAIQBg</string>
-  <string name="achievements">CgkI0NWTlZoZEAIQAQ;CgkI0NWTlZoZEAIQAw;CgkI0NWTlZoZEAIQBA;CgkI0NWTlZoZEAIQBQ;CgkI0NWTlZoZEAIQBg</string>
-  <string name="leaderboards"></string>
+  <string name="achievement_asdf">CgkI0NWTlZoZEAIQAQ</string>
+  <string name="leaderboard_asdf">CgkI0NWTlZoZEAIQAg</string>
+  <string name="achievements">CgkI0NWTlZoZEAIQAQ</string>
+  <string name="leaderboards">CgkI0NWTlZoZEAIQAg</string>
 </resources>

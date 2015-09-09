@@ -24,7 +24,6 @@ public :
 
 	bool Action(Vec2 a_vTouchPos);
 	shared_ptr<Behavior> getBehaviorPtr(){ return m_pBehavior; }
-	bool getIsRanged(){ return m_bIsRanged; }
 
 	virtual void	setStateToDefault() = 0;
 

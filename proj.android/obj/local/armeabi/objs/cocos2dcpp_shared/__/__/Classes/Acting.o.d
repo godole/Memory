@@ -392,8 +392,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Acting.o: \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Rail.h jni/../../Classes/EDirection.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/b2Structure.h \
- jni/../../Classes/Sand.h jni/../../Classes/Door.h \
- jni/../../Classes/ParticleManager.h jni/../../Classes/Behavior.h
+ jni/../../Classes/Sand.h jni/../../Classes/ParticleManager.h \
+ jni/../../Classes/Behavior.h
 
 jni/../../Classes/Acting.h:
 
@@ -1196,8 +1196,6 @@ jni/../../Classes/DataStructure.h:
 jni/../../Classes/b2Structure.h:
 
 jni/../../Classes/Sand.h:
-
-jni/../../Classes/Door.h:
 
 jni/../../Classes/ParticleManager.h:
 

@@ -1,7 +1,6 @@
 #include "BoxDefaultState.h"
 #include "BoxHoldOnState.h"
 #include "UpdateManager.h"
-#include "LayerDefine.h"
 #include <memory>
 
 bool CBoxDefaultState::Action(Vec2 a_TouchPos)
@@ -29,10 +28,4 @@ void CBoxDefaultState::BehaviorInit()
 	m_pBox->m_pBody->SetActive(true);
 	m_pBox->setBodyPositionTo(m_pBox->m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
 	m_pBox->m_pBoxSprite->setZOrder(0);
-	if ((*m_pValueMap)["readySprite"] != nullptr)
-	{
-		auto parent = Director::getInstance()->getRunningScene()->getChildByTag( MAIN_LAYER);
-		parent->removeChild(static_cast<CCSprite*>((*m_pValueMap)["readySprite"]));
-		(*m_pValueMap)["readySprite"] = nullptr;
-	}
 }

@@ -348,8 +348,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/StageBox.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/Update.h jni/../../Classes/UpdateManager.h \
- jni/../../Classes/Singleton.h jni/../../Classes/SelectMapLayer.h
+ jni/../../Classes/DataManager.h jni/../../Classes/Singleton.h \
+ jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h \
+ jni/../../Classes/SceneManager.h
 
 jni/../../Classes/StageBox.h:
 
@@ -1049,10 +1050,12 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
-jni/../../Classes/Update.h:
-
-jni/../../Classes/UpdateManager.h:
+jni/../../Classes/DataManager.h:
 
 jni/../../Classes/Singleton.h:
 
-jni/../../Classes/SelectMapLayer.h:
+jni/../../Classes/EDirection.h:
+
+jni/../../Classes/DataStructure.h:
+
+jni/../../Classes/SceneManager.h:
