@@ -1,8 +1,6 @@
 #pragma once
-#include "cocos2d.h"
+#include "StageSelectDefine.h"
 #include "Update.h"
-
-USING_NS_CC;
 
 class CSelectMapLayer;
 class CStageBox : 
@@ -17,14 +15,15 @@ public:
 
 	void StageTouchBegan(Point);
 	void StageTouchMoved(Point);
-	void StageTouchEnded(Point);
+	void StageTouchEnded(Point) { m_isEndedTouch = true; }
+
 private:
 	void VisibleMap(bool);
 	void PieceMove(float);
 	void PieceAutoMove();
 	void PiecePositionScaling();
 
-	// 
+private:
 	std::shared_ptr<CSelectMapLayer> m_pSelectMapLayer;
 	Layer * m_pStageBoxLayer;
 
@@ -34,7 +33,6 @@ private:
 	Sequence * m_pPieceDownAction;
 
 	MenuItemImage * m_pBackStageMain;
-
 	Point m_ptBeganTouchPosition;
 
 	//
@@ -43,6 +41,6 @@ private:
 
 	bool m_isCanTouch;
 	bool m_isEndedTouch;
+	bool m_isSelectMapTouch;
 	bool m_isSelectMapLayer;
-
 };

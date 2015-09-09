@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "cocos2d.h"
-#include "Define.h"
+#include "StageSelectDefine.h"
 
 USING_NS_CC;
 
@@ -18,4 +18,5 @@ public:
 
 	Sprite * m_pProfileSprite;		// 프로필 이미지
 	Label  * m_pFacebookName;		// 페이스북 이름
+	Label  * m_pMoveCount;			// 행동 카운트
 };

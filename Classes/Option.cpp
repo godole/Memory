@@ -1,3 +1,4 @@
+#include "ELayerState.h"
 #include "Option.h"
 
 COption::COption()
@@ -29,7 +30,7 @@ void COption::init(Layer * a_pParentLayer)
 	a_pParentLayer->addChild(m_pOption);
 }
 
-void COption::FadingOptions()
+void COption::FadeOptions()
 {
 	FadeTo * _pFade1;		// StageSelect
 	MoveBy * _pMove1;		
@@ -76,7 +77,7 @@ void COption::TouchBegan(Point a_ptPoint)
 {
 	if (m_pMain->getBoundingBox().containsPoint(a_ptPoint) && !m_isFading)
 	{
-		FadingOptions();
+		FadeOptions();
 	}
 	else if (!m_isFading)
 	{
