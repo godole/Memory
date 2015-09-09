@@ -5,9 +5,9 @@ BOX 482 157 map/map1/object/box_ob.png
 BOX 1700 157 map/map1/object/box_ob.png 
 GROUND 0 66 map/map1/object/map_1_ground.png 
 GROUND 2780 66 map/map1/object/map_1_ground.png 
-PED 2100 280 map/map1/object/ped1.png 
-PED 2150 280 map/map1/object/ped1.png 
-PED 2200 280 map/map1/object/ped1.png 
+GROUND 2100 280 map/map1/object/ped1.png 
+GROUND 2150 280 map/map1/object/ped1.png 
+GROUND 2200 280 map/map1/object/ped1.png 
 BG map/map1/background/map_1.png 
 DESTINATION 2200 310 object/destination.png 
 NEXTSTAGE map/data/map1-2.txt 

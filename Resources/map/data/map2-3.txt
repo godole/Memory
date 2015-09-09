@@ -1,8 +1,0 @@
-
-SPANNER	500 167 
-DOOR 800 131 
-GROUND 1280 66 map/map2/object/map_2_ground.png 
-BG map/map2/background/map_3.png 
-DESTINATION 1200 630 object/destination.png 
-NEXTSTAGE map/data/map3-1.txt 
-BCOUNT 10 8 6 

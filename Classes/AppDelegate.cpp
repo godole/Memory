@@ -31,6 +31,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	glview->setDesignResolutionSize(1280, 720, ResolutionPolicy::FIXED_HEIGHT);
     // create a scene. it's an autorelease object
+	/*CDataManager::getInstance()->LoadMapData(
+		StringUtils::format("map/data/map1-1.txt"));*/
 	auto scene = Scene_Title::createScene();
 	//auto scene = Scene_SelectState::createScene();
 

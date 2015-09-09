@@ -21,12 +21,12 @@ void CWater::Init(CCLayer* m_pParentLayer, TransectorProfile* a_Profile, WaterDa
 {
 	m_pSprite = CCSprite::create("map/map3/object/waterblock.png");
 	m_pSprite->setPosition(a_data.m_vPosition);
-	m_pParentLayer->addChild(m_pSprite, OBJECT_ZORDER);
+	m_pParentLayer->addChild(m_pSprite);
 
 	m_pWaterSprite = CCSprite::create("map/map3/object/bottle.png");
 	m_pWaterSprite->setPosition(a_data.m_vPosition);
 	m_pWaterSprite->setVisible(false);
-	m_pParentLayer->addChild(m_pWaterSprite, OBJECT_ZORDER);
+	m_pParentLayer->addChild(m_pWaterSprite);
 
 	m_vStartPosition = a_data.m_vPosition;
 

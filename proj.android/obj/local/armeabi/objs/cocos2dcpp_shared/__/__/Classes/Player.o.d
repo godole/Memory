@@ -468,8 +468,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Player.o: \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Things.h jni/../../Classes/Rail.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/Sand.h \
- jni/../../Classes/Door.h jni/../../Classes/Box2dSprite.h \
- jni/../../Classes/Behavior.h jni/../../Classes/ParticleManager.h
+ jni/../../Classes/Box2dSprite.h jni/../../Classes/Behavior.h \
+ jni/../../Classes/ParticleManager.h
 
 jni/../../Classes/Player.h:
 
@@ -1428,8 +1428,6 @@ jni/../../Classes/Rail.h:
 jni/../../Classes/DataStructure.h:
 
 jni/../../Classes/Sand.h:
-
-jni/../../Classes/Door.h:
 
 jni/../../Classes/Box2dSprite.h:
 
