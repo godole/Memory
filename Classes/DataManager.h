@@ -4,7 +4,6 @@
 #include "EDirection.h"
 #include "DataStructure.h"
 #include <vector>
-#include <utility>
 
 USING_NS_CC;
 using namespace std;
@@ -17,7 +16,7 @@ class CDataManager :
 public :
 	void				LoadMapData(string filename);
 	void				LoadPlayerData();
-	void				SavePlayerData(int a_nScore);
+	void				SavePlayerData();
 	void				LoadNextMapData();
 	void				Release();
 
@@ -29,18 +28,17 @@ public :
 	vector<WaterData>*	getWaterData(){ return &m_arrWaterData; }
 	vector<SandData>*	getSandData(){ return &m_arrSandData; }
 	vector<WindBoxData>* getWindBoxData(){ return &m_arrWindBoxData; }
-	vector<PedData>*	getPedData(){ return&m_arrPedData; }
-	vector<DoorData>*	getDoorData(){ return &m_arrDoorData; }
-	vector<SpannerData>* getSpannerData(){ return &m_arrSpannerData; }
-	const BehaviorCount& getMapBehaviorCount(){ return m_MapBehaviorCount; }
 	DestinationData*	getDestinationData(){ return &m_DestinationData; }
 	string				getBackgroundTextureName(){ return m_szBackgroundTextureName; }
 	string				getNextStageFileName(){ return m_szNextStageFileName; }
 
-	void				setCurrentStage(int a_nStage, int a_nMap);
+	bool					m_bConnectFacebook;
 
-	int					getStageScoreSum(int a_nStage);
-	int					getCurrentStageScoreSum(){ return getStageScoreSum(m_CurrentStage.first); }
+	bool					m_bUserDataLoad;
+	bool					m_bFriendDataLoad;
+	bool					m_bOptionCreatorDataLoad;
+
+	bool					m_bAllDataLoaded;
 
 private :
 	vector<BoxData>			m_arrBoxData;
@@ -52,13 +50,10 @@ private :
 	vector<WaterData>		m_arrWaterData;
 	vector<PedData>			m_arrPedData;
 	vector<WindBoxData>		m_arrWindBoxData;
-	vector<DoorData>		m_arrDoorData;
-	vector<SpannerData>		m_arrSpannerData;
 	DestinationData			m_DestinationData;
 	string					m_szBackgroundTextureName;
 	string					m_szNextStageFileName;
 	PlayerData				m_PlayerData;
-	BehaviorCount			m_MapBehaviorCount;
 
 	BoxData					_GetBoxData(string str);
 	RailData				_GetRailData(string str);
@@ -70,13 +65,8 @@ private :
 	SandData				_GetSandData(string str);
 	PedData					_GetPedData(string str);
 	WindBoxData				_GetWindBoxData(string str);
-	DoorData				_GetDoorData(string str);
-	SpannerData				_GetSpannerData(string str);
-	BehaviorCount			_GetBehaviorCount(string str);
 
 	string					_GetBackgroundTextureName(string str);
 	string					_GetNextSceneFileName(string str);
-
-	pair<int, int>			m_CurrentStage;
 };
 

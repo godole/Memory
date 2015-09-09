@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "cocos2d.h"
-#include "Define.h"
+#include "StageSelectDefine.h"
 
 USING_NS_CC;
 
@@ -13,9 +13,13 @@ public:
 	int m_nAchieveStage;			// 달성 스테이지
 	int m_nStageMoveCount[STAGE_NUMBER];	
 									// 스테이지 별 행동 카운트
+	int m_nStageClearNumber[STAGE_NUMBER];
+									// 스테이지 별 클리어 번호
+
 	std::string m_sFaceBookID;		// 페이스북 아이디
 	std::string m_sName;			// 사용자의 이름
 
 	Sprite * m_pProfileSprite;		// 프로필 이미지
 	Label  * m_pFacebookName;		// 페이스북 이름
+	Label  * m_pMoveCount;			// 행동 카운트
 };

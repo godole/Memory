@@ -1,25 +1,22 @@
+ï»¿#include "DataManager.h"
 #include "FriendList.h"
 #include "GameData.h"
-#include "Define.h"
-
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//#include "platform\android\jni\JniHelper.h"
-//#endif
+#include "StageSelectDefine.h"
 
 int FriendList::m_nTempCheckClearStage = 0;
 FriendList::FriendList()
 {
+	m_isConnectFacebook = false;
 	m_isLoadComplete = false;
 	m_nLoadCount = 0;
 	m_nSortStageNumber = 10;
+
+	m_eNowSortIndex = ESortIndex::eClearSort;
 }
 
 
 FriendList::~FriendList()
 {
-	//Achieve_Request->release();
-	//Img_Request->release();
-
 	auto itr_list = m_vFriendLists.begin();
 	for (itr_list; itr_list != m_vFriendLists.end(); itr_list++)
 	{
@@ -30,33 +27,41 @@ FriendList::~FriendList()
 
 void FriendList::GetDataFromJNI()
 {
-//#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//	JniMethodInfo t;
-//	if (JniHelper::getStaticMethodInfo(t
-//		, "org.cocos2dx.cpp/AppActivity"            // ºÒ·¯¿Ã Java ÇÔ¼öÀÇ À§Ä¡
-//		, "getFriendList"                                     // ºÒ·¯¿Ã Java ÇÔ¼öÀÌ¸§
-//		, "()Ljava/lang/String;"));
-//	// ¸Ş¼­µå ¼­¸í(¿¹Á¦ÀÇ °æ¿ì´Â ¸Å°³º¯¼ö°¡ ¾ø´Â StringÀ» ¸®ÅÏÇÏ´Â ÇÔ¼ö)
-//	{
-//		// ÇÔ¼ö È£ÃâÇÒ ¶§ Object°ªÀ» ¸®ÅÏÇÏ´Â ÇÔ¼ö·Î ¹Ş¾Æ¾ßÇÔ!!!!
-//		jstring str = (jstring)t.env->CallStaticObjectMethod(t.classID, t.methodID);
-//		const char *msg = t.env->GetStringUTFChars(str, 0);
-//		CCLog("JNI GET : %s", msg);                    // ¿©±â¼­ Àü´Ş¹ŞÀº °ªÀÌ Ãâ·ÂµÊ
-//		m_sFriendListLog = msg;
-//		t.env->ReleaseStringUTFChars(str, msg);
-//		// Release
-//		t.env->DeleteLocalRef(t.classID);
-//	}
-//#endif
-	
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	m_sFriendListLog = "472858996218424\n ÇÏ¹ÎÁØ\n 100001299266383\n ¼Û¼¼Áø\n 100004855749021\n ¼ÛÁø¼­\n 100010238795384\n ±è¸»ÀÚ\n 100010238795384\n ³ëºñ¹«\n 100009845986825\n ¹Î¼÷Å´\n 100009774228338\n ±èÃá¹èÁóÀÌ ¸ÀÀÖ¾î¼­ ¸¸µé¾ú´Ù\n";
-//#endif
+	std::string temp;
+
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	JniMethodInfo t;
+
+	if (JniHelper::getStaticMethodInfo(t
+		, "org.cocos2dx.cpp/AppActivity"            // ë¶ˆëŸ¬ì˜¬ Java í•¨ìˆ˜ì˜ ìœ„ì¹˜
+		, "getFriendNameCode"                                     // ë¶ˆëŸ¬ì˜¬ Java í•¨ìˆ˜ì´ë¦„
+		, "()Ljava/lang/String;"));
+	// ë©”ì„œë“œ ì„œëª…(ì˜ˆì œì˜ ê²½ìš°ëŠ” ë§¤ê°œë³€ìˆ˜ê°€ ì—†ëŠ” Stringì„ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜)
+	{
+		// í•¨ìˆ˜ í˜¸ì¶œí•  ë•Œ Objectê°’ì„ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜ë¡œ ë°›ì•„ì•¼í•¨!!!!
+		jstring str = (jstring)t.env->CallStaticObjectMethod(t.classID, t.methodID);
+		const char *msg = t.env->GetStringUTFChars(str, 0);
+		m_sFriendListLog = msg;
+		CCLog("Friend List : %s", m_sFriendListLog.c_str());
+		t.env->ReleaseStringUTFChars(str, msg);
+		// Release
+		t.env->DeleteLocalRef(t.classID);
+	}
+
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	m_sFriendListLog = "472858996218424, í•˜ë¯¼ì¤€, 472858996218424, í•˜ë¯¼ì¤€, 472858996218424, í•˜ë¯¼ì¤€, 891299854256648, ì†¡ì„¸ì§„, 100004855749021, ì†¡ì§„ì„œ, 100010238795384, ê¹€ë½ì, 100010238795384, ê¹€ì¶˜ì, 100009845986825, ê¹€ë¯¼ì, 100009774228338, ê¹€ìˆ™ì,";
+	m_isConnectFacebook = true;
+#endif
 	FriendDataParser();
 }
 
 void FriendList::init(Layer * a_pParentLayer)
 {
+	m_pWindow = Layer::create();
+	m_pWindow->setVisible(false);
+	a_pParentLayer->addChild(m_pWindow);
+
 	// Init HttpRequest
 	Img_Request = new (std::nothrow) HttpRequest();
 	Img_Request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
@@ -70,28 +75,29 @@ void FriendList::init(Layer * a_pParentLayer)
 	MoveCount_Request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
 	MoveCount_Request->setResponseCallback(CC_CALLBACK_2(FriendList::onRequestMoveCountCompleted, this));
 
+	CraeteUserAccount = new (std::nothrow) HttpRequest();
+	CraeteUserAccount->setRequestType(cocos2d::network::HttpRequest::Type::GET);
+	CraeteUserAccount->setResponseCallback(CC_CALLBACK_2(FriendList::onRequestCreateUserAccount, this));
+
+	StageClear_Request = new (std::nothrow) HttpRequest();
+	StageClear_Request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
+	StageClear_Request->setResponseCallback(CC_CALLBACK_2(FriendList::onRequestClearNumberCompleted, this));
+
 	// Scroll & Layer
 	m_pScrollView = cocos2d::ui::ScrollView::create();
-	m_pScrollView->setDirection(cocos2d::ui::ScrollView::Direction::HORIZONTAL);
-	m_pScrollView->setBackGroundColorType
-		(cocos2d::ui::Layout::BackGroundColorType::NONE);
-	m_pScrollView->setClippingEnabled(false);
-	m_pScrollView->setSize(Size(1080, 500));
 	m_pScrollView->setAnchorPoint(Point(0, 0));
-	m_pScrollView->setPosition(Point(100, 1000));
 	m_pScrollView->setBounceEnabled(true);
-	a_pParentLayer->addChild(m_pScrollView, 5);
+	m_pScrollView->setPosition(Point(120, 1100));
+	m_pWindow->addChild(m_pScrollView, 2);
 
 	m_pProfileLayer = Layer::create();
-	m_pProfileLayer->setVisible(false);
 	m_pScrollView->addChild(m_pProfileLayer);
 
 	// TEMP
-	// ÇÁ·ÎÇÊ »çÁø Àß º¸ÀÌ¶ó°í
+	// í”„ë¡œí•„ ì‚¬ì§„ ì˜ ë³´ì´ë¼ê³ 
 	auto back = Sprite::create("black.png");
-	back->setPosition(Point(0, -100));
-	back->setScale(2.1);
-	m_pProfileLayer->addChild(back);
+	back->setPosition(Point(640, 330));
+	m_pWindow->addChild(back);
 }
 
 void FriendList::Update()
@@ -101,9 +107,16 @@ void FriendList::Update()
 		m_nTempCheckClearStage = m_nSortStageNumber;
 
 		CheckClearStage();
+		std::sort(m_vFriendLists.begin(), m_vFriendLists.end(), SortStageClear);
 
-		//std::sort(m_vFriendLists.begin(), m_vFriendLists.end(), SortStageClear);
-		//std::sort(m_vFriendLists.begin(), m_vFriendLists.end(), SortMoveCount);
+		if (m_eNowSortIndex == ESortIndex::eClearSort)
+		{
+			std::sort(m_vFriendLists.begin(), m_vFriendLists.end(), SortClearNumber);
+		}
+		else if (m_eNowSortIndex == ESortIndex::eMoveCountSort)
+		{
+			std::sort(m_vFriendLists.begin(), m_vFriendLists.end(), SortMoveCount);
+		}
 
 		SortFacebookData();
 	}
@@ -118,18 +131,28 @@ int FriendList::FriendDataParser()
 		auto temp = new CGameData;
 
 		// ID
-		m_nEndPoint = m_sFriendListLog.find("\n");
+		m_nEndPoint = m_sFriendListLog.find(",");
 		temp->m_sFaceBookID = m_sFriendListLog.substr(0, m_nEndPoint);
 		m_sFriendListLog.erase(0, m_nEndPoint + 2);
 
 		// NAME 
-		m_nEndPoint = m_sFriendListLog.find("\n");
+		m_nEndPoint = m_sFriendListLog.find(",");
 		temp->m_sName = m_sFriendListLog.substr(0, m_nEndPoint);
 		m_sFriendListLog.erase(0, m_nEndPoint + 2);
 
 		m_vFriendLists.push_back(temp);
 	}
 
+	Size size;
+	size.setSize(1040 + m_vFriendLists.size() / 14 * 1040, 370);
+
+	m_sizeClearScrollSize = size;
+
+	size.setSize(1040, 370 + m_vFriendLists.size() * 110);
+
+	m_sizeMoveCountScrollSize = size;
+
+	setSortIndex(ESortIndex::eMoveCountSort);
 	LoadFriendProfileImage();
 
 	return true;
@@ -137,22 +160,14 @@ int FriendList::FriendDataParser()
 
 void FriendList::LoadFriendProfileImage()
 {
-	std::string _sTemp;
+	// ìŠ¤í…Œì´ì§€ ë¡œë“œ -> í–‰ë™ ì¹´ìš´íŠ¸ ë¡œë“œ -> í”„ë¡œí•„ ì´ë¯¸ì§€ ë¡œë“œ
+	m_sSendUrl = "http://www.anioneguild.com/Memory/GetFriendsData.php?ID=" + m_vFriendLists[m_nLoadCount]->m_sFaceBookID;
+	HTTPREQUEST_SEND(Achieve_Request, m_sSendUrl);
 
-	// ½ºÅ×ÀÌÁö ·Îµå -> Çàµ¿ Ä«¿îÆ® ·Îµå -> ÇÁ·ÎÇÊ ÀÌ¹ÌÁö ·Îµå
-	_sTemp = "http://www.anioneguild.com/Memory/GetFriendsData.php?ID=" +
-		m_vFriendLists[m_nLoadCount]->m_sFaceBookID;
-	Achieve_Request->setUrl(_sTemp.c_str());
-	HttpClient::getInstance()->send(Achieve_Request);
-
-	Label * _FacebookName = Label::createWithSystemFont
-		(StringUtils::format("%s",
-		m_vFriendLists[m_nLoadCount]->m_sName.c_str()), "", 30,
-		Size(100,200));
-	_FacebookName->setPosition(Point(
-		72 + m_nLoadCount * 150,
-		90 + 100));
+	Label * _FacebookName = Label::createWithSystemFont(StringUtils::format("%s", m_vFriendLists[m_nLoadCount]->m_sName.c_str()), "", 30, Size(100, 200));
+	_FacebookName->setPosition(Point(72 + m_nLoadCount * 150, 90 + 100));
 	m_pProfileLayer->addChild(_FacebookName);
+
 	m_vFriendLists[m_nLoadCount]->m_pFacebookName = _FacebookName;
 }
 
@@ -168,96 +183,192 @@ void FriendList::CheckClearStage()
 	}
 }
 
-bool SortStageClear(CGameData * a_pDataA, CGameData * a_pDataB)
-{	
+static bool SortStageClear(CGameData * a_pDataA, CGameData * a_pDataB)
+{
 	return a_pDataA->m_isVisible > a_pDataB->m_isVisible;
 }
 
-bool SortMoveCount(CGameData * a_pDataA, CGameData *a_pDataB)
+static bool SortMoveCount(CGameData * a_pDataA, CGameData *a_pDataB)
 {
-	return a_pDataA->m_nStageMoveCount[FriendList::m_nTempCheckClearStage] < a_pDataB->m_nStageMoveCount[FriendList::m_nTempCheckClearStage];
+	return a_pDataA->m_nStageMoveCount[FriendList::m_nTempCheckClearStage - 10] < a_pDataB->m_nStageMoveCount[FriendList::m_nTempCheckClearStage - 10];
+}
+
+static bool SortClearNumber(CGameData * a_pDataA, CGameData *a_pDataB)
+{
+	if (a_pDataA->m_nStageClearNumber[FriendList::m_nTempCheckClearStage - 10] == 0)
+		return false;
+	else if (a_pDataB->m_nStageClearNumber[FriendList::m_nTempCheckClearStage - 10] == 0)
+		return true;
+
+	return a_pDataA->m_nStageClearNumber[FriendList::m_nTempCheckClearStage - 10] < a_pDataB->m_nStageClearNumber[FriendList::m_nTempCheckClearStage - 10];
+}
+
+void FriendList::setSortIndex(ESortIndex a_eSortIndex)
+{
+	m_eNowSortIndex = a_eSortIndex;
+
+	if (a_eSortIndex == ESortIndex::eClearSort)
+	{
+		m_pScrollView->setDirection(cocos2d::ui::ScrollView::Direction::HORIZONTAL);
+		m_pScrollView->setSize(m_sizeClearScrollSize);
+	}
+	else if (a_eSortIndex == ESortIndex::eMoveCountSort)
+	{
+		m_pScrollView->setDirection(cocos2d::ui::ScrollView::Direction::VERTICAL);
+		m_pScrollView->setSize(m_sizeMoveCountScrollSize);
+	}
+
+	m_pScrollView->setContentSize(Size(1040, 370));
 }
 
 void FriendList::SortFacebookData()
 {
 	int i = 0;
 	auto itr = m_vFriendLists.begin();
+
 	for (itr; itr != m_vFriendLists.end(); itr++)
 	{
 		(*itr)->m_pFacebookName->setVisible((*itr)->m_isVisible);
 		(*itr)->m_pProfileSprite->setVisible((*itr)->m_isVisible);
+		(*itr)->m_pMoveCount->setVisible(false);
 
 		if (!(*itr)->m_isVisible)
 			continue;
-			
-		(*itr)->m_pFacebookName->setPosition(Point(72 + i * 150,90 + 100));
-		(*itr)->m_pProfileSprite->setPosition(Point(70 + i * 150,250 + 100));
+
+		if (m_eNowSortIndex == ESortIndex::eClearSort)
+		{
+			if ((i / 7) % 2 == 0)
+			{
+				(*itr)->m_pProfileSprite->setPosition(Point(70 + (i % 7) * 150, 310 + m_vFriendLists.size() * 110));
+				(*itr)->m_pFacebookName->setPosition(Point(70 + (i % 7) * 150, 140 + m_vFriendLists.size() * 110));
+			}
+			else
+			{
+				(*itr)->m_pProfileSprite->setPosition(Point(70 + (i % 7) * 150, 310 + m_vFriendLists.size() * 110 - 210));
+				(*itr)->m_pFacebookName->setPosition(Point(70 + (i % 7) * 150, 140 + m_vFriendLists.size() * 110 - 210));
+			}
+
+		}
+		else
+		{
+			(*itr)->m_pMoveCount->setVisible(true);
+			(*itr)->m_pMoveCount->setString(
+				StringUtils::format("MoveCount : %d", m_vFriendLists[i]->m_nStageMoveCount[m_nSortStageNumber - 10]));
+
+			(*itr)->m_pMoveCount->setPosition(Point(700, 310 + m_vFriendLists.size() * 110 - i * 140));
+			(*itr)->m_pFacebookName->setPosition(Point(400, 230 + m_vFriendLists.size() * 110 - i * 140));
+			(*itr)->m_pProfileSprite->setPosition(Point(170, 320 + m_vFriendLists.size() * 110 - i * 140));
+		}
 
 		i++;
 	}
 }
 
-// NetWork Load
+// ë‹¬ì„± ì²´í¬
 void FriendList::onRequestAchieveCompleted(HttpClient * sender, HttpResponse * response)
 {
-	if (!response)
+	if (!response || !response->isSucceed())
+	{
+		CDataManager::getInstance()->m_bConnectFacebook = false;
 		return;
-	
-	if (!response->isSucceed())
-		return;
+	}
 
 	std::vector<char> *buffer = response->getResponseData();
 	const char* _receiveMsg = buffer->data();
 
-	int _temp = atoi(_receiveMsg);
-	// ´Ş¼º ½ºÅ×ÀÌÁö
-	m_vFriendLists[m_nLoadCount]->m_nAchieveStage = _temp;
+	std::string temp = buffer->data();
+	std::string _sErrorLogCheck = temp.substr(0, 5);
 
-	std::string _sTemp;
-	// Çàµ¿ Ä«¿îÆ®
-	_sTemp = "http://www.anioneguild.com/Memory/GetMoveCount.php?ID=" +
-		m_vFriendLists[m_nLoadCount]->m_sFaceBookID;
-	MoveCount_Request->setUrl(_sTemp.c_str());
-	HttpClient::getInstance()->send(MoveCount_Request);
+	if (_sErrorLogCheck == "Error")
+	{
+		m_sSendUrl = "http://www.anioneguild.com/Memory/PushUserData.php?ID=" + m_vFriendLists[m_nLoadCount]->m_sFaceBookID + "&Stage=9";
+		HTTPREQUEST_SEND(CraeteUserAccount, m_sSendUrl);
+	}
+	else
+	{
+		int _temp = atoi(_receiveMsg);
+		// ë‹¬ì„± ìŠ¤í…Œì´ì§€
+		m_vFriendLists[m_nLoadCount]->m_nAchieveStage = _temp;
+
+		// í–‰ë™ ì¹´ìš´íŠ¸
+		m_sSendUrl = "http://www.anioneguild.com/Memory/GetMoveCount.php?ID=" + m_vFriendLists[m_nLoadCount]->m_sFaceBookID;
+		HTTPREQUEST_SEND(MoveCount_Request, m_sSendUrl);
+	}
 }
+// í–‰ë™ ì¹´ìš´íŠ¸
 void FriendList::onRequestMoveCountCompleted(HttpClient * sender, HttpResponse * response)
 {
-	if (!response)
+	if (!response || !response->isSucceed())
+	{
+		CDataManager::getInstance()->m_bConnectFacebook = false;
 		return;
-
-	if (!response->isSucceed())
-		return;
+	}
 
 	std::vector<char> *buffer = response->getResponseData();
 	std::string _receiveMsg = buffer->data();
+	std::string _sErrorLogCheck = _receiveMsg.substr(0, 5);
 
-	// String ¹®ÀÚ¿­À» ³ª´©¾î int ÇüÀ¸·Î 30½ºÅ×ÀÌÁö ±îÁö
-	for (int i = 0; i< STAGE_NUMBER; i++)
+	if (_sErrorLogCheck == "Error")
+		return;
+
+	// String ë¬¸ìì—´ì„ ë‚˜ëˆ„ì–´ int í˜•ìœ¼ë¡œ 30ìŠ¤í…Œì´ì§€ ê¹Œì§€
+	for (int i = 0; i < STAGE_NUMBER; i++)
 	{
 		m_vFriendLists[m_nLoadCount]->m_nStageMoveCount[i]
-			= atoi(_receiveMsg.substr(i * 2 , 2).c_str());
+			= atoi(_receiveMsg.substr(i * 2, 2).c_str());
 	}
 
-	std::string _sTemp;
-	// ÆäÀÌ½ººÏ ÀÌ¹ÌÁö
-	_sTemp = "https://graph.facebook.com/" +
-		m_vFriendLists[m_nLoadCount]->m_sFaceBookID + "/picture?width=" +
-		FACEBOOK_LOADIMAGESIZE + "&height=" + FACEBOOK_LOADIMAGESIZE;
-	Img_Request->setUrl(_sTemp.c_str());
-	HttpClient::getInstance()->send(Img_Request);
-}
-void FriendList::onRequestImgCompleted(HttpClient *sender, HttpResponse *response)
-{
-	if (!response)
-		return;
+	auto _MoveCount = Label::createWithSystemFont("", "", 30);
+	_MoveCount->setVisible(false);
+	m_pProfileLayer->addChild(_MoveCount);
 
-	if (!response->isSucceed())
+	m_vFriendLists[m_nLoadCount]->m_pMoveCount = _MoveCount;
+
+	m_sSendUrl = "http://www.anioneguild.com/Memory/GetClearNumber.php?ID=" + m_vFriendLists[m_nLoadCount]->m_sFaceBookID;
+	HTTPREQUEST_SEND(StageClear_Request, m_sSendUrl);
+}
+// í´ë¦¬ì–´ ë²ˆí˜¸
+void FriendList::onRequestClearNumberCompleted(HttpClient * sender, HttpResponse * response)
+{
+	if (!response || !response->isSucceed())
+	{
+		CDataManager::getInstance()->m_bConnectFacebook = false;
 		return;
+	}
 
 	std::vector<char> *buffer = response->getResponseData();
-	const unsigned char * temp =  reinterpret_cast<const unsigned char*>(&(buffer->front()));
+	std::string _receiveMsg = buffer->data();
+	std::string _sErrorLogCheck = _receiveMsg.substr(0, 5);
+	int _nCheckPoint;
 
-	// ¹ÙÀÌ³Ê¸® µ¥ÀÌÅÍ¸¦ ÅØ½ºÃÄ·Î ÀúÀå
+	if (_sErrorLogCheck == "Error")
+		return;
+
+	for (int i = 0; i < 30; i++)
+	{
+		_nCheckPoint = _receiveMsg.find(",");
+		m_vFriendLists[m_nLoadCount]->m_nStageClearNumber[i]
+			= atoi(_receiveMsg.substr(0, _nCheckPoint).c_str());
+
+		_receiveMsg.erase(0, _nCheckPoint + 2);
+	}
+
+	m_sSendUrl = "https://graph.facebook.com/" + m_vFriendLists[m_nLoadCount]->m_sFaceBookID + "/picture?width=" + FACEBOOK_LOADIMAGESIZE + "&height=" + FACEBOOK_LOADIMAGESIZE;
+	HTTPREQUEST_SEND(Img_Request, m_sSendUrl);
+}
+// í”„ë¡œí•„ ì´ë¯¸ì§€
+void FriendList::onRequestImgCompleted(HttpClient *sender, HttpResponse *response)
+{
+	if (!response || !response->isSucceed())
+	{
+		CDataManager::getInstance()->m_bConnectFacebook = false;
+		return;
+	}
+
+	std::vector<char> *buffer = response->getResponseData();
+	const unsigned char * temp = reinterpret_cast<const unsigned char*>(&(buffer->front()));
+
+	// ë°”ì´ë„ˆë¦¬ ë°ì´í„°ë¥¼ í…ìŠ¤ì³ë¡œ ì €ì¥
 	Image * image = new  Image();
 	image->initWithImageData(temp, buffer->size());
 	Texture2D * texture = new  Texture2D();
@@ -269,20 +380,29 @@ void FriendList::onRequestImgCompleted(HttpClient *sender, HttpResponse *respons
 		250 + 100));
 
 	m_pProfileLayer->addChild(_FacebookImage);
-	// µ¥ÀÌÅÍ¿¡ ÆäÀÌ½ººÏ ÇÁ·ÎÇÊ ÀÌ¹ÌÁö¸¦ ÀúÀåÇÕ´Ï´Ù.
 	m_vFriendLists[m_nLoadCount]->m_pProfileSprite = _FacebookImage;
-
-	// ·Îµå ¹øÈ£
 	m_vFriendLists[m_nLoadCount]->m_nLoadNumber = m_nLoadCount;
-
-	// ´ÙÀ½ »ç¶÷À» ·Îµå
 	m_nLoadCount++;
 
-	// µ¥ÀÌÅÍ°¡ ¹Ş¾ÆÁ³´Ù¸é ´Ù½Ã ¼øÈ¸
 	if (m_nLoadCount < m_vFriendLists.size())
 		LoadFriendProfileImage();
 	else
 	{
 		m_isLoadComplete = true;
+		CDataManager::getInstance()->m_bFriendDataLoad = true;
 	}
+}
+// ê³„ì •ì´ ì—†ë‹¤ë©´ ì„œë²„ì— ê³„ì •ì„ ë“±ë¡
+void FriendList::onRequestCreateUserAccount(HttpClient *sender, HttpResponse *response)
+{
+	if (!response || !response->isSucceed())
+	{
+		CDataManager::getInstance()->m_bConnectFacebook = false;
+		return;
+	}
+
+	std::vector<char> *buffer = response->getResponseData();
+	std::string temp = buffer->data();
+
+	LoadFriendProfileImage();
 }

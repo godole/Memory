@@ -3,11 +3,12 @@
 
 CStageBox::CStageBox()
 {
-	m_isSelectMapLayer = false;
-	m_isEndedTouch = true;
-	m_isCanTouch = true;
-	m_nNowStageNumber = 1;
-	m_nPieceAutoMoving = 1;
+	m_nNowStageNumber		= 1;
+	m_nPieceAutoMoving		= 1;
+	m_isEndedTouch			= true;
+	m_isCanTouch			= true;
+	m_isSelectMapTouch		= false;
+	m_isSelectMapLayer		= false;
 }
 
 
@@ -20,11 +21,11 @@ void CStageBox::init(Layer * a_pParentLayer)
 	m_pStageBoxLayer = Layer::create();
 	a_pParentLayer->addChild(m_pStageBoxLayer);
 
-	//// Select Map Layer
+	// Select Map Layer
 	m_pSelectMapLayer = std::shared_ptr<CSelectMapLayer>(new CSelectMapLayer);
 	m_pSelectMapLayer->init(m_pStageBoxLayer);
 
-	//// Map Piece
+	// Map Piece
 	for (int i = 0; i < 3; i++)
 	{
 		m_pBoxPiece[i][0] = Sprite::create("stageselect/piece_left.png");
@@ -70,7 +71,6 @@ void CStageBox::init(Layer * a_pParentLayer)
 	auto _pButton = Menu::create(m_pBackStageMain, NULL);
 	_pButton->setPosition(Vec2::ZERO);
 	m_pStageBoxLayer->addChild(_pButton);
-
 }
 
 void CStageBox::PiecePositionScaling()
@@ -181,7 +181,6 @@ void CStageBox::Update()
 		if (m_isEndedTouch)
 			PieceAutoMove();
 	}
-
 }
 
 void CStageBox::PieceMove(float a_fMove)
@@ -216,7 +215,7 @@ void CStageBox::StageTouchBegan(Point a_ptTouchPosition)
 	}
 	else
 	{
-		if (m_pSelectMapLayer->getVisible())
+		if (m_pSelectMapLayer->getVisible() && m_isSelectMapTouch)
 			m_pSelectMapLayer->TouchMap(a_ptTouchPosition);
 	}
 }
@@ -229,20 +228,15 @@ void CStageBox::StageTouchMoved(Point a_ptTouchPosition)
 	if (m_ptBeganTouchPosition.x - a_ptTouchPosition.x > 0 &&
 		m_pBoxPiece[2][0]->getScale() < 1)
 	{
-		PieceMove(-15);
+		PieceMove(-ScrollValue);
 	}
 	else if (m_ptBeganTouchPosition.x - a_ptTouchPosition.x <= 0 &&
 		m_pBoxPiece[0][0]->getScale() < 1)
 	{
-		PieceMove(15);
+		PieceMove(ScrollValue);
 	}
 
 	m_ptBeganTouchPosition = a_ptTouchPosition;
-}
-
-void CStageBox::StageTouchEnded(Point a_ptTouchPosition)
-{
-	m_isEndedTouch = true;
 }
 
 void CStageBox::VisibleMap(bool a_isVisible)
@@ -257,6 +251,7 @@ void CStageBox::VisibleMap(bool a_isVisible)
 	}
 
 	auto _DownActionFunc = [=] {
+		m_isSelectMapTouch = true;
 		m_pBackStageMain->setVisible(a_isVisible);
 		m_pSelectMapLayer->FadeStageMaps(m_nNowStageNumber, a_isVisible);
 	};
@@ -278,6 +273,8 @@ void CStageBox::VisibleMap(bool a_isVisible)
 	}
 	else
 	{
+		m_isSelectMapTouch = false;
+
 		auto move_1 = MoveTo::create(1.0f, Point(635, 210));
 		auto move_2 = MoveTo::create(1.0f, Point(645, 210));
 		auto move_3 = MoveTo::create(1.0f, Point(640, 340));
@@ -290,7 +287,7 @@ void CStageBox::VisibleMap(bool a_isVisible)
 		m_pPieceDownAction = Sequence::create(m_pPieceMove[2],
 			CallFunc::create(std::bind([=]{m_isSelectMapLayer = false; })), NULL);
 
-		m_pSelectMapLayer->FadeStageMaps(1, a_isVisible);
+		m_pSelectMapLayer->FadeStageMaps(m_nNowStageNumber, a_isVisible);
 	}
 
 	for (int i = 0; i < 2; i++)
