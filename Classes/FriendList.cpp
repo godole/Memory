@@ -85,6 +85,7 @@ void FriendList::init(Layer * a_pParentLayer)
 
 	// Scroll & Layer
 	m_pScrollView = cocos2d::ui::ScrollView::create();
+	m_pScrollView->setClippingType(cocos2d::ui::Layout::ClippingType::SCISSOR);
 	m_pScrollView->setAnchorPoint(Point(0, 0));
 	m_pScrollView->setBounceEnabled(true);
 	m_pScrollView->setPosition(Point(120, 1100));
