@@ -238,8 +238,7 @@ void PlayLayerMainLogic::GoNextStage()
 
 void PlayLayerMainLogic::update(float dt)
 {
-	ObjectUpdate();
-	BackgroundUpdate();
+	ObjUpdate();
 	if (m_pDestination->getSpritePtr()->getBoundingBox().containsPoint(m_pPlayer->getPosition()) && !m_bIsEnd)
 	{
 		GoNextStage();

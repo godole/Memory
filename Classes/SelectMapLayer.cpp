@@ -46,8 +46,8 @@ void CSelectMapLayer::init(Layer * a_pParentLayer)
 		"stageselect/gamestart.png",
 		std::bind([=]{
 		CDataManager::getInstance()->LoadMapData(
-			StringUtils::format("map/data/map3-2.txt"));
-		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+			StringUtils::format("map/data/map2-1.txt"));
+		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage2);
 	}));
 
 	// Close Button
@@ -110,8 +110,8 @@ void CSelectMapLayer::TouchMap(Point a_ptTouchPosition)
 			if (!CDataManager::getInstance()->m_bConnectFacebook)
 			{
 				CDataManager::getInstance()->LoadMapData(
-					StringUtils::format("map/data/map3-2.txt"));
-				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+					StringUtils::format("map/data/map2-1.txt"));
+				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage2);
 			}
 			else
 			{

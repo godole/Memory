@@ -110,6 +110,8 @@ shared_ptr<CPed> CObjectFactory::CreatePed(CCLayer* a_Parent, b2World* a_World, 
 	shared_ptr<CPed>temp = shared_ptr<CPed>(new CPed);
 	temp->Init(a_Parent, a_World, data);
 
+	CScrollManager::getInstance()->Insert(temp);
+
 	return temp;
 }
 

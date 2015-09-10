@@ -1,12 +1,6 @@
 obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/FriendList.o: \
- jni/../../Classes/FriendList.cpp jni/../../Classes/FriendList.h \
- D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/list \
- D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/vector \
- D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
- jni/../../Classes/Update.h jni/../../Classes/UpdateManager.h \
- jni/../../Classes/Singleton.h \
- D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/memory \
- jni/../../Classes/Network.h jni/../../cocos2d/cocos/3d/../cocos2d.h \
+ jni/../../Classes/FriendList.cpp jni/../../Classes/DataManager.h \
+ jni/../../cocos2d/cocos/3d/../cocos2d.h \
  jni/../../cocos2d/cocos/3d/../base/ccConfig.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
  jni/../../cocos2d/cocos/3d/../base/CCRef.h \
@@ -20,14 +14,54 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/FriendList.o: \
  jni/../../cocos2d/cocos/3d/../base/ccMacros.h \
  jni/../../cocos2d/cocos/3d/../base/CCConsole.h \
  D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/select.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/time.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdint.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/time.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/signal.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/limits.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/limits.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/limits.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/limits.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/page.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/string.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/malloc.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/signal.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/siginfo.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h \
  D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/thread \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/vector \
  D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/map \
  D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex \
  jni/../../cocos2d/cocos/3d/../platform/CCStdC.h \
  jni/../../cocos2d/cocos/3d/../platform/android/CCStdC-android.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/math.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/alloca.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/strings.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/memory.h \
  D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert \
  jni/../../cocos2d/cocos/3d/../base/ccRandom.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/random \
  jni/../../cocos2d/cocos/3d/../base/CCVector.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
  jni/../../cocos2d/cocos/3d/../base/CCMap.h \
  D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/unordered_map \
  jni/../../cocos2d/cocos/3d/../base/CCAutoreleasePool.h \
@@ -75,6 +109,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/FriendList.o: \
  jni/../../cocos2d/cocos/3d/../base/CCEventTouch.h \
  jni/../../cocos2d/cocos/3d/../base/CCEvent.h \
  jni/../../cocos2d/cocos/3d/../base/CCEventKeyboard.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/list \
  jni/../../cocos2d/cocos/3d/../math/CCAffineTransform.h \
  jni/../../cocos2d/cocos/3d/../platform/CCGLView.h \
  jni/../../cocos2d/cocos/3d/../base/CCScheduler.h \
@@ -313,6 +348,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/FriendList.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
+ jni/../../Classes/Singleton.h jni/../../Classes/EDirection.h \
+ jni/../../Classes/DataStructure.h jni/../../Classes/FriendList.h \
+ jni/../../Classes/Update.h jni/../../Classes/UpdateManager.h \
+ jni/../../Classes/Network.h \
  jni/../../cocos2d/cocos/3d/../network\HttpClient.h \
  jni/../../cocos2d/cocos/3d/../network/HttpRequest.h \
  jni/../../cocos2d/cocos/3d/../network/HttpResponse.h \
@@ -325,25 +364,12 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/FriendList.o: \
  jni/../../cocos2d/cocos/3d/../ui/GUIExport.h \
  jni/../../cocos2d/cocos/3d/../ui/GUIDefine.h \
  jni/../../cocos2d/cocos/3d/../base/ObjectFactory.h \
- jni/../../Classes/GameData.h jni/../../Classes/Define.h
+ jni/../../Classes/GameData.h jni/../../Classes/StageSelectDefine.h \
+ jni/../../cocos2d/cocos/3d/../platform\android\jni\JniHelper.h \
+ jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
+ jni/../../cocos2d/cocos/audio/android/../include/Export.h
 
-jni/../../Classes/FriendList.h:
-
-D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/list:
-
-D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/vector:
-
-D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
-
-jni/../../Classes/Update.h:
-
-jni/../../Classes/UpdateManager.h:
-
-jni/../../Classes/Singleton.h:
-
-D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/memory:
-
-jni/../../Classes/Network.h:
+jni/../../Classes/DataManager.h:
 
 jni/../../cocos2d/cocos/3d/../cocos2d.h:
 
@@ -373,7 +399,73 @@ jni/../../cocos2d/cocos/3d/../base/CCConsole.h:
 
 D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/select.h:
 
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/time.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdint.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/time.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/signal.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/limits.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/limits.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/limits.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/limits.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/page.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/string.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/malloc.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/signal.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/siginfo.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h:
+
 D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/thread:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/vector:
 
 D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/map:
 
@@ -383,11 +475,25 @@ jni/../../cocos2d/cocos/3d/../platform/CCStdC.h:
 
 jni/../../cocos2d/cocos/3d/../platform/android/CCStdC-android.h:
 
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/math.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdlib.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/alloca.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/strings.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/platforms/android-9/arch-arm/usr/include/memory.h:
+
 D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert:
 
 jni/../../cocos2d/cocos/3d/../base/ccRandom.h:
 
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/random:
+
 jni/../../cocos2d/cocos/3d/../base/CCVector.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
 
 jni/../../cocos2d/cocos/3d/../base/CCMap.h:
 
@@ -482,6 +588,8 @@ jni/../../cocos2d/cocos/3d/../base/CCEventTouch.h:
 jni/../../cocos2d/cocos/3d/../base/CCEvent.h:
 
 jni/../../cocos2d/cocos/3d/../base/CCEventKeyboard.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/list:
 
 jni/../../cocos2d/cocos/3d/../math/CCAffineTransform.h:
 
@@ -959,6 +1067,20 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
+jni/../../Classes/Singleton.h:
+
+jni/../../Classes/EDirection.h:
+
+jni/../../Classes/DataStructure.h:
+
+jni/../../Classes/FriendList.h:
+
+jni/../../Classes/Update.h:
+
+jni/../../Classes/UpdateManager.h:
+
+jni/../../Classes/Network.h:
+
 jni/../../cocos2d/cocos/3d/../network\HttpClient.h:
 
 jni/../../cocos2d/cocos/3d/../network/HttpRequest.h:
@@ -985,4 +1107,10 @@ jni/../../cocos2d/cocos/3d/../base/ObjectFactory.h:
 
 jni/../../Classes/GameData.h:
 
-jni/../../Classes/Define.h:
+jni/../../Classes/StageSelectDefine.h:
+
+jni/../../cocos2d/cocos/3d/../platform\android\jni\JniHelper.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/Export.h:
