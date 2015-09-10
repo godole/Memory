@@ -38,5 +38,5 @@ void CBoxHoldOnState::Update()
 void CBoxHoldOnState::BehaviorInit()
 {
 	m_pBox->m_pBody->SetActive(false);
-	m_pBox->m_pBoxSprite->setZOrder(3);
+	m_pBox->m_pBoxSprite->setZOrder(BOX_HOLD_ZORDER);
 }

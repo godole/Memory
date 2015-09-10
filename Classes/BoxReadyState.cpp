@@ -26,7 +26,8 @@ bool CBoxReadyState::Action(Vec2 a_TouchPos)
 		m_pBox->setBodyPositionTo(sprite->getPosition());
 		auto parent = Director::getInstance()->getRunningScene()->getChildByTag( MAIN_LAYER)->getChildByTag(OBJ_PARTICLE_NODE);
 		CParticleManager::getInstance()->addParticle(parent, "object/box_put_effect.plist", sprite->getPosition(), PARTICLE_ZORDER);
-		parent->removeChild(sprite);
+		auto spriteParent = Director::getInstance()->getRunningScene()->getChildByTag(MAIN_LAYER);
+		spriteParent->removeChild(sprite);
 		(*m_pValueMap)["readySprite"] = nullptr;
 		m_pBox->ChangeState(shared_ptr<CBoxBehaviorState>(new CBoxAfterState));
 	}

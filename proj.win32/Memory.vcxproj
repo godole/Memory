@@ -193,6 +193,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\ScrollManager.cpp" />
     <ClCompile Include="..\Classes\ScrollSprite.cpp" />
     <ClCompile Include="..\Classes\StageBox.cpp" />
+    <ClCompile Include="..\Classes\StageData.cpp" />
     <ClCompile Include="..\Classes\StageLine.cpp" />
     <ClCompile Include="..\Classes\Things.cpp" />
     <ClCompile Include="..\Classes\ObjectFactory.cpp" />
@@ -286,7 +287,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\ScrollSprite.h" />
     <ClInclude Include="..\Classes\Singleton.h" />
     <ClInclude Include="..\Classes\StageBox.h" />
+    <ClInclude Include="..\Classes\StageData.h" />
     <ClInclude Include="..\Classes\StageLine.h" />
+    <ClInclude Include="..\Classes\StageSelectDefine.h" />
     <ClInclude Include="..\Classes\Things.h" />
     <ClInclude Include="..\Classes\ObjectFactory.h" />
     <ClInclude Include="..\Classes\ThingsWithBody.h" />

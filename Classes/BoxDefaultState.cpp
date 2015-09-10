@@ -28,7 +28,7 @@ void CBoxDefaultState::BehaviorInit()
 {
 	m_pBox->m_pBody->SetActive(true);
 	m_pBox->setBodyPositionTo(m_pBox->m_vStartPosition + CScrollManager::getInstance()->getDeltaPosition());
-	m_pBox->m_pBoxSprite->setZOrder(0);
+	m_pBox->m_pBoxSprite->setZOrder(OBJECT_ZORDER);
 	if ((*m_pValueMap)["readySprite"] != nullptr)
 	{
 		auto parent = Director::getInstance()->getRunningScene()->getChildByTag( MAIN_LAYER);

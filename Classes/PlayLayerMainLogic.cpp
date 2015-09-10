@@ -43,7 +43,7 @@ bool PlayLayerMainLogic::init()
 	scheduleUpdate();
 
 	m_pPlayer = shared_ptr<CPlayer>(new CPlayer);
-	m_pPlayer->Init(this, m_pWorld, CDataManager::getInstance()->getMapBehaviorCount().m_nMaxCount, CHARACTER_ZORDER);
+	m_pPlayer->Init(this, m_pWorld, 10, CHARACTER_ZORDER);
 	m_pPlayer->setPositionTo(ccp(50, 300));
 	UpdateManager::getInstance()->Insert(m_pPlayer);
 	CScrollManager::getInstance()->Insert(m_pPlayer);
@@ -212,27 +212,27 @@ void PlayLayerMainLogic::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, 
 void PlayLayerMainLogic::GoNextStage()
 {
 	int Score;
-	if (m_pPlayer->getCurrentBehaviorCount() < CDataManager::getInstance()->getMapBehaviorCount().m_nFirstScore)
+	if (m_pPlayer->getCurrentBehaviorCount() < 6)
 		Score = 3;
 
-	else if (m_pPlayer->getCurrentBehaviorCount() < CDataManager::getInstance()->getMapBehaviorCount().m_nSecondScore)
+	else if (m_pPlayer->getCurrentBehaviorCount() < 8)
 		Score = 2;
 
 	else
 		Score = 1;
 
-	if (CDataManager::getInstance()->getCurrentStageScoreSum() >= 30)
+	/*if (CDataManager::getInstance()->getCurrentStageScoreSum() >= 30)
 		GameSharing::UnlockAchivement(2);
 
 	else if (CDataManager::getInstance()->getCurrentStageScoreSum() >= 20)
 		GameSharing::UnlockAchivement(3);
 
 	else if (CDataManager::getInstance()->getCurrentStageScoreSum() >= 10)
-		GameSharing::UnlockAchivement(4);
+		GameSharing::UnlockAchivement(4);*/
 
 	Release();
 	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneSelectStage);
-	CDataManager::getInstance()->SavePlayerData(Score);
+	CDataManager::getInstance()->SavePlayerData();
 	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 }
 

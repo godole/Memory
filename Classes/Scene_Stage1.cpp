@@ -95,7 +95,7 @@ void Scene_Stage1::MakeTreeEffect(string texturename, CCPoint a_vPos)
 	float randomTime = random(0.6, 0.9);
 	treeEffect->setPosition(a_vPos);
 	treeEffect->runAction(CCRepeatForever::create(CCSequence::create((CCFiniteTimeAction*)CCScaleTo::create(randomTime, 0.8), CCScaleTo::create(randomTime, 1.2), NULL)));
-	this->addChild(treeEffect, 3);
+	this->addChild(treeEffect, BACKGROUND_ZORDER);
 
 	auto effect = shared_ptr<CScrollSprite>(new CScrollSprite);
 	effect->Init(treeEffect);

@@ -1,11 +1,13 @@
 #pragma once
 
 #define BACKGROUND_ZORDER 0
-#define OBJECT_ZORDER 1
-#define CHARACTER_ZORDER 2
-#define PARTICLE_ZORDER 3
-#define UI_ZORDER 4
-#define MENU_ZORDER 5
+#define GROUND_ZORDER 1
+#define OBJECT_ZORDER 2
+#define BOX_HOLD_ZORDER 3
+#define CHARACTER_ZORDER 4
+#define PARTICLE_ZORDER 5
+#define UI_ZORDER 6
+#define MENU_ZORDER 7
 
 #define MAIN_LAYER 970112
 

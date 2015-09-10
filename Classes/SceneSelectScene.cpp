@@ -19,7 +19,7 @@ SceneSelectScene::SceneSelectScene(){
 }
 SceneSelectScene::~SceneSelectScene(){
 	// 코드 합칠때 수정해야합니다
-	UpdateManager::getInstance()->Release();
+	//UpdateManager::getInstance()->Release();
 }
 
 Scene* SceneSelectScene::createScene()

@@ -30,7 +30,7 @@ void CBox::Init(CCLayer* a_ParentLayer, b2World* a_World, BoxData a_Data)
 	m_pTransProfile = m_pTransectorProfile;
 
 	m_pBodySprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
-	m_pBodySprite->Init(m_pBoxSprite, a_World, b2BodyType::b2_staticBody, 80, 80);
+	m_pBodySprite->Init(m_pBoxSprite, a_World, b2BodyType::b2_staticBody, 90, 90);
 	m_pBody = m_pBodySprite->getBodyStructure().body;
 	a_ParentLayer->addChild(m_pBoxSprite, OBJECT_ZORDER);
 	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pBodySprite);

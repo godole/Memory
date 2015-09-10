@@ -27,7 +27,7 @@ void CWindBox::Init(CCLayer* a_pParentLayer, b2World* a_pWorld, TransectorProfil
 	m_pTransectorProfile = a_Profile;
 
 	m_pBox2dSprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
-	m_pBox2dSprite->Init(m_pSprite, a_pWorld, b2BodyType::b2_staticBody, 80, 80);
+	m_pBox2dSprite->Init(m_pSprite, a_pWorld, b2BodyType::b2_staticBody, 90, 90);
 	m_pBox2dSprite->setPositionTo(a_Data.m_vPosition);
 	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pBox2dSprite);
 	

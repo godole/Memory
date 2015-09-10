@@ -92,7 +92,7 @@ void CPlayer::Update()
 	float maxY = -300;
 	static int jumpCount = 0;
 	CCRect charRect;
-	charRect.setRect(m_pSprite->getPositionX() - 40, m_pSprite->getPositionY() - 38, 80, 90);
+	charRect.setRect(m_pSprite->getPositionX() - 40, m_pSprite->getPositionY() - 39, 80, 90);
 
 	for (int i = 0; i < objarr->getSize(); i++)
 	{

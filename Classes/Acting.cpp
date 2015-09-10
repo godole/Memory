@@ -4,6 +4,7 @@
 #include "TransectorProfile.h"
 #include "ParticleManager.h"
 #include "Behavior.h"
+#include "LayerDefine.h"
 
 
 CActing::CActing(int a_nMaxCount) :
@@ -65,7 +66,7 @@ void CActing::CreateIcon(string filename)
 	auto pIcon = CCSprite::create(filename.c_str());
 	pIcon->setPosition(ccp(150 + 80 * 3, 650));
 	//CParticleManager::getInstance()->addParticle(pIcon, "ui/add_icon.plist", ccp(pIcon->getContentSize().width / 2, pIcon->getContentSize().height / 2),1);
-	m_pParentLayer->addChild(pIcon, 3);
+	m_pParentLayer->addChild(pIcon, UI_ZORDER);
 	m_listBehaviorIcon.push_back(pIcon);
 }
 

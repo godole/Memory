@@ -275,6 +275,9 @@
     <ClCompile Include="..\Classes\Scene_Stage3.cpp">
       <Filter>src\Scene\InGame\Stage3</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StageData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -553,6 +556,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene_Stage3.h">
       <Filter>src\Scene\InGame\Stage3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageData.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageSelectDefine.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
