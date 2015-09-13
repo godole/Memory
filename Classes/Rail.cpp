@@ -1,8 +1,6 @@
 #include "Rail.h"
 #include "ScrollManager.h"
-#include "RailBehaviorState.h"
-#include "RailDefaultState.h"
-#include "RailRunState.h"
+#include "RailBehaviorStates.h"
 #include "Behavior.h"
 #include "LayerDefine.h"
 #include "ObjectManager.h"
@@ -19,22 +17,22 @@ CRail::~CRail()
 
 void CRail::Init(CCLayer* a_ParentLayer, b2World* a_World, RailData a_Data)
 {
-	m_eStartDirection = a_Data.m_eStartDirection;
-	m_eCurrentDirection = a_Data.m_eStartDirection;
+	m_DataProfile.m_eStartDirection = a_Data.m_eStartDirection;
+	m_DataProfile.m_eCurrentDirection = a_Data.m_eStartDirection;
 
 	string objfileroot = "map/map2/object/";
 
-	m_pRailLeftTexture = CTextureFactory::CreateTexture(objfileroot + "rail_left.png");
-	m_pRailRightTexture = CTextureFactory::CreateTexture(objfileroot + "rail_right.png");
+	auto railLeft = CTextureFactory::CreateTexture(objfileroot + "rail_left.png");
+	auto railRight = CTextureFactory::CreateTexture(objfileroot + "rail_right.png");
 
 	for (int i = 0; i < a_Data.m_nRailCount; i++)
 	{
 		CCSprite* sprite;
 		if (a_Data.m_eStartDirection == e_drLeft)
-			sprite = CCSprite::createWithTexture(m_pRailLeftTexture);
+			sprite = CCSprite::createWithTexture(railLeft);
 
 		else if (a_Data.m_eStartDirection == e_drRight)
-			sprite = CCSprite::createWithTexture(m_pRailRightTexture);
+			sprite = CCSprite::createWithTexture(railRight);
 
 		a_ParentLayer->addChild(sprite, OBJECT_ZORDER);
 
@@ -43,19 +41,27 @@ void CRail::Init(CCLayer* a_ParentLayer, b2World* a_World, RailData a_Data)
 		box2dsprite->setPositionTo(ccp(a_Data.m_vPosition.x + sprite->getContentSize().width * i, a_Data.m_vPosition.y));
 
 		CObjectManager::getInstance()->getBox2dSprite()->InsertObject(box2dsprite);
+		CObjectManager::getInstance()->getNotBoxArray()->InsertObject(box2dsprite);
 		m_parrRailSprite.push_back(box2dsprite);
 	}
 
-	m_pLeverOnTexture = CTextureFactory::CreateTexture(objfileroot + "button_left_on.png");
-	m_pLeverOffTexture = CTextureFactory::CreateTexture(objfileroot + "button_right_off.png");
+	auto leverOn = CTextureFactory::CreateTexture(objfileroot + "button_left_on.png");
+	auto leverOff = CTextureFactory::CreateTexture(objfileroot + "button_right_off.png");
 
-	m_pLeverSprite = CCSprite::createWithTexture(m_pLeverOffTexture);
-	m_pLeverSprite->setPosition(a_Data.m_vLeverPosition);
-	a_ParentLayer->addChild(m_pLeverSprite, OBJECT_ZORDER);
+	m_pActionSprite = CCSprite::createWithTexture(leverOff);
+	m_pActionSprite->setPosition(a_Data.m_vLeverPosition);
+	a_ParentLayer->addChild(m_pActionSprite, OBJECT_ZORDER);
 
-	m_pBehavior = CreateBehavior();
+	m_ValueMap["leverSprite"] = m_pActionSprite;
+	m_ValueMap["pedLeftTexture"] = railLeft;
+	m_ValueMap["pedRightTexture"] = railRight;
+	m_ValueMap["leverOnTexture"] = leverOn;
+	m_ValueMap["leverOffTexture"] = leverOff;
+	m_ValueMap["arrPed"] = &m_parrRailSprite;
+	m_ValueMap["railProfile"] = &m_DataProfile;
 
-	m_pActionSprite = m_pLeverSprite;
+	m_pBehavior = shared_ptr<CRailDefaultState>(new CRailDefaultState);
+	m_pBehavior->Init(this, &m_ValueMap);
 }
 
 void CRail::Scroll(Vec2 a_vScrollVelocity)
@@ -64,21 +70,5 @@ void CRail::Scroll(Vec2 a_vScrollVelocity)
 	{
 		m_parrRailSprite[i]->setPositionBy(a_vScrollVelocity);
 	}
-	m_pLeverSprite->setPosition(m_pLeverSprite->getPosition() + a_vScrollVelocity);
-}
-
-void CRail::ChangeState(shared_ptr<CRailBehaviorState> a_ptr)
-{
-	a_ptr->Init(this);
-
-	m_pBehavior = a_ptr;
-}
-
-shared_ptr<Behavior> CRail::CreateBehavior()
-{
-	auto state = shared_ptr<CRailDefaultState>(new CRailDefaultState);
-
-	state->Init(this);
-
-	return state;
+	m_pActionSprite->setPosition(m_pActionSprite->getPosition() + a_vScrollVelocity);
 }

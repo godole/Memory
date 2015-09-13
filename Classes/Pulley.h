@@ -11,9 +11,6 @@
 
 using namespace std;
 
-class CPulleyBehaviorState;
-class CPulleyDefaultState;
-class CPulleyRunState;
 class Behavior;
 
 class CPulley :
@@ -24,7 +21,6 @@ class CPulley :
 
 public :
 	void		Init(CCLayer* a_pParentLayer,b2World* a_World, PulleyData a_Data);
-	void		ChangeState(shared_ptr<CPulleyBehaviorState> a_ptr);
 	void		setStateToDefault();
 
 public :
@@ -35,28 +31,11 @@ public:
 	~CPulley();
 
 private :
-	shared_ptr<Behavior> CreateBehavior() override;
 	void Active() override{}
 	void DisActive() override{}
-	void ObjectUpdate() override;
-
-	shared_ptr<CPulleyBehaviorState> m_pPulleyState;
 
 	vector<shared_ptr<CBox2dSprite>> m_parrPulleySprite;
-	CCTexture2D* m_pPulleyOnTexture;
-	CCTexture2D* m_pPulleyOffTexture;
-	CCSprite* m_pLeverSprite;
-	CCTexture2D* m_pLeverOnTexture;
-	CCTexture2D* m_pLeverOffTexture;
-	CCSprite* m_pActiveSprite;
 
-	EDirection m_drStartDirection;
-	EDirection m_drCurrentDirection;
-
-	float		m_fStartLength;
-	float		m_fCurrentLength;
-	float		m_fMoveSpeed;
-
-	CCPoint		m_vStartPosition;
+	PulleyProfile m_DataProfile;
 };
 

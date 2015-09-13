@@ -389,7 +389,12 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Ped.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
  jni/../../Classes/Box2dSprite.h jni/../../Classes/b2Structure.h \
- jni/../../Classes/LayerDefine.h
+ jni/../../Classes/LayerDefine.h jni/../../Classes/ObjectManager.h \
+ jni/../../Classes/ObjectArray.h jni/../../Classes/Things.h \
+ jni/../../Classes/Update.h jni/../../Classes/UpdateManager.h \
+ jni/../../Classes/TransectorProfile.h jni/../../Classes/Rail.h \
+ jni/../../Classes/RailProfile.h jni/../../Classes/Sand.h \
+ jni/../../Classes/Door.h
 
 jni/../../Classes/Ped.h:
 
@@ -1180,3 +1185,23 @@ jni/../../Classes/Box2dSprite.h:
 jni/../../Classes/b2Structure.h:
 
 jni/../../Classes/LayerDefine.h:
+
+jni/../../Classes/ObjectManager.h:
+
+jni/../../Classes/ObjectArray.h:
+
+jni/../../Classes/Things.h:
+
+jni/../../Classes/Update.h:
+
+jni/../../Classes/UpdateManager.h:
+
+jni/../../Classes/TransectorProfile.h:
+
+jni/../../Classes/Rail.h:
+
+jni/../../Classes/RailProfile.h:
+
+jni/../../Classes/Sand.h:
+
+jni/../../Classes/Door.h:

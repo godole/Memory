@@ -506,11 +506,11 @@ containing a value of this type.
     }
     public static final class string {
         public static final int accept=0x7f050002;
-        public static final int achievement_stage1=0x7f050031;
-        public static final int achievement_stage2=0x7f050032;
-        public static final int achievement_stage3=0x7f050033;
-        public static final int achievement_stage4=0x7f050034;
-        public static final int achievement_stage5=0x7f050035;
+        public static final int achievement_test1=0x7f050031;
+        public static final int achievement_test2=0x7f050032;
+        public static final int achievement_test3=0x7f050033;
+        public static final int achievement_test4=0x7f050034;
+        public static final int achievement_test5=0x7f050035;
         public static final int achievements=0x7f050036;
         public static final int app_id=0x7f050030;
         public static final int app_misconfigured=0x7f05003a;

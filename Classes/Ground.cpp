@@ -17,7 +17,7 @@ CGround::~CGround()
 void CGround::Init(CCLayer* a_pParentLayer, b2World* a_World, GroundData a_data)
 {
 	auto sprite = CCSprite::create(a_data.m_szTextureName);
-	a_pParentLayer->addChild(sprite, OBJECT_ZORDER);
+	a_pParentLayer->addChild(sprite, GROUND_ZORDER);
 
 	m_pBodySprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
 	m_pBodySprite->Init(sprite, a_World, b2BodyType::b2_staticBody);

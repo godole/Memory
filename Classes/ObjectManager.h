@@ -18,6 +18,7 @@ public :
 	CObjectArray<CThings>* getObjectArray(){ return m_arrObject.get(); }
 	CObjectArray<CRail>* getRailArray(){ return m_arrRail.get(); }
 	CObjectArray<CBox2dSprite>* getBox2dSprite(){ return m_arrBox2dSprite.get(); }
+	CObjectArray<CBox2dSprite>* getNotBoxArray(){ return m_arrNotBox.get(); }
 	CObjectArray<CSand>* getSandArray(){ return m_arrSand.get(); }
 	CObjectArray<CDoor>* getDoorArray(){ return m_arrDoor.get(); }
 
@@ -25,6 +26,7 @@ private:
 	shared_ptr<CObjectArray<CThings>> m_arrObject;
 	shared_ptr<CObjectArray<CRail>> m_arrRail;
 	shared_ptr<CObjectArray<CBox2dSprite>> m_arrBox2dSprite;
+	shared_ptr<CObjectArray<CBox2dSprite>> m_arrNotBox;
 	shared_ptr<CObjectArray<CSand>> m_arrSand;
 	shared_ptr<CObjectArray<CDoor>> m_arrDoor;
 };

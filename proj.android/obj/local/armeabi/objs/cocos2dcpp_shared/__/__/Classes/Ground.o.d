@@ -362,8 +362,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Ground.o: \
  jni/../../Classes/Box2dSprite.h jni/../../Classes/b2Structure.h \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Things.h jni/../../Classes/TransectorProfile.h \
- jni/../../Classes/Rail.h jni/../../Classes/Sand.h \
- jni/../../Classes/Door.h jni/../../Classes/LayerDefine.h
+ jni/../../Classes/Rail.h jni/../../Classes/RailProfile.h \
+ jni/../../Classes/Sand.h jni/../../Classes/Door.h \
+ jni/../../Classes/LayerDefine.h
 
 jni/../../Classes/Ground.h:
 
@@ -1104,6 +1105,8 @@ jni/../../Classes/Things.h:
 jni/../../Classes/TransectorProfile.h:
 
 jni/../../Classes/Rail.h:
+
+jni/../../Classes/RailProfile.h:
 
 jni/../../Classes/Sand.h:
 

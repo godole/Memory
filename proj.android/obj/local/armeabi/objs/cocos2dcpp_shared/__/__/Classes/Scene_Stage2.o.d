@@ -495,7 +495,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Scene_Stage2.o: \
  jni/../../Classes/BehaviorState.h jni/../../Classes/b2Structure.h \
  jni/../../Classes/Canfly.h jni/../../Classes/Acting.h \
  jni/../../Classes/Rail.h jni/../../Classes/Things.h \
- jni/../../Classes/Box2dSprite.h jni/../../Classes/LayerDefine.h
+ jni/../../Classes/RailProfile.h jni/../../Classes/Box2dSprite.h \
+ jni/../../Classes/LayerDefine.h jni/../../Classes/ParticleManager.h
 
 jni/../../Classes/Scene_Stage2.h:
 
@@ -1511,6 +1512,10 @@ jni/../../Classes/Rail.h:
 
 jni/../../Classes/Things.h:
 
+jni/../../Classes/RailProfile.h:
+
 jni/../../Classes/Box2dSprite.h:
 
 jni/../../Classes/LayerDefine.h:
+
+jni/../../Classes/ParticleManager.h:

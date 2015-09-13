@@ -2,6 +2,7 @@
 #include "LayerDefine.h"
 #include "Box2dSprite.h"
 #include "LayerDefine.h"
+#include "ObjectManager.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -20,18 +21,22 @@ CDoor::~CDoor()
 void CDoor::Init(cocos2d::CCLayer* parentLayer, b2World* world, DoorData data)
 {
 	auto leftSprite = CCSprite::create("map/map2/object/door_left.png");
-	leftSprite->setAnchorPoint(ccp(1.0, 0.0));
+	leftSprite->setAnchorPoint(ccp(0.5, 0.0));
 	parentLayer->addChild(leftSprite, OBJECT_ZORDER);
 	m_pLeftDoorSprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
-	m_pLeftDoorSprite->Init(leftSprite, world, b2BodyType::b2_staticBody, ccp(1.0, 0));
-	m_pLeftDoorSprite->setPositionTo(data.m_vPosition);
+	m_pLeftDoorSprite->Init(leftSprite, world, b2BodyType::b2_staticBody, 110, 157, ccp(0.5, 0));
+	m_pLeftDoorSprite->setPositionTo(data.m_vPosition - ccp(41.5, 0));
+	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pLeftDoorSprite);
+	CObjectManager::getInstance()->getNotBoxArray()->InsertObject(m_pLeftDoorSprite);
 
 	auto rightSprite = CCSprite::create("map/map2/object/door_right.png");
-	rightSprite->setAnchorPoint(ccp(0.0, 0.0));
+	rightSprite->setAnchorPoint(ccp(0.5, 0.0));
 	parentLayer->addChild(rightSprite, CHARACTER_ZORDER + 1);
 	m_pRightDoorSprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
-	m_pRightDoorSprite->Init(rightSprite, world, b2BodyType::b2_staticBody, ccp(0.0, 0.0));
-	m_pRightDoorSprite->setPositionTo(data.m_vPosition);
+	m_pRightDoorSprite->Init(rightSprite, world, b2BodyType::b2_staticBody, 110, 157, ccp(0.5, 0.0));
+	m_pRightDoorSprite->setPositionTo(data.m_vPosition + ccp(41.5, 0));
+	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pRightDoorSprite);
+	CObjectManager::getInstance()->getNotBoxArray()->InsertObject(m_pRightDoorSprite);
 
 	m_pFrameSprite = CCSprite::create("map/map2/object/door_round.png");
 	m_pFrameSprite->setAnchorPoint(ccp(0.5, 0.0));
@@ -48,11 +53,11 @@ void CDoor::Scroll(cocos2d::Vec2 a_vVelocity)
 
 void CDoor::On()
 {
-	m_pRightDoorSprite->getSpritePtr()->setVisible(false);
 	m_pRightDoorSprite->getBodyStructure().body->SetActive(false);
+	m_pRightDoorSprite->getSpritePtr()->setVisible(false);
 
-	m_pLeftDoorSprite->getSpritePtr()->setVisible(false);
 	m_pLeftDoorSprite->getBodyStructure().body->SetActive(false);
+	m_pLeftDoorSprite->getSpritePtr()->setVisible(false);
 
 	m_bIsOpened = true;
 }

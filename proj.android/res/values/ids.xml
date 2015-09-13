@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_id">866017143504</string>
-  <string name="achievement_stage1">CgkI0NWTlZoZEAIQAQ</string>
-  <string name="achievement_stage2">CgkI0NWTlZoZEAIQAw</string>
-  <string name="achievement_stage3">CgkI0NWTlZoZEAIQBA</string>
-  <string name="achievement_stage4">CgkI0NWTlZoZEAIQBQ</string>
-  <string name="achievement_stage5">CgkI0NWTlZoZEAIQBg</string>
-  <string name="achievements">CgkI0NWTlZoZEAIQAQ;CgkI0NWTlZoZEAIQAw;CgkI0NWTlZoZEAIQBA;CgkI0NWTlZoZEAIQBQ;CgkI0NWTlZoZEAIQBg</string>
+  <string name="achievement_test1">CgkI0NWTlZoZEAIQBw</string>
+  <string name="achievement_test2">CgkI0NWTlZoZEAIQCA</string>
+  <string name="achievement_test3">CgkI0NWTlZoZEAIQCQ</string>
+  <string name="achievement_test4">CgkI0NWTlZoZEAIQCg</string>
+  <string name="achievement_test5">CgkI0NWTlZoZEAIQCw</string>
+  <string name="achievements">CgkI0NWTlZoZEAIQBw;CgkI0NWTlZoZEAIQCA;CgkI0NWTlZoZEAIQCQ;CgkI0NWTlZoZEAIQCg;CgkI0NWTlZoZEAIQCw</string>
   <string name="leaderboards"></string>
 </resources>

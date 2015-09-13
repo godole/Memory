@@ -1,5 +1,17 @@
 
+BOX 300 125 map/map1/object/box_ob.png 
+BOX 400 125 map/map2/object/box_ob.png 
+BOX 500 125 map/map3/object/box_ob.png 
+WIND 800 125 
+RAIL 1004 350 900 350 LEFT 5 
+PED 200 280 map/map3/object/ped1.png 
+PED 280 280 map/map3/object/ped2.png 
+PED 360 280 map/map3/object/ped3.png 
+PULLEY 1152 140 1000 140 300 UP 4 
+SPANNER	600 167 
+DOOR 800 131 
+WATER 900 157 
+SAND 1000 157 
 MIRAGE 100 100 200 200 
-GROUND 0 0 map\\map1\\map_1_ground.png 
-BG map\\map1\\map_1.png 
-DESTINATION 500 133 object\\destination.png 
+GROUND 1280 0 map/map1/object/map_1_ground.png 
+DESTINATION 10000 133 object/destination.png 
