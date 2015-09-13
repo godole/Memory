@@ -1,5 +1,6 @@
 obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Option.o: \
- jni/../../Classes/Option.cpp jni/../../Classes/Option.h \
+ jni/../../Classes/Option.cpp jni/../../Classes/ELayerState.h \
+ jni/../../Classes/Option.h jni/../../Classes/StageSelectDefine.h \
  jni/../../cocos2d/cocos/3d/../cocos2d.h \
  jni/../../cocos2d/cocos/3d/../base/ccConfig.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
@@ -348,9 +349,25 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Option.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/ELayerState.h
+ jni/../../cocos2d/cocos/3d/../platform\android\jni\JniHelper.h \
+ jni/../../Classes/Network.h \
+ jni/../../cocos2d/cocos/3d/../network\HttpClient.h \
+ jni/../../cocos2d/cocos/3d/../network/HttpRequest.h \
+ jni/../../cocos2d/cocos/3d/../network/HttpResponse.h \
+ jni/../../cocos2d/cocos/3d/../network/HttpClient.h \
+ jni/../../Classes/DataManager.h jni/../../Classes/Singleton.h \
+ jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h \
+ jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
+ jni/../../cocos2d/cocos/audio/android/../include/Export.h \
+ jni/../../Classes/GameSharing.h \
+ D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream \
+ jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h
+
+jni/../../Classes/ELayerState.h:
 
 jni/../../Classes/Option.h:
+
+jni/../../Classes/StageSelectDefine.h:
 
 jni/../../cocos2d/cocos/3d/../cocos2d.h:
 
@@ -1048,4 +1065,32 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
-jni/../../Classes/ELayerState.h:
+jni/../../cocos2d/cocos/3d/../platform\android\jni\JniHelper.h:
+
+jni/../../Classes/Network.h:
+
+jni/../../cocos2d/cocos/3d/../network\HttpClient.h:
+
+jni/../../cocos2d/cocos/3d/../network/HttpRequest.h:
+
+jni/../../cocos2d/cocos/3d/../network/HttpResponse.h:
+
+jni/../../cocos2d/cocos/3d/../network/HttpClient.h:
+
+jni/../../Classes/DataManager.h:
+
+jni/../../Classes/Singleton.h:
+
+jni/../../Classes/EDirection.h:
+
+jni/../../Classes/DataStructure.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/Export.h:
+
+jni/../../Classes/GameSharing.h:
+
+D:/cocos2d-x/android-ndk-r9-windows-x86_64/android-ndk-r9/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream:
+
+jni/../../cocos2d/cocos/3d/../platform/android/jni/JniHelper.h:

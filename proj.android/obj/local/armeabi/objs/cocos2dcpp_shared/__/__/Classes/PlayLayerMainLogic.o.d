@@ -427,10 +427,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/PlayLayerMainLogic.o: \
  jni/../../Classes/ScrollManager.h jni/../../Classes/Update.h \
  jni/../../Classes/UpdateManager.h jni/../../Classes/TransectorProfile.h \
  jni/../../Classes/physicsDefine.h jni/../../Classes/Rail.h \
- jni/../../Classes/b2Structure.h jni/../../Classes/Sand.h \
+ jni/../../Classes/b2Structure.h jni/../../Classes/RailProfile.h \
+ jni/../../Classes/Box2dSprite.h jni/../../Classes/Sand.h \
  jni/../../Classes/Door.h jni/../../Classes/SceneManager.h \
- jni/../../Classes/Box2dSprite.h jni/../../Classes/Behavior.h \
- jni/../../Classes/BackgroundCloud.h \
+ jni/../../Classes/Behavior.h jni/../../Classes/BackgroundCloud.h \
  jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
  jni/../../cocos2d/cocos/audio/android/../include/Export.h \
  jni/../../Classes/ScrollSprite.h jni/../../Classes/Player.h \
@@ -1373,13 +1373,15 @@ jni/../../Classes/Rail.h:
 
 jni/../../Classes/b2Structure.h:
 
+jni/../../Classes/RailProfile.h:
+
+jni/../../Classes/Box2dSprite.h:
+
 jni/../../Classes/Sand.h:
 
 jni/../../Classes/Door.h:
 
 jni/../../Classes/SceneManager.h:
-
-jni/../../Classes/Box2dSprite.h:
 
 jni/../../Classes/Behavior.h:
 

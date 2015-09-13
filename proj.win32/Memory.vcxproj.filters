@@ -90,9 +90,6 @@
     <ClCompile Include="..\Classes\Box2dSprite.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ThingsWithBody.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Behavior.cpp" />
     <ClCompile Include="..\Classes\Acting.cpp">
       <Filter>src\Scene\InGame\Player</Filter>
@@ -101,18 +98,6 @@
       <Filter>src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Box.cpp">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BoxAfterState.cpp">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BoxBehaviorState.cpp">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BoxDefaultState.cpp">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BoxHoldOnState.cpp">
       <Filter>src\Object\Things\Box</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ObjectFactory.cpp">
@@ -127,37 +112,10 @@
     <ClCompile Include="..\Classes\Mirage.cpp">
       <Filter>src\Object\Things\Mirage</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MirageBehaviorState.cpp">
-      <Filter>src\Object\Things\Mirage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\MirageCrashedState.cpp">
-      <Filter>src\Object\Things\Mirage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\MirageDefaultState.cpp">
-      <Filter>src\Object\Things\Mirage</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Pulley.cpp">
       <Filter>src\Object\Things\Pulley</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\PulleyBehaviorState.cpp">
-      <Filter>src\Object\Things\Pulley</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PulleyDefaultState.cpp">
-      <Filter>src\Object\Things\Pulley</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PulleyRunState.cpp">
-      <Filter>src\Object\Things\Pulley</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Rail.cpp">
-      <Filter>src\Object\Things\Rail</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RailBehaviorState.cpp">
-      <Filter>src\Object\Things\Rail</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RailDefaultState.cpp">
-      <Filter>src\Object\Things\Rail</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RailRunState.cpp">
       <Filter>src\Object\Things\Rail</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PlayLayerMainLogic.cpp">
@@ -181,18 +139,6 @@
     <ClCompile Include="..\Classes\Water.cpp">
       <Filter>src\Object\Things\Water</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\WaterAfterState.cpp">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\WaterBehaviorState.cpp">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\WaterDefaultState.cpp">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\WaterHoldingState.cpp">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene_InGame.cpp">
       <Filter>src\Scene\InGame</Filter>
     </ClCompile>
@@ -208,20 +154,8 @@
     <ClCompile Include="..\Classes\WindBox.cpp">
       <Filter>src\Object\Things\WindBox</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\WindDefaultState.cpp">
-      <Filter>src\Object\Things\WindBox</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\WindRunState.cpp">
-      <Filter>src\Object\Things\WindBox</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\WindBehaviorState.cpp">
-      <Filter>src\Object\Things\WindBox</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\ShaderNode.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BoxReadyState.cpp">
-      <Filter>src\Object\Things\Box</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameSharing.cpp" />
     <ClCompile Include="..\Classes\FriendList.cpp">
@@ -251,19 +185,7 @@
     <ClCompile Include="..\Classes\Door.cpp">
       <Filter>src\Object\Things\Door</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SpannerBehaviorState.cpp">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpannerDefaultState.cpp">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Spanner.cpp">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpannerHoldOnState.cpp">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpannerUsedState.cpp">
       <Filter>src\Object\Things\Spanner</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Scene_Stage1.cpp">
@@ -277,6 +199,30 @@
     </ClCompile>
     <ClCompile Include="..\Classes\StageData.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoxBehaviorStates.cpp">
+      <Filter>src\Object\Things\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MirageBehaviorStates.cpp">
+      <Filter>src\Object\Things\Mirage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PulleyBehaviorStates.cpp">
+      <Filter>src\Object\Things\Pulley</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RailBehaviorStates.cpp">
+      <Filter>src\Object\Things\Rail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpannerBehaviorStates.cpp">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WaterBehaviorStates.cpp">
+      <Filter>src\Object\Things\Water</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WindBehaviorStates.cpp">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene_ObjTest.cpp">
+      <Filter>src\Scene\InGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -340,9 +286,6 @@
     <ClInclude Include="..\Classes\Box2dSprite.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ThingsWithBody.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Acting.h">
       <Filter>src\Scene\InGame\Player</Filter>
     </ClInclude>
@@ -350,18 +293,6 @@
       <Filter>src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Box.h">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BoxAfterState.h">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BoxBehaviorState.h">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BoxDefaultState.h">
-      <Filter>src\Object\Things\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BoxHoldOnState.h">
       <Filter>src\Object\Things\Box</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Behavior.h">
@@ -385,40 +316,13 @@
     <ClInclude Include="..\Classes\Mirage.h">
       <Filter>src\Object\Things\Mirage</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MirageBehaviorState.h">
-      <Filter>src\Object\Things\Mirage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MirageCrashedState.h">
-      <Filter>src\Object\Things\Mirage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MirageDefaultState.h">
-      <Filter>src\Object\Things\Mirage</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Pulley.h">
-      <Filter>src\Object\Things\Pulley</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PulleyBehaviorState.h">
-      <Filter>src\Object\Things\Pulley</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PulleyDefaultState.h">
-      <Filter>src\Object\Things\Pulley</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PulleyRunState.h">
       <Filter>src\Object\Things\Pulley</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Rail.h">
       <Filter>src\Object\Things\Rail</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\RailBehaviorState.h">
-      <Filter>src\Object\Things\Rail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RailDefaultState.h">
-      <Filter>src\Object\Things\Rail</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\RailProfile.h">
-      <Filter>src\Object\Things\Rail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RailRunState.h">
       <Filter>src\Object\Things\Rail</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ITransector.h">
@@ -445,18 +349,6 @@
     <ClInclude Include="..\Classes\Water.h">
       <Filter>src\Object\Things\Water</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\WaterAfterState.h">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\WaterBehaviorState.h">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\WaterDefaultState.h">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\WaterHoldingState.h">
-      <Filter>src\Object\Things\Water</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Scene_InGame.h">
       <Filter>src\Scene\InGame</Filter>
     </ClInclude>
@@ -472,26 +364,14 @@
     <ClInclude Include="..\Classes\WindBox.h">
       <Filter>src\Object\Things\WindBox</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\WindDefaultState.h">
-      <Filter>src\Object\Things\WindBox</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\WindRunState.h">
-      <Filter>src\Object\Things\WindBox</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\DataManager.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\WindBehaviorState.h">
-      <Filter>src\Object\Things\WindBox</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Canfly.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ShaderNode.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BoxReadyState.h">
-      <Filter>src\Object\Things\Box</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameSharing.h" />
     <ClInclude Include="..\Classes\ELayerState.h">
@@ -533,19 +413,7 @@
     <ClInclude Include="..\Classes\Door.h">
       <Filter>src\Object\Things\Door</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SpannerBehaviorState.h">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpannerDefaultState.h">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Spanner.h">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpannerHoldOnState.h">
-      <Filter>src\Object\Things\Spanner</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpannerUsedState.h">
       <Filter>src\Object\Things\Spanner</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene_Stage1.h">
@@ -562,6 +430,33 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StageSelectDefine.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoxBehaviorStates.h">
+      <Filter>src\Object\Things\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MirageBehaviorStates.h">
+      <Filter>src\Object\Things\Mirage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PulleyBehaviorStates.h">
+      <Filter>src\Object\Things\Pulley</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PulleyProfile.h">
+      <Filter>src\Object\Things\Pulley</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RailBehaviorStates.h">
+      <Filter>src\Object\Things\Rail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpannerBehaviorStates.h">
+      <Filter>src\Object\Things\Spanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WaterBehaviorStates.h">
+      <Filter>src\Object\Things\Water</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WindBehaviorStates.h">
+      <Filter>src\Object\Things\WindBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene_ObjTest.h">
+      <Filter>src\Scene\InGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@
 #include "Rail.h"
 #include "Box2dSprite.h"
 #include "LayerDefine.h"
+#include "ParticleManager.h"
 
 using namespace CocosDenshion;
 
@@ -46,10 +47,12 @@ void Scene_Stage2::BackgroundInit()
 	for (int i = 0; i < 2; i++)
 	{
 		string filename = StringUtils::format("map/map2/effect/map_2_cloud%d.png", i + 1);
-		this->addChild(cloudInst->InsertCloud(filename, ccp(random(100, 1500), random(600, 900))), BACKGROUND_ZORDER);
+		this->addChild(cloudInst->InsertCloud(filename, ccp(random(100, 1500), random(400, 700))), BACKGROUND_ZORDER);
 	}
 
 	SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music/stage_2.mp3", true);
+
+	CParticleManager::getInstance()->addParticle(m_pScreenParticleNode, "map/map2/effect/rain.plist", ccp(1000, 1000));
 }
 
 void Scene_Stage2::ObjectInit()

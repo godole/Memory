@@ -423,7 +423,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Scene_InGame.o: \
  jni/../../cocos2d/cocos/3d/../ui/UILayoutComponent.h \
  jni/../../cocos2d/cocos/3d/../2d/CCComponent.h \
  jni/../../Classes/Scene_Stage2.h jni/../../Classes/Scene_Stage3.h \
- jni/../../Classes/LayerDefine.h
+ jni/../../Classes/Scene_ObjTest.h jni/../../Classes/LayerDefine.h
 
 jni/../../Classes/Scene_InGame.h:
 
@@ -1282,5 +1282,7 @@ jni/../../cocos2d/cocos/3d/../2d/CCComponent.h:
 jni/../../Classes/Scene_Stage2.h:
 
 jni/../../Classes/Scene_Stage3.h:
+
+jni/../../Classes/Scene_ObjTest.h:
 
 jni/../../Classes/LayerDefine.h:

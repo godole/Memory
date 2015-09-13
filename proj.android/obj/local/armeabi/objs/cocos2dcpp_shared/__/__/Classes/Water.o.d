@@ -390,10 +390,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Water.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
- jni/../../Classes/LayerDefine.h jni/../../Classes/WaterBehaviorState.h \
- jni/../../Classes/Behavior.h jni/../../Classes/WaterDefaultState.h \
- jni/../../Classes/WaterHoldingState.h \
- jni/../../Classes/WaterAfterState.h jni/../../Classes/Sand.h
+ jni/../../Classes/LayerDefine.h jni/../../Classes/WaterBehaviorStates.h \
+ jni/../../Classes/Behavior.h jni/../../Classes/Sand.h
 
 jni/../../Classes/Water.h:
 
@@ -1189,14 +1187,8 @@ jni/../../Classes/EDirection.h:
 
 jni/../../Classes/LayerDefine.h:
 
-jni/../../Classes/WaterBehaviorState.h:
+jni/../../Classes/WaterBehaviorStates.h:
 
 jni/../../Classes/Behavior.h:
-
-jni/../../Classes/WaterDefaultState.h:
-
-jni/../../Classes/WaterHoldingState.h:
-
-jni/../../Classes/WaterAfterState.h:
 
 jni/../../Classes/Sand.h:

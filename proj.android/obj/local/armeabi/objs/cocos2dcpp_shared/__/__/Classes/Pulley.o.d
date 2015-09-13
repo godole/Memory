@@ -390,12 +390,11 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Pulley.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/PulleyProfile.h jni/../../Classes/Box2dSprite.h \
- jni/../../Classes/b2Structure.h jni/../../Classes/LayerDefine.h \
- jni/../../Classes/PulleyBehaviorState.h jni/../../Classes/Behavior.h \
- jni/../../Classes/PulleyDefaultState.h \
- jni/../../Classes/PulleyRunState.h jni/../../Classes/ObjectManager.h \
+ jni/../../Classes/PulleyProfile.h jni/../../Classes/b2Structure.h \
+ jni/../../Classes/LayerDefine.h jni/../../Classes/PulleyBehaviorStates.h \
+ jni/../../Classes/Behavior.h jni/../../Classes/ObjectManager.h \
  jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h \
+ jni/../../Classes/RailProfile.h jni/../../Classes/Box2dSprite.h \
  jni/../../Classes/Sand.h jni/../../Classes/Door.h \
  jni/../../Classes/CTextureFactory.h
 
@@ -1193,25 +1192,23 @@ jni/../../Classes/DataStructure.h:
 
 jni/../../Classes/PulleyProfile.h:
 
-jni/../../Classes/Box2dSprite.h:
-
 jni/../../Classes/b2Structure.h:
 
 jni/../../Classes/LayerDefine.h:
 
-jni/../../Classes/PulleyBehaviorState.h:
+jni/../../Classes/PulleyBehaviorStates.h:
 
 jni/../../Classes/Behavior.h:
-
-jni/../../Classes/PulleyDefaultState.h:
-
-jni/../../Classes/PulleyRunState.h:
 
 jni/../../Classes/ObjectManager.h:
 
 jni/../../Classes/ObjectArray.h:
 
 jni/../../Classes/Rail.h:
+
+jni/../../Classes/RailProfile.h:
+
+jni/../../Classes/Box2dSprite.h:
 
 jni/../../Classes/Sand.h:
 

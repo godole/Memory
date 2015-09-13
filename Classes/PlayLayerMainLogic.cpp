@@ -238,8 +238,7 @@ void PlayLayerMainLogic::GoNextStage()
 
 void PlayLayerMainLogic::update(float dt)
 {
-	ObjectUpdate();
-	BackgroundUpdate();
+	ObjUpdate();
 	if (m_pDestination->getSpritePtr()->getBoundingBox().containsPoint(m_pPlayer->getPosition()) && !m_bIsEnd)
 	{
 		GoNextStage();
@@ -503,7 +502,10 @@ void PlayLayerMainLogic::ObjInit()
 	m_pMaxWall = CreateWall("object/20.png", ccp(1920, 100));
 
 	m_pObjParticleNode = CCNode::create();
-	this->addChild(m_pObjParticleNode, OBJECT_ZORDER, OBJ_PARTICLE_NODE);
+	this->addChild(m_pObjParticleNode, OBJECT_ZORDER + 1, OBJ_PARTICLE_NODE);
+
+	m_pBackgroundCloud = new BackgroundCloud;
+	m_pBackgroundCloud->Init(0.5, 1920);
 }
 
 void PlayLayerMainLogic::BGInit()

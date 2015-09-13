@@ -428,7 +428,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Scene_Stage3.o: \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Things.h jni/../../Classes/Update.h \
  jni/../../Classes/UpdateManager.h jni/../../Classes/Rail.h \
- jni/../../Classes/b2Structure.h jni/../../Classes/Sand.h \
+ jni/../../Classes/b2Structure.h jni/../../Classes/RailProfile.h \
+ jni/../../Classes/Box2dSprite.h jni/../../Classes/Sand.h \
  jni/../../Classes/Door.h jni/../../Classes/Player.h \
  jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio\CocoStudio.h \
  jni/../../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h \
@@ -1375,6 +1376,10 @@ jni/../../Classes/UpdateManager.h:
 jni/../../Classes/Rail.h:
 
 jni/../../Classes/b2Structure.h:
+
+jni/../../Classes/RailProfile.h:
+
+jni/../../Classes/Box2dSprite.h:
 
 jni/../../Classes/Sand.h:
 

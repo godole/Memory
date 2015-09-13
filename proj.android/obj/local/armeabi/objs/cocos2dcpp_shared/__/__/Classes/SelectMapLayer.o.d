@@ -1,5 +1,6 @@
 obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/SelectMapLayer.o: \
  jni/../../Classes/SelectMapLayer.cpp jni/../../Classes/SelectMapLayer.h \
+ jni/../../Classes/StageSelectDefine.h \
  jni/../../cocos2d/cocos/3d/../cocos2d.h \
  jni/../../cocos2d/cocos/3d/../base/ccConfig.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
@@ -348,15 +349,18 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/SelectMapLayer.o: \
  jni/../../cocos2d/cocos/3d/../deprecated/CCString.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/UpdateManager.h jni/../../Classes/Singleton.h \
- jni/../../Classes/SceneManager.h jni/../../Classes/DataManager.h \
- jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/FriendList.h jni/../../Classes/Update.h \
+ jni/../../cocos2d/cocos/3d/../platform\android\jni\JniHelper.h \
  jni/../../Classes/Network.h \
  jni/../../cocos2d/cocos/3d/../network\HttpClient.h \
  jni/../../cocos2d/cocos/3d/../network/HttpRequest.h \
  jni/../../cocos2d/cocos/3d/../network/HttpResponse.h \
  jni/../../cocos2d/cocos/3d/../network/HttpClient.h \
+ jni/../../Classes/DataManager.h jni/../../Classes/Singleton.h \
+ jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h \
+ jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
+ jni/../../cocos2d/cocos/audio/android/../include/Export.h \
+ jni/../../Classes/UpdateManager.h jni/../../Classes/SceneManager.h \
+ jni/../../Classes/FriendList.h jni/../../Classes/Update.h \
  jni/../../cocos2d/cocos/3d/../ui\UIScrollView.h \
  jni/../../cocos2d/cocos/3d/../ui/UILayout.h \
  jni/../../cocos2d/cocos/3d/../ui/UIWidget.h \
@@ -367,6 +371,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/SelectMapLayer.o: \
  jni/../../cocos2d/cocos/3d/../base/ObjectFactory.h
 
 jni/../../Classes/SelectMapLayer.h:
+
+jni/../../Classes/StageSelectDefine.h:
 
 jni/../../cocos2d/cocos/3d/../cocos2d.h:
 
@@ -1064,21 +1070,7 @@ jni/../../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h:
 
 jni/../../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
-jni/../../Classes/UpdateManager.h:
-
-jni/../../Classes/Singleton.h:
-
-jni/../../Classes/SceneManager.h:
-
-jni/../../Classes/DataManager.h:
-
-jni/../../Classes/EDirection.h:
-
-jni/../../Classes/DataStructure.h:
-
-jni/../../Classes/FriendList.h:
-
-jni/../../Classes/Update.h:
+jni/../../cocos2d/cocos/3d/../platform\android\jni\JniHelper.h:
 
 jni/../../Classes/Network.h:
 
@@ -1089,6 +1081,26 @@ jni/../../cocos2d/cocos/3d/../network/HttpRequest.h:
 jni/../../cocos2d/cocos/3d/../network/HttpResponse.h:
 
 jni/../../cocos2d/cocos/3d/../network/HttpClient.h:
+
+jni/../../Classes/DataManager.h:
+
+jni/../../Classes/Singleton.h:
+
+jni/../../Classes/EDirection.h:
+
+jni/../../Classes/DataStructure.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
+
+jni/../../cocos2d/cocos/audio/android/../include/Export.h:
+
+jni/../../Classes/UpdateManager.h:
+
+jni/../../Classes/SceneManager.h:
+
+jni/../../Classes/FriendList.h:
+
+jni/../../Classes/Update.h:
 
 jni/../../cocos2d/cocos/3d/../ui\UIScrollView.h:
 

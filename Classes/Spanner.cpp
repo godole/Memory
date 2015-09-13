@@ -1,7 +1,6 @@
 #include "Spanner.h"
 #include "LayerDefine.h"
-#include "SpannerBehaviorState.h"
-#include "SpannerDefaultState.h"
+#include "SpannerBehaviorStates.h"
 
 USING_NS_CC;
 using namespace std;
@@ -32,7 +31,8 @@ void CSpanner::Init(cocos2d::CCLayer* parentLayer, TransectorProfile* profile, S
 	m_ValueMap["startPos"] = m_vStartPosition;
 	m_ValueMap["door"] = nullptr;
 
-	m_pBehavior = CreateBehavior();
+	m_pBehavior = shared_ptr<CSpannerBehaviorState>(new CSpannerDefaultState);
+	m_pBehavior->Init(this, &m_ValueMap);
 
 	m_pActionSprite = m_pSprite;
 }
@@ -40,11 +40,6 @@ void CSpanner::Init(cocos2d::CCLayer* parentLayer, TransectorProfile* profile, S
 void CSpanner::setStateToDefault()
 {
 	ChangeState(shared_ptr<CSpannerBehaviorState>(new CSpannerDefaultState));
-}
-
-void CSpanner::ObjectUpdate()
-{
-	m_pState->Update();
 }
 
 void CSpanner::Active()
@@ -55,22 +50,6 @@ void CSpanner::Active()
 void CSpanner::DisActive()
 {
 
-}
-
-shared_ptr<Behavior> CSpanner::CreateBehavior()
-{
-	m_pState = shared_ptr<CSpannerBehaviorState>(new CSpannerDefaultState);
-	m_pState->Init(this, &m_ValueMap);
-
-	return m_pState;
-}
-
-void CSpanner::ChangeState(shared_ptr<CSpannerBehaviorState> a_Ptr)
-{
-	m_pState = a_Ptr;
-	m_pState->Init(this, &m_ValueMap);
-
-	m_pBehavior = a_Ptr;
 }
 
 void CSpanner::Scroll(Vec2 a_vVelocity)

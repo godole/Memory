@@ -36,3 +36,4 @@ public:
 
 #endif // _APP_DELEGATE_H_
 
+#define __MEMORY_DEBUG__

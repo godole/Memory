@@ -390,8 +390,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Spanner.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
- jni/../../Classes/LayerDefine.h jni/../../Classes/SpannerBehaviorState.h \
- jni/../../Classes/Behavior.h jni/../../Classes/SpannerDefaultState.h
+ jni/../../Classes/LayerDefine.h \
+ jni/../../Classes/SpannerBehaviorStates.h jni/../../Classes/Behavior.h
 
 jni/../../Classes/Spanner.h:
 
@@ -1187,8 +1187,6 @@ jni/../../Classes/EDirection.h:
 
 jni/../../Classes/LayerDefine.h:
 
-jni/../../Classes/SpannerBehaviorState.h:
+jni/../../Classes/SpannerBehaviorStates.h:
 
 jni/../../Classes/Behavior.h:
-
-jni/../../Classes/SpannerDefaultState.h:

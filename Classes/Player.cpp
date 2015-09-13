@@ -92,14 +92,15 @@ void CPlayer::Update()
 	float maxY = -300;
 	static int jumpCount = 0;
 	CCRect charRect;
-	charRect.setRect(m_pSprite->getPositionX() - 40, m_pSprite->getPositionY() - 39, 80, 90);
+	charRect.setRect(m_pSprite->getPositionX() - 45, m_pSprite->getPositionY() - 40, 80, 90);
 
 	for (int i = 0; i < objarr->getSize(); i++)
 	{
 		auto obj = objarr->getObjectAt(i);
 		CCRect objRect = obj->getBoundingBox();
 		
-		if (objRect.getMaxY() >charRect.getMinY())
+		if (objRect.getMaxY() >charRect.getMinY() ||
+			!obj->getBodyStructure().body->IsActive())
 			continue;
 
 		if (objRect.getMaxX() > charRect.getMinX() &&
@@ -118,7 +119,7 @@ void CPlayer::Update()
 
 	if (bIsGround &&
 		!m_bIsOnGround &&
-		jumpCount > 20)
+		m_pBodySprite->getBodyStructure().body->GetLinearVelocity().y < -1.0)
 	{
 		auto parentLayer = Director::getInstance()->getRunningScene()->getChildByTag(MAIN_LAYER);
 		if (parentLayer != nullptr)

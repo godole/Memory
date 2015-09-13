@@ -1,8 +1,8 @@
 #pragma once
 
 #define BACKGROUND_ZORDER 0
-#define GROUND_ZORDER 1
-#define OBJECT_ZORDER 2
+#define OBJECT_ZORDER 1
+#define GROUND_ZORDER 2
 #define BOX_HOLD_ZORDER 3
 #define CHARACTER_ZORDER 4
 #define PARTICLE_ZORDER 5

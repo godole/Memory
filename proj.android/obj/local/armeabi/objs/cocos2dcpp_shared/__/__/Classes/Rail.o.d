@@ -390,10 +390,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Rail.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/EDirection.h jni/../../Classes/DataStructure.h \
- jni/../../Classes/b2Structure.h jni/../../Classes/RailBehaviorState.h \
- jni/../../Classes/Behavior.h jni/../../Classes/RailProfile.h \
- jni/../../Classes/Box2dSprite.h jni/../../Classes/RailDefaultState.h \
- jni/../../Classes/RailRunState.h jni/../../Classes/LayerDefine.h \
+ jni/../../Classes/b2Structure.h jni/../../Classes/RailProfile.h \
+ jni/../../Classes/Box2dSprite.h jni/../../Classes/RailBehaviorStates.h \
+ jni/../../Classes/Behavior.h jni/../../Classes/LayerDefine.h \
  jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
  jni/../../Classes/Sand.h jni/../../Classes/Door.h \
  jni/../../Classes/CTextureFactory.h
@@ -1192,17 +1191,13 @@ jni/../../Classes/DataStructure.h:
 
 jni/../../Classes/b2Structure.h:
 
-jni/../../Classes/RailBehaviorState.h:
-
-jni/../../Classes/Behavior.h:
-
 jni/../../Classes/RailProfile.h:
 
 jni/../../Classes/Box2dSprite.h:
 
-jni/../../Classes/RailDefaultState.h:
+jni/../../Classes/RailBehaviorStates.h:
 
-jni/../../Classes/RailRunState.h:
+jni/../../Classes/Behavior.h:
 
 jni/../../Classes/LayerDefine.h:
 

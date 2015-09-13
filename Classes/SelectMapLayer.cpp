@@ -41,16 +41,27 @@ void CSelectMapLayer::init(Layer * a_pParentLayer)
 	m_pSortMoveCountPeoples->setPosition(Point(350, 530));
 	a_pParentLayer->addChild(m_pSortMoveCountPeoples);
 
+#ifdef __MEMORY_DEBUG__
 	m_pGameStartButton = MenuItemImage::create(
 		"stageselect/gamestart.png",
 		"stageselect/gamestart.png",
 		std::bind([=]{
 		CDataManager::getInstance()->LoadMapData(
-			StringUtils::format("map/data/map3-2.txt"));
-		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+			StringUtils::format("map/data/maptest.txt"));
+		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStageTest);
 	}));
-
 	// Close Button
+#else
+	m_pGameStartButton = MenuItemImage::create(
+		"stageselect/gamestart.png",
+		"stageselect/gamestart.png",
+		std::bind([=]{
+		CDataManager::getInstance()->LoadMapData(
+			StringUtils::format("map/data/maptest.txt"));
+		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStageTest);
+	}));
+#endif
+
 	m_pCloseButton = MenuItemImage::create(
 		"stageselect/close.png",
 		"stageselect/close.png",
@@ -59,6 +70,7 @@ void CSelectMapLayer::init(Layer * a_pParentLayer)
 			m_pFriendList->setVisibleProfileImage(false);
 		setVisible(false);
 	}));
+
 
 	m_pGameStartButton->setVisible(false);
 	m_pGameStartButton->setPosition(Point(900, 70));
@@ -109,9 +121,15 @@ void CSelectMapLayer::TouchMap(Point a_ptTouchPosition)
 		{
 			if (!CDataManager::getInstance()->m_bConnectFacebook)
 			{
+#ifdef __MEMORY_DEBUG__
 				CDataManager::getInstance()->LoadMapData(
-					StringUtils::format("map/data/map3-2.txt"));
+					StringUtils::format("map/data/maptest.txt"));
+				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStageTest);
+#else
+				CDataManager::getInstance()->LoadMapData(
+					StringUtils::format("map/data/map1-1.txt"));
 				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+#endif
 			}
 			else
 			{

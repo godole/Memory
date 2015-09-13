@@ -33,6 +33,7 @@ void CSceneManager::SceneChange(ESceneType e_type, float fadetime)
 	case ESceneType::e_SceneStage1 :
 	case ESceneType::e_SceneStage2 :
 	case ESceneType::e_SceneStage3 :
+	case ESceneType::e_SceneStageTest :
 		pScene = Scene_InGame::createScene(e_type);
 		break;
 
