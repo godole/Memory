@@ -1,4 +1,5 @@
 #pragma once
+#include "PlayLayerEntity.h"
 #include "cocos2d.h"
 #include "EDirection.h"
 #include "DataManager.h"
@@ -9,18 +10,15 @@
 #include "CTextureFactory.h"
 #include "ui\CocosGUI.h"
 
-class CBox2dSprite;
-class CPlayer;
-class CThings;
-class CScrollSprite;
-class BackgroundCloud;
-
 class PlayLayerMainLogic :
-	public cocos2d::CCLayer
+	public PlayLayerEntity
 {
 public:
-	bool init();
+	void LayerInit();
 	void b2Init();
+
+	// implement the "static create()" method manually
+	CREATE_FUNC(PlayLayerMainLogic);
 
 	//KeyboardCallback
 	virtual void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
@@ -42,25 +40,16 @@ public:
 	void b2tick(float dt);
 	void Release();
 
-	void ObjInit();
-	void BGInit();
-	void ObjUpdate();
-	virtual void BackgroundInit() = 0;
-	virtual void ObjectInit() = 0;
-	virtual void BackgroundUpdate() = 0;
-	virtual void ObjectUpdate() = 0;
-
-protected :
+private :
 	void settingKeyboardManager();
 	void settingTouchDispatcher();
 	CBox2dSprite* CreateWall(string filename, CCPoint pos);
 
-	CCPoint origin;
-	CCSize visibleSize;
-
 	CBox2dSprite* m_pZeroWall;
 	CBox2dSprite* m_pMaxWall;
 	shared_ptr<CScrollSprite> m_pDestination;
+
+	PlayLayerShareData m_LayerData;
 
 	void GoNextStage();
 	void Scroll();
@@ -80,16 +69,7 @@ protected :
 	cocos2d::ui::Button* m_pRightMoveButton;
 	cocos2d::ui::Button* m_pJumpButton;
 
-	CCNode* m_pBGParticleNode;
-	CCNode* m_pObjParticleNode;
-	CCNode* m_pCharParticleNode;
-	CCNode* m_pScreenParticleNode;
-
-	shared_ptr<CPlayer> m_pPlayer;
-	b2World* m_pWorld;
-	shared_ptr<CScrollSprite> m_pBackground;
-	vector<shared_ptr<CThings>> m_arrObject;
-	BackgroundCloud* m_pBackgroundCloud;
+	CCNode* m_pParticleLayer;
 
 	bool m_bIsLeftButtonTouched;
 	bool m_bIsRightButtonTouched;

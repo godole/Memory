@@ -7,6 +7,5 @@ USING_NS_CC;
 
 struct RailProfile
 {
-	EDirection	m_eCurrentDirection;
-	EDirection	m_eStartDirection;
+	
 };

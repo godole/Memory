@@ -18,7 +18,6 @@ private:
 	
 	Sprite * m_pStageSelect;
 	Sprite * m_pOption;
-	Sprite * m_pAchievement;
 	
 	bool	 m_isVisible;
 	bool	 m_isFading;

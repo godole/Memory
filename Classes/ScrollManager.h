@@ -15,7 +15,6 @@ class CScrollManager :
 public :
 	void	Insert(shared_ptr<IScroll> a_pScrl);
 	void	Scroll(Vec2 a_vDeltaPos);
-	void	Remove(shared_ptr<IScroll> a_pScrl);
 	void	Release();
 
 public :
