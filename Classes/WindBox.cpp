@@ -1,7 +1,6 @@
 #include "WindBox.h"
 #include "LayerDefine.h"
-#include "WindBehaviorState.h"
-#include "WindDefaultState.h"
+#include "WindBehaviorStates.h"
 #include "Box2dSprite.h"
 #include "ObjectManager.h"
 #include <map>
@@ -21,24 +20,24 @@ CWindBox::~CWindBox()
 
 void CWindBox::Init(CCLayer* a_pParentLayer, b2World* a_pWorld, TransectorProfile* a_Profile, WindBoxData a_Data)
 {
-	m_pSprite = CCSprite::create("map/map3/object/box_wind.png");
-	a_pParentLayer->addChild(m_pSprite);
+	m_pActionSprite = CCSprite::create("map/map1/object/box_wind.png");
+	a_pParentLayer->addChild(m_pActionSprite, OBJECT_ZORDER);
 
 	m_pTransectorProfile = a_Profile;
 
 	m_pBox2dSprite = shared_ptr<CBox2dSprite>(new CBox2dSprite);
-	m_pBox2dSprite->Init(m_pSprite, a_pWorld, b2BodyType::b2_staticBody, 80, 80);
+	m_pBox2dSprite->Init(m_pActionSprite, a_pWorld, b2BodyType::b2_staticBody, 90, 90);
 	m_pBox2dSprite->setPositionTo(a_Data.m_vPosition);
 	CObjectManager::getInstance()->getBox2dSprite()->InsertObject(m_pBox2dSprite);
+	CObjectManager::getInstance()->getNotBoxArray()->InsertObject(m_pBox2dSprite);
 	
-	m_ValueMap.insert({ "sprite", (void*)m_pSprite });
-	m_ValueMap.insert({ "box2dsprite", (void*)m_pBox2dSprite.get() });
+	m_ValueMap["sprite"] = m_pActionSprite;
+	m_ValueMap["box2dsprite"] = m_pBox2dSprite.get();
 	m_ValueMap["bIsRun"] = (void*)&m_bIsRun;
 	m_ValueMap["particle"] = nullptr;
 
-	m_pActionSprite = m_pSprite;
-
-	m_pBehavior = CreateBehavior();
+	m_pBehavior = shared_ptr<CWindBehaviorState>(new CWindDefaultState);
+	m_pBehavior->Init(this, &m_ValueMap);
 
 	m_bIsRun = false;
 }
@@ -53,30 +52,13 @@ void CWindBox::Scroll(Vec2 a_vScrollVelocity)
 	m_pBox2dSprite->setPositionBy(a_vScrollVelocity);
 }
 
-shared_ptr<Behavior> CWindBox::CreateBehavior()
-{
-	m_pState = shared_ptr<CWindBehaviorState>(new CWindDefaultState);
-	m_pState->Init(this, &m_ValueMap);
-	CThings::m_pBehavior = m_pState;
-
-	return m_pState;
-}
-
-void CWindBox::ChangeState(shared_ptr<CWindBehaviorState> a_pBehavior)
-{
-	a_pBehavior->Init(this, &m_ValueMap);
-
-	m_pState = a_pBehavior;
-	m_pBehavior = a_pBehavior;
-}
-
 void CWindBox::MakeFly(ICanfly* a_pCanfly)
 {
 	if (!m_bIsRun)
 		return;
 
 	CCRect r;
-	r.setRect(m_pSprite->getBoundingBox().getMinX(), m_pSprite->getBoundingBox().getMaxY(), 100, 400);
+	r.setRect(m_pActionSprite->getBoundingBox().getMinX(), m_pActionSprite->getBoundingBox().getMaxY(), 100, 400);
 	auto objarr = CObjectManager::getInstance()->getBox2dSprite()->getObjectArray();
 
 	for (auto itr = objarr.begin(); itr != objarr.end(); ++itr)
@@ -87,7 +69,7 @@ void CWindBox::MakeFly(ICanfly* a_pCanfly)
 		CCRect r2 = (*itr)->getSpritePtr()->getBoundingBox();
 		if (r.intersectsRect(r2))
 		{
-			r.setRect(m_pSprite->getBoundingBox().getMinX(), m_pSprite->getBoundingBox().getMaxY(), 100, r2.getMinY() - r.getMinY());
+			r.setRect(m_pActionSprite->getBoundingBox().getMinX(), m_pActionSprite->getBoundingBox().getMaxY(), 100, r2.getMinY() - r.getMinY());
 			break;
 		}
 	}

@@ -37,7 +37,6 @@ public:
 		m_pWindow->setVisible(var); }
 
 	bool getLoadComplete() const { return m_isLoadComplete; }
-	CGameData * getUserData() { return m_vFriendLists[0]; }
 
 	static int m_nTempCheckClearStage;
 

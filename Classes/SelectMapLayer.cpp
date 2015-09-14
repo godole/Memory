@@ -27,30 +27,41 @@ void CSelectMapLayer::init(Layer * a_pParentLayer)
 		}
 	}
 
-	m_pSortClearPeoples = Sprite::create("stageselect/stage_clear_off.png");
+	m_pSortClearPeoples = Sprite::create("stageselect/clearpeople.png");
 	m_pSortClearPeoples->setVisible(false);
 	m_pSortClearPeoples->setColor(Color3B::GRAY);
 	m_pSortClearPeoples->setAnchorPoint(Point(0, 0));
 	m_pSortClearPeoples->setPosition(Point(100, 530));
 	a_pParentLayer->addChild(m_pSortClearPeoples);
 
-	m_pSortMoveCountPeoples = Sprite::create("stageselect/stage_rank_off.png");
+	m_pSortMoveCountPeoples = Sprite::create("stageselect/movecountpeople.png");
 	m_pSortMoveCountPeoples->setVisible(false);
 	m_pSortMoveCountPeoples->setColor(Color3B::GRAY);
 	m_pSortMoveCountPeoples->setAnchorPoint(Point(0, 0));
 	m_pSortMoveCountPeoples->setPosition(Point(350, 530));
 	a_pParentLayer->addChild(m_pSortMoveCountPeoples);
 
+#ifdef __MEMORY_DEBUG__
 	m_pGameStartButton = MenuItemImage::create(
-		"stageselect/rank_start.png",
-		"stageselect/rank_start.png",
+		"stageselect/gamestart.png",
+		"stageselect/gamestart.png",
 		std::bind([=]{
 		CDataManager::getInstance()->LoadMapData(
-			StringUtils::format("map/data/map3-2.txt"));
-		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+			StringUtils::format("map/data/maptest.txt"));
+		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStageTest);
 	}));
-
 	// Close Button
+#else
+	m_pGameStartButton = MenuItemImage::create(
+		"stageselect/gamestart.png",
+		"stageselect/gamestart.png",
+		std::bind([=]{
+		CDataManager::getInstance()->LoadMapData(
+			StringUtils::format("map/data/maptest.txt"));
+		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStageTest);
+	}));
+#endif
+
 	m_pCloseButton = MenuItemImage::create(
 		"stageselect/close.png",
 		"stageselect/close.png",
@@ -60,8 +71,9 @@ void CSelectMapLayer::init(Layer * a_pParentLayer)
 		setVisible(false);
 	}));
 
+
 	m_pGameStartButton->setVisible(false);
-	m_pGameStartButton->setPosition(Point(1000, 70));
+	m_pGameStartButton->setPosition(Point(900, 70));
 
 	m_pCloseButton->setVisible(false);
 	m_pCloseButton->setPosition(Point(1100, 500));
@@ -109,9 +121,15 @@ void CSelectMapLayer::TouchMap(Point a_ptTouchPosition)
 		{
 			if (!CDataManager::getInstance()->m_bConnectFacebook)
 			{
+#ifdef __MEMORY_DEBUG__
 				CDataManager::getInstance()->LoadMapData(
-					StringUtils::format("map/data/map3-2.txt"));
+					StringUtils::format("map/data/maptest.txt"));
+				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStageTest);
+#else
+				CDataManager::getInstance()->LoadMapData(
+					StringUtils::format("map/data/map1-1.txt"));
 				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+#endif
 			}
 			else
 			{

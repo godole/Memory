@@ -10,6 +10,9 @@
 #include "Sand.h"
 #include "Water.h"
 #include "WindBox.h"
+#include "Ped.h"
+#include "Door.h"
+#include "Spanner.h"
 
 shared_ptr<CThings> CObjectFactory::CreateBox(CCLayer* a_Parent, b2World* a_World, TransectorProfile* a_Profile, BoxData data)
 {
@@ -98,6 +101,38 @@ shared_ptr<CWindBox> CObjectFactory::CreateWindBox(CCLayer* a_Parent, b2World* a
 	temp->Init(a_Parent, a_World, a_Profile, data);
 
 	CommonThingsInit(temp);
+
+	return temp;
+}
+
+shared_ptr<CPed> CObjectFactory::CreatePed(CCLayer* a_Parent, b2World* a_World, PedData data)
+{
+	shared_ptr<CPed>temp = shared_ptr<CPed>(new CPed);
+	temp->Init(a_Parent, a_World, data);
+
+	CScrollManager::getInstance()->Insert(temp);
+
+	return temp;
+}
+
+shared_ptr<CThings> CObjectFactory::CreateSpanner(CCLayer* a_Parent, TransectorProfile* a_Profile, SpannerData data)
+{
+	shared_ptr<CSpanner> temp = shared_ptr<CSpanner>(new CSpanner);
+	temp->Init(a_Parent, a_Profile, data);
+
+	CommonThingsInit(temp);
+
+	return temp;
+}
+
+shared_ptr<CDoor> CObjectFactory::CreateDoor(CCLayer* a_Parent, b2World* a_World, DoorData data)
+{
+	shared_ptr<CDoor> temp = shared_ptr<CDoor>(new CDoor);
+	temp->Init(a_Parent, a_World, data);
+
+	CObjectManager::getInstance()->getDoorArray()->InsertObject(temp);
+	CScrollManager::getInstance()->Insert(temp);
+	UpdateManager::getInstance()->Insert(temp);
 
 	return temp;
 }

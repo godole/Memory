@@ -254,12 +254,7 @@ void FriendList::SortFacebookData()
 		{
 			(*itr)->m_pMoveCount->setVisible(true);
 			(*itr)->m_pMoveCount->setString(
-				StringUtils::format("Clear Tile : %c%c:%c%c", 
-				m_vFriendLists[i]->m_nStageMoveCount[m_nSortStageNumber - 10][0],
-				m_vFriendLists[i]->m_nStageMoveCount[m_nSortStageNumber - 10][1],
-				m_vFriendLists[i]->m_nStageMoveCount[m_nSortStageNumber - 10][2],
-				m_vFriendLists[i]->m_nStageMoveCount[m_nSortStageNumber - 10][3]
-				));
+				StringUtils::format("MoveCount : %d", m_vFriendLists[i]->m_nStageMoveCount[m_nSortStageNumber - 10]));
 
 			(*itr)->m_pMoveCount->setPosition(Point(700, 310 + m_vFriendLists.size() * 110 - i * 140));
 			(*itr)->m_pFacebookName->setPosition(Point(400, 230 + m_vFriendLists.size() * 110 - i * 140));
@@ -320,7 +315,8 @@ void FriendList::onRequestMoveCountCompleted(HttpClient * sender, HttpResponse *
 	// String 문자열을 나누어 int 형으로 30스테이지 까지
 	for (int i = 0; i < STAGE_NUMBER; i++)
 	{
-		m_vFriendLists[m_nLoadCount]->m_nStageMoveCount[i] = _receiveMsg.substr(i * 4, 4).c_str();
+		m_vFriendLists[m_nLoadCount]->m_nStageMoveCount[i]
+			= atoi(_receiveMsg.substr(i * 2, 2).c_str());
 	}
 
 	auto _MoveCount = Label::createWithSystemFont("", "", 30);

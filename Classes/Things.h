@@ -23,7 +23,9 @@ public :
 	virtual void setTransectorProfile(TransectorProfile* a_pProfile){ m_pTransectorProfile = a_pProfile; }
 
 	bool Action(Vec2 a_vTouchPos);
+	void ChangeState(shared_ptr<Behavior> a_Ptr);
 	shared_ptr<Behavior> getBehaviorPtr(){ return m_pBehavior; }
+	bool getIsRanged(){ return m_bIsRanged; }
 
 	virtual void	setStateToDefault() = 0;
 
@@ -32,13 +34,13 @@ public:
 	~CThings();
 
 protected :
-	virtual shared_ptr<Behavior> CreateBehavior() = 0;
 	virtual void	Active() = 0;
 	virtual void	DisActive() = 0;
 	virtual void	ObjectUpdate(){}
 
 	TransectorProfile* m_pTransectorProfile;
 	shared_ptr<Behavior> m_pBehavior;
+	std::map<std::string, void*> m_ValueMap;
 	CCSprite* m_pActionSprite;
 	bool m_bIsRanged;
 };

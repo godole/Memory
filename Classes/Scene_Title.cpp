@@ -46,8 +46,13 @@ bool Scene_Title::init()
 
 bool Scene_Title::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 {
-	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneSelectStage);
-//	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	/*CDataManager::getInstance()->setCurrentStage(2, 3);
+	CDataManager::getInstance()->LoadMapData(
+		StringUtils::format("map/data/map%d-%d.txt", 2, 3));
+	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage2);*/
+	CDataManager::getInstance()->LoadMapData("map/data/maptest.txt");
+	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStageTest);
+	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 	return true;
 }
 

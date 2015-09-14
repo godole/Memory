@@ -3,6 +3,7 @@
 
 class CStageBox;
 class COption;
+class CStageData;
 class COptionLayer;
 class SceneSelectScene : public Layer
 {
@@ -38,6 +39,7 @@ private:
 	std::shared_ptr<CStageBox>  m_pStageBox;
 	std::shared_ptr<COption>	m_pOption;
 	std::shared_ptr<COptionLayer> m_pOptionLayer;
+	std::shared_ptr<CStageData> m_pStageData;
 
 private:
 	Layer * m_pStageSelectLayer;

@@ -11,8 +11,8 @@ public:
 	bool m_isVisible;				// 표시 여부
 	int m_nLoadNumber;				// 위치값 조절을 위한 로드 번호
 	int m_nAchieveStage;			// 달성 스테이지
-	std::string m_nStageMoveCount[STAGE_NUMBER];	
-									// 스테이지 별 플레이 시간
+	int m_nStageMoveCount[STAGE_NUMBER];	
+									// 스테이지 별 행동 카운트
 	int m_nStageClearNumber[STAGE_NUMBER];
 									// 스테이지 별 클리어 번호
 

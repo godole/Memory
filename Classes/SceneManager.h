@@ -10,6 +10,7 @@ enum class ESceneType
 	e_SceneStage1,
 	e_SceneStage2,
 	e_SceneStage3,
+	e_SceneStageTest,
 	e_SceneSelectStage
 };
 

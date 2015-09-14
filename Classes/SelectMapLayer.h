@@ -15,8 +15,6 @@ public:
 	void setVisible(bool);
 	bool getVisible() const { return m_isVisible; }
 
-	std::shared_ptr<FriendList> getFriendList() { return m_pFriendList; }
-
 private:
 	std::shared_ptr<FriendList> m_pFriendList;
 	MenuItemImage * m_pGameStartButton;
