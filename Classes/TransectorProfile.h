@@ -10,5 +10,3 @@ public:
 	CCPoint		m_vCurrentPosition;
 	CCRect		m_TransectRange;
 };
-
-#define HOLD_POS ccp(0, 80)

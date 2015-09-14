@@ -1,8 +1,10 @@
 ﻿#include "SceneSelectScene.h"
 #include "UpdateManager.h"
+#include "SelectMapLayer.h"
 #include "ELayerState.h"
 #include "DataManager.h"
 #include "OptionLayer.h"
+#include "FriendList.h"
 #include "StageData.h"
 #include "StageBox.h"
 #include "UserData.h"
@@ -19,7 +21,7 @@ SceneSelectScene::SceneSelectScene(){
 }
 SceneSelectScene::~SceneSelectScene(){
 	// 코드 합칠때 수정해야합니다
-	//UpdateManager::getInstance()->Release();
+	UpdateManager::getInstance()->Release();
 }
 
 Scene* SceneSelectScene::createScene()
@@ -63,8 +65,10 @@ bool SceneSelectScene::init()
 	UpdateManager::getInstance()->Insert(m_pStageBox);
 
 	// 스테이지 정보
-	m_pStageData = std::shared_ptr<CStageData>(new CStageData);
-	m_pStageData->init();
+	if (!CStageData::getInstance()->getDataLoad())
+	{
+		CStageData::getInstance()->init();
+	}
 
 	// 로딩 시작
 	LoadingInit();
@@ -132,6 +136,11 @@ void SceneSelectScene::LoadUpdate()
 		{
 			m_pLoadMessage->setString("모두의 기억 찾기 완료 !");
 			CDataManager::getInstance()->m_bAllDataLoaded = true;
+			CStageData::getInstance()->PushUserData
+				(m_pStageBox->getSelectMapLayer()->getFriendList()->getUserData());
+
+			// TEMP CLEAR STAGE
+			CStageData::getInstance()->UpdateStageClear(15, "0212", 3);
 		}
 	}
 }
