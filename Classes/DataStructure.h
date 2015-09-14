@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 #include "EDirection.h"
-#include <map>
 
 
 USING_NS_CC;
@@ -66,7 +65,10 @@ typedef struct _tagSand
 
 typedef struct _tagPlayerData
 {
-	map<int, int> m_StageCount[3];
+	string m_szName;
+	int m_nStage1Count;
+	int m_nStage2Count;
+	int m_nStage3Count;
 }PlayerData;
 
 typedef struct _tagWindBoxData
@@ -79,20 +81,3 @@ typedef struct _tagPedData
 	CCPoint m_vPosition;
 	string m_szTextureName;
 }PedData;
-
-typedef struct _tagDoorData
-{
-	CCPoint m_vPosition;
-}DoorData;
-
-typedef struct _tagSpannerData
-{
-	CCPoint m_vPosition;
-}SpannerData;
-
-typedef struct _tagBehaviorCount
-{
-	int m_nMaxCount;
-	int m_nSecondScore;
-	int m_nFirstScore;
-}BehaviorCount;

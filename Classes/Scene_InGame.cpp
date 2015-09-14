@@ -1,33 +1,19 @@
 #include "Scene_InGame.h"
-#include "Scene_Stage1.h"
-#include "Scene_Stage2.h"
-#include "Scene_Stage3.h"
-#include "Scene_ObjTest.h"
+#include "PlayLayerMainLogic.h"
+#include "PlayLayerEntity.h"
 #include "LayerDefine.h"
 
 USING_NS_CC;
 
-Scene* Scene_InGame::createScene(ESceneType type)
+Scene* Scene_InGame::createScene(CCLayer* a_pMainLayer, CCLayer* a_pBackgroundLayer, CCLayer* a_pObjectLayer)
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
 
-	switch (type)
-	{
-	case ESceneType::e_SceneStage1:
-		scene->addChild(Scene_Stage1::create(), 0, MAIN_LAYER);
-		break;
-	case ESceneType::e_SceneStage2:
-		scene->addChild(Scene_Stage2::create(), 0, MAIN_LAYER);
-		break;
-	case ESceneType::e_SceneStage3:
-		scene->addChild(Scene_Stage3::create(), 0, MAIN_LAYER);
-		break;
-	case ESceneType::e_SceneStageTest :
-		scene->addChild(Scene_ObjTest::create(), 0, MAIN_LAYER);
-	default:
-		break;
-	}
+	scene->addChild(a_pBackgroundLayer, 0, BG_LAYER);
+	scene->addChild(a_pObjectLayer, 1, OBJ_LAYER);
+    // add layer as a child to scene
+	scene->addChild(a_pMainLayer, 2, MAIN_LAYER);
 
     // return the scene
     return scene;

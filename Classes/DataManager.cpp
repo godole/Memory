@@ -78,26 +78,6 @@ void CDataManager::LoadMapData(string filename)
 			{
 				m_arrWindBoxData.push_back(_GetWindBoxData(temp));
 			}
-
-			if (temp.find("PED") != string::npos)
-			{
-				m_arrPedData.push_back(_GetPedData(temp));
-			}
-
-			if (temp.find("DOOR") != string::npos)
-			{
-				m_arrDoorData.push_back(_GetDoorData(temp));
-			}
-
-			if (temp.find("SPANNER") != string::npos)
-			{
-				m_arrSpannerData.push_back(_GetSpannerData(temp));
-			}
-
-			if (temp.find("BCOUNT") != string::npos)
-			{
-				m_MapBehaviorCount = _GetBehaviorCount(temp);
-			}
 			nCharIndex = 0;
 		}
 		nCharIndex++;
@@ -121,9 +101,12 @@ void CDataManager::LoadPlayerData()
 	const char* stream = (char*)Utils->getFileData(fString, "rb", &fileSize);
 
 	if (stream == NULL)
-		for (int i = 0; i < 3; i++)
-			for (int j = 1; j <= 10; ++j)
-				m_PlayerData.m_StageCount[i][j] = 0;
+	{
+		m_PlayerData.m_szName = "Guest";
+		m_PlayerData.m_nStage1Count = 0;
+		m_PlayerData.m_nStage2Count = 0;
+		m_PlayerData.m_nStage3Count = 0;
+	}
 	else
 	{
 		string data = string((const char*)stream, fileSize);
@@ -664,194 +647,4 @@ WindBoxData CDataManager::_GetWindBoxData(string str)
 	}
 
 	return tempData;
-}
-
-PedData CDataManager::_GetPedData(string str)
-{
-	PedData tempData;
-	string tempStr = str;
-	string _temp;
-	int index = 0;
-	int indexCount = 0;
-
-	tempStr.erase(0, 5);
-
-	for (int j = 0; j < tempStr.size(); j++)
-	{
-		if (tempStr[j] == ' ')
-		{
-			float x = 0, y = 0;
-			_temp = tempStr.substr(j - indexCount, indexCount);
-
-			switch (index)
-			{
-			case 0:
-				x = atoi(_temp.c_str());
-				tempData.m_vPosition.x = x;
-				break;
-
-			case 1:
-				y = atoi(_temp.c_str());
-				tempData.m_vPosition.y = y;
-				break;
-
-			case 2:
-				tempData.m_szTextureName = _temp;
-				break;
-			}
-			index++;
-			indexCount = 0;
-		}
-
-		else
-			indexCount++;
-	}
-
-	//CCLog("%f, %f, %s", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_szTextureName.c_str());
-
-	return tempData;
-}
-
-DoorData CDataManager::_GetDoorData(string str)
-{
-	DoorData tempData;
-	string tempStr = str;
-	string _temp;
-	int index = 0;
-	int indexCount = 0;
-
-	tempStr.erase(0, 6);
-
-	for (int j = 0; j < tempStr.size(); j++)
-	{
-		if (tempStr[j] == ' ')
-		{
-			float x = 0, y = 0;
-			_temp = tempStr.substr(j - indexCount, indexCount);
-
-			switch (index)
-			{
-			case 0:
-				x = atoi(_temp.c_str());
-				tempData.m_vPosition.x = x;
-				break;
-
-			case 1:
-				y = atoi(_temp.c_str());
-				tempData.m_vPosition.y = y;
-				break;
-			}
-			index++;
-			indexCount = 0;
-		}
-
-		else
-			indexCount++;
-	}
-
-	//CCLog("%f, %f, %s", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_szTextureName.c_str());
-
-	return tempData;
-}
-
-SpannerData CDataManager::_GetSpannerData(string str)
-{
-	SpannerData tempData;
-	string tempStr = str;
-	string _temp;
-	int index = 0;
-	int indexCount = 0;
-
-	tempStr.erase(0, 9);
-
-	for (int j = 0; j < tempStr.size(); j++)
-	{
-		if (tempStr[j] == ' ')
-		{
-			float x = 0, y = 0;
-			_temp = tempStr.substr(j - indexCount, indexCount);
-
-			switch (index)
-			{
-			case 0:
-				x = atoi(_temp.c_str());
-				tempData.m_vPosition.x = x;
-				break;
-
-			case 1:
-				y = atoi(_temp.c_str());
-				tempData.m_vPosition.y = y;
-				break;
-			}
-			index++;
-			indexCount = 0;
-		}
-
-		else
-			indexCount++;
-	}
-
-	//CCLog("%f, %f, %s", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_szTextureName.c_str());
-
-	return tempData;
-}
-
-BehaviorCount CDataManager::_GetBehaviorCount(string str)
-{
-	BehaviorCount tempData;
-	string tempStr = str;
-	string _temp;
-	int index = 0;
-	int indexCount = 0;
-
-	tempStr.erase(0, 8);
-
-	for (int j = 0; j < tempStr.size(); j++)
-	{
-		if (tempStr[j] == ' ')
-		{
-			float x = 0, y = 0;
-			_temp = tempStr.substr(j - indexCount, indexCount);
-
-			switch (index)
-			{
-			case 0:
-				tempData.m_nMaxCount = atoi(_temp.c_str());
-				break;
-
-			case 1:
-				tempData.m_nSecondScore = atoi(_temp.c_str());
-				break;
-
-			case 2:
-				tempData.m_nFirstScore = atoi(_temp.c_str());
-				break;
-			}
-			index++;
-			indexCount = 0;
-		}
-
-		else
-			indexCount++;
-	}
-
-	//CCLog("%f, %f, %s", tempData.m_vPosition.x, tempData.m_vPosition.y, tempData.m_szTextureName.c_str());
-
-	return tempData;
-}
-
-void CDataManager::setCurrentStage(int a_nStage, int a_nMap)
-{
-	m_CurrentStage.first = a_nStage;
-	m_CurrentStage.second = a_nMap;
-}
-
-int	CDataManager::getStageScoreSum(int a_nStage)
-{
-	int sumScore = 0;
-
-	for (int i = 1; i <= 10; i++)
-		sumScore += m_PlayerData.m_StageCount[a_nStage][i];
-
-	return sumScore;
 }

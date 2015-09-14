@@ -17,6 +17,8 @@ public:
 	void StageTouchMoved(Point);
 	void StageTouchEnded(Point) { m_isEndedTouch = true; }
 
+	std::shared_ptr<CSelectMapLayer> getSelectMapLayer() { return m_pSelectMapLayer; }
+
 private:
 	void VisibleMap(bool);
 	void PieceMove(float);

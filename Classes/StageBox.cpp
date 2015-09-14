@@ -58,15 +58,14 @@ void CStageBox::init(Layer * a_pParentLayer)
 
 	// BackStageMain
 	m_pBackStageMain = MenuItemImage::create(
-		"a.png",
-		"b.png",
+		"stageselect/rank_back.png",
+		"stageselect/rank_back.png",
 		std::bind([=]{
 		VisibleMap(false);
 	}));
 
 	m_pBackStageMain->setVisible(false);
-	m_pBackStageMain->setScale(2.0f);
-	m_pBackStageMain->setPosition(Point(50, 50));
+	m_pBackStageMain->setPosition(Point(150, 50));
 
 	auto _pButton = Menu::create(m_pBackStageMain, NULL);
 	_pButton->setPosition(Vec2::ZERO);

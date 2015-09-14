@@ -20,6 +20,7 @@ CPlayer::CPlayer()
 	m_MoveEffectSoundIndex = 0;
 }
 
+
 CPlayer::~CPlayer()
 {
 }
@@ -32,7 +33,7 @@ void CPlayer::Init(CCLayer* parentLayer, b2World* a_World, int a_nMaxBehaviorCou
 	m_pParentLayer = parentLayer;
 
 	m_pCharacter = CSLoader::createNode("char/run.csb");
-	parentLayer->addChild(m_pCharacter, ZOrder, CHAR_NODE);
+	parentLayer->addChild(m_pCharacter);
 
 	m_pRunAction = CSLoader::createTimeline("char/run.csb");
 	m_pCharacter->runAction(m_pRunAction);
@@ -89,18 +90,17 @@ void CPlayer::setPositionBy(CCPoint pos)
 void CPlayer::Update()
 {
 	auto objarr = CObjectManager::getInstance()->getBox2dSprite();
-	float maxY = -300;
+	float maxY = 0;
 	static int jumpCount = 0;
 	CCRect charRect;
-	charRect.setRect(m_pSprite->getPositionX() - 45, m_pSprite->getPositionY() - 40, 80, 90);
+	charRect.setRect(m_pSprite->getPositionX() - 40, m_pSprite->getPositionY() - 38, 80, 90);
 
 	for (int i = 0; i < objarr->getSize(); i++)
 	{
 		auto obj = objarr->getObjectAt(i);
 		CCRect objRect = obj->getBoundingBox();
 		
-		if (objRect.getMaxY() >charRect.getMinY() ||
-			!obj->getBodyStructure().body->IsActive())
+		if (objRect.getMaxY() >charRect.getMinY())
 			continue;
 
 		if (objRect.getMaxX() > charRect.getMinX() &&
@@ -119,12 +119,12 @@ void CPlayer::Update()
 
 	if (bIsGround &&
 		!m_bIsOnGround &&
-		m_pBodySprite->getBodyStructure().body->GetLinearVelocity().y < -1.0)
+		jumpCount > 20)
 	{
-		auto parentLayer = Director::getInstance()->getRunningScene()->getChildByTag(MAIN_LAYER);
+		auto parentLayer = Director::getInstance()->getRunningScene()->getChildByName(MAIN_LAYER);
 		if (parentLayer != nullptr)
 		{
-			auto parent = parentLayer->getChildByTag(CHAR_PARTICLE_NODE);
+			auto parent = parentLayer->getChildByName("particlelayer");
 			CParticleManager::getInstance()->addParticle(parent, "char/jump_smoke.plist", m_pSprite->getPosition() - Vec2(0, 45) - parent->getPosition(), 2);
 			jumpCount = 0;
 		}
@@ -235,5 +235,5 @@ CCRect CPlayer::getCanFlyRect()
 
 bool CPlayer::Isfall()
 {
-	return m_pSprite->getPositionY() - CScrollManager::getInstance()->getDeltaPosition().y < -300 ? true : false;
+	return m_pSprite->getPositionY() - CScrollManager::getInstance()->getDeltaPosition().y < 0 ? true : false;
 }

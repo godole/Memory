@@ -1,7 +1,7 @@
 #include "Box2dSprite.h"
-#include "json\document.h"
+//#include "json\document.h"
 
-using namespace rapidjson;
+//using namespace rapidjson;
 
 
 CBox2dSprite::CBox2dSprite()
@@ -74,7 +74,7 @@ void CBox2dSprite::Init(CCSprite* a_Sprite, string jsonData, b2World* a_World, b
 	string data = string((const char*)stream, fileSize);
 	CC_SAFE_DELETE_ARRAY(stream);
 
-	Document doc;
+	/*Document doc;
 	if (doc.Parse<0>(data.c_str()).HasParseError())
 		CCLOG(doc.GetParseError());
 
@@ -100,9 +100,10 @@ void CBox2dSprite::Init(CCSprite* a_Sprite, string jsonData, b2World* a_World, b
 			CCLOG("%f", y);
 			bodyVertices[i] = b2Vec2(x, y);
 		}
-	}
+	}*/
 
-	shape.Set(bodyVertices, verticesCount);
+	//shape.Set(bodyVertices, verticesCount);
+
 	m_b2Structure.fixture = m_b2Structure.body->CreateFixture(&shape, 0.0);
 }
 
