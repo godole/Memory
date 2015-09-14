@@ -284,6 +284,10 @@ void PlayLayerMainLogic::onTouchesBegan(const vector<Touch*>&touches, Event* eve
 			Behavior::k_bIsDoing = false;
 			scheduleUpdate();
 			m_pPlayer->setStateToBefore();
+			stringstream s;
+			s << m_pPlayer->getLatestCount();
+			string ss = s.str();
+			m_pPlayerBehaviorCount->setString(ss);
 			CloseDeadMenu();
 		}
 

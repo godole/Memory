@@ -33,7 +33,6 @@ void CMirageDefaultState::BehaviorInit()
 bool CMirageDefaultState::Action(CCPoint a_Pos)
 {
 	if (m_pGlassSprite->getBoundingBox().containsPoint(a_Pos) &&
-		!k_bIsDoing &&
 		m_pObject->getIsRanged())
 	{
 		m_pObject->ChangeState(std::shared_ptr<CMirageBehaviorState>(new CMirageCrashedState));
@@ -54,7 +53,6 @@ void CMirageCrashedState::BehaviorInit()
 {
 	auto parent = Director::getInstance()->getRunningScene()->getChildByTag(MAIN_LAYER)->getChildByTag(OBJ_PARTICLE_NODE);
 	m_pGlassSprite->setTexture(_VMAP_STATIC_CAST(CCTexture2D*, "glassCrashedTexture"));
-	m_pGlassSprite->setVisible(false);
-	CParticleManager::getInstance()->addParticle(parent, "map/map3/object/mirage_effect.plist", m_pWallSprite->getPosition());
+	m_pWallSprite->setVisible(false);
 	m_pWallBodySprite->getBodyStructure().body->SetActive(false);
 }

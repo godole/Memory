@@ -51,7 +51,6 @@ void CPulleyDefaultState::BehaviorInit()
 bool CPulleyDefaultState::Action(CCPoint a_vPos)
 {
 	if (m_pLeverSprite->getBoundingBox().containsPoint(a_vPos) &&
-		!k_bIsDoing &&
 		m_pObject->getIsRanged())
 	{
 		m_pObject->ChangeState(shared_ptr<CPulleyBehaviorState>(new CPulleyRunState));

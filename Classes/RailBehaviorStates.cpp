@@ -25,7 +25,6 @@ void CRailBehaviorState::Init(CThings* a_pObject, std::map<string, void* >* a_pV
 bool CRailDefaultState::Action(CCPoint a_Pos)
 {
 	if (m_pLeverSprite->getBoundingBox().containsPoint(a_Pos) &&
-		!k_bIsDoing &&
 		m_pObject->getIsRanged())
 	{
 		m_pObject->ChangeState(shared_ptr<CRailRunState>(new CRailRunState));
