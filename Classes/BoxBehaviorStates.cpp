@@ -143,6 +143,7 @@ bool CBoxReadyState::Action(Vec2 a_TouchPos)
 	{
 		k_bIsDoing = false;
 		m_pBoxBodySprite->setPositionTo(sprite->getPosition());
+		m_pBoxSprite->setZOrder(OBJECT_ZORDER);
 		auto parent = Director::getInstance()->getRunningScene()->getChildByTag(MAIN_LAYER)->getChildByTag(OBJ_PARTICLE_NODE);
 		CParticleManager::getInstance()->addParticle(parent, "object/box_put_effect.plist", sprite->getPosition() - CScrollManager::getInstance()->getDeltaPosition(), PARTICLE_ZORDER);
 		auto spriteParent = Director::getInstance()->getRunningScene()->getChildByTag(MAIN_LAYER);

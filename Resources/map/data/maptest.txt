@@ -15,3 +15,5 @@ SAND 1000 157
 MIRAGE 100 100 200 200 
 GROUND 1280 0 map/map1/object/map_1_ground.png 
 DESTINATION 10000 133 object/destination.png 
+BCOUNT 10 
+PLAYTIME 300 200 100 
