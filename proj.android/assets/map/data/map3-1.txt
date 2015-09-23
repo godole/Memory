@@ -1,13 +1,13 @@
  
 MIRAGE 870 255 520 440  
 BOX 400 172 map/map3/object/box_ob.png 
-GROUND 200 280 map/map3/object/ped1.png 
-GROUND 250 280 map/map3/object/ped1.png 
-GROUND 300 280 map/map3/object/ped1.png 
-GROUND 450 380 map/map3/object/ped1.png 
-GROUND 500 380 map/map3/object/ped1.png 
-GROUND 550 380 map/map3/object/ped1.png 
-GROUND 1280 66 map/map3/object/map_3_ground.png 
+PED 200 280 map/map3/object/ped1.png 
+PED 250 280 map/map3/object/ped1.png 
+PED 300 280 map/map3/object/ped1.png 
+PED 450 380 map/map3/object/ped1.png 
+PED 500 380 map/map3/object/ped1.png 
+PED 550 380 map/map3/object/ped1.png 
+GROUND 960 66 map/map3/object/map_3_ground.png 
 BG map/map3/background/map_3.png 
 DESTINATION 1000 130 object/destination.png 
 NEXTSTAGE map/data/map3-1.txt 

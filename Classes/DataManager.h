@@ -32,6 +32,14 @@ public :
 	string				getBackgroundTextureName(){ return m_szBackgroundTextureName; }
 	string				getNextStageFileName(){ return m_szNextStageFileName; }
 
+	bool					m_bConnectFacebook;
+
+	bool					m_bUserDataLoad;
+	bool					m_bFriendDataLoad;
+	bool					m_bOptionCreatorDataLoad;
+
+	bool					m_bAllDataLoaded;
+
 private :
 	vector<BoxData>			m_arrBoxData;
 	vector<RailData>		m_arrRailData;

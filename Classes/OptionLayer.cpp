@@ -1,29 +1,23 @@
 ﻿#include "OptionLayer.h"
 #include "UserData.h"
-#include "SimpleAudioEngine.h"
-using namespace CocosDenshion;
 
 COptionLayer::COptionLayer()
 {
 	m_nProfileImgLoadCount = 0;
 	m_eSoundState = ESoundState::null;
 
-	// 세진 선배
 	m_sFacebookID[0] = "https://graph.facebook.com/100001299266383/picture?width=120&height=120";		
-	// 진서 선배
 	m_sFacebookID[1] = "https://graph.facebook.com/100004855749021/picture?width=120&height=120";
-	// 현정 선배
 	m_sFacebookID[2] = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c33.33.414.414/s200x200/417828_109471292588411_1004723278_n.jpg?oh=995913c3a03603f9872594744522008e&oe=566154D3&__gda__=1449105979_772eb15dafb7c88c2d27ec7ab3947a98";
-	// 나
 	m_sFacebookID[3] = "https://graph.facebook.com/472858996218424/picture?width=120&height=120";
 
 	m_sName[0] = "송세진", m_sName[1] = "송진서";
 	m_sName[2] = "권현정", m_sName[3] = "하민준";
 
-	m_sEmail[0] = "haminjun0@gmail.com";
-	m_sEmail[1] = "haminjun0@gmail.com";
-	m_sEmail[2] = "haminjun0@gmail.com";
-	m_sEmail[3] = "haminjun0@gmail.com";
+	m_sEmail[0] = "haminjun0@gmail.com";  // 이메일
+	m_sEmail[1] = "haminjun0@gmail.com";  // 이메일
+	m_sEmail[2] = "haminjun0@gmail.com";  // 이메일
+	m_sEmail[3] = "haminjun0@gmail.com";  // 이메일
 }
 
 
@@ -33,22 +27,27 @@ COptionLayer::~COptionLayer()
 
 void COptionLayer::init(Layer * a_pParentLayer, Layer * a_pMainLayer)
 {
-	m_pUserData = std::shared_ptr<CUserData>(new CUserData);
-
-	m_pMainLayer	= a_pMainLayer;
 	m_pParentLayer  = a_pParentLayer;
 
-	m_pUserData->CreateUI(a_pMainLayer);
-	m_pUserData->CreateUserPlayTime(a_pParentLayer);
+	// User Data
+	if (CDataManager::getInstance()->m_bConnectFacebook)
+	{
+		m_pUserData = std::shared_ptr<CUserData>(new CUserData);
+		m_pUserData->CreateUserProfileImage(a_pMainLayer);
+		m_pUserData->CreateUserPlayTime(a_pParentLayer);
+		m_pUserData->init();
+	}
 
 	m_pBackground = Sprite::create("background.png");
 	m_pBackground->setAnchorPoint(Point(0, 0));
 	m_pBackground->setPosition(Point(0, 0));
 	a_pParentLayer->addChild(m_pBackground);
 
+	// 수정 부분
 	m_pFacebookAccess = Sprite::create("facebook_logout.png");
 	m_pFacebookAccess->setPosition(Point(350, 370));
 	a_pParentLayer->addChild(m_pFacebookAccess);
+	//
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -67,13 +66,9 @@ void COptionLayer::init(Layer * a_pParentLayer, Layer * a_pMainLayer)
 	Img_Request = new (std::nothrow) HttpRequest();
 	Img_Request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
 	Img_Request->setResponseCallback(CC_CALLBACK_2(COptionLayer::onRequestImgCompleted, this));
-	LoadProfileImage(0);
-}
 
-void COptionLayer::LoadProfileImage(int a_nLoadCount)
-{
-	Img_Request->setUrl(m_sFacebookID[a_nLoadCount].c_str());
-	HttpClient::getInstance()->send(Img_Request);
+	// Load Start
+	HTTPREQUEST_SEND(Img_Request, m_sFacebookID[0]);
 }
 
 void COptionLayer::TouchBegan(Point a_ptPoint)
@@ -130,7 +125,6 @@ void COptionLayer::TouchMoved(Point a_ptPoint)
 	float BGM	 = (m_pScrollSound[0]->getPositionX() - 250) / 800;
 	float EFFECT = (m_pScrollSound[1]->getPositionX() - 250) / 800;
 
-	CCLOG("%f %f", BGM, EFFECT);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(EFFECT);
 
@@ -183,16 +177,17 @@ void COptionLayer::DrawProfileImage()
 		m_pParentLayer->addChild(m_pEmail[i]);
 	}
 
-	m_pUserData->init();
+	CDataManager::getInstance()->m_bOptionCreatorDataLoad = true;
 }
 
+// Image Request
 void COptionLayer::onRequestImgCompleted(HttpClient * sender, HttpResponse * response)
 {
-	if (!response)
+	if (!response || !response->isSucceed())
+	{
+		CDataManager::getInstance()->m_bConnectFacebook = false;
 		return;
-
-	if (!response->isSucceed())
-		return;
+	}
 
 	std::vector<char> *buffer = response->getResponseData();
 
@@ -202,16 +197,17 @@ void COptionLayer::onRequestImgCompleted(HttpClient * sender, HttpResponse * res
 	Texture2D * texture = new  Texture2D();
 	texture->initWithImage(image);
 
-	// 0 1 2 3
 	m_pProfileImage[m_nProfileImgLoadCount] = Sprite::createWithTexture(texture);
 	m_pProfileImage[m_nProfileImgLoadCount]->setVisible(false);
-	m_pParentLayer->addChild(m_pProfileImage[m_nProfileImgLoadCount]);
+
+	if (m_pParentLayer != nullptr)
+		m_pParentLayer->addChild(m_pProfileImage[m_nProfileImgLoadCount]);
 
 	m_nProfileImgLoadCount++;
 
 	if (m_nProfileImgLoadCount < 4)
 	{
-		LoadProfileImage(m_nProfileImgLoadCount);
+		HTTPREQUEST_SEND(Img_Request, m_sFacebookID[m_nProfileImgLoadCount]);
 	}
 	else
 	{

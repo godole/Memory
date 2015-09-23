@@ -1,10 +1,6 @@
 #pragma once
+#include "StageSelectDefine.h"
 #include "ESoundState.h"
-#include "cocos2d.h"
-#include "Network.h"
-#include <string>
-
-USING_NS_CC;
 
 class CUserData;
 class COptionLayer
@@ -13,6 +9,7 @@ public:
 	COptionLayer();
 	~COptionLayer();
 
+	//	Option Layer , Running Scene Layer
 	void init(Layer *,Layer *);
 
 	void TouchBegan(Point);
@@ -23,7 +20,6 @@ public:
 
 private:
 	// Layer Base
-	Layer  * m_pMainLayer;
 	Layer  * m_pParentLayer;
 	Sprite * m_pBackground;
 
@@ -50,7 +46,6 @@ private:
 	int m_nProfileImgLoadCount;
 	
 	void DrawProfileImage();
-	void LoadProfileImage(int a_nLoadCount);
 	void onRequestImgCompleted(HttpClient *sender, HttpResponse *response);
 };
 

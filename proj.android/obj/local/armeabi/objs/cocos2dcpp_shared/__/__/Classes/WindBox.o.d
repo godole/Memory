@@ -390,12 +390,12 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/WindBox.o: \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  jni/../../cocos2d/external/flatbuffers/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
- jni/../../Classes/LayerDefine.h jni/../../Classes/WindBehaviorState.h \
- jni/../../Classes/Behavior.h jni/../../Classes/WindDefaultState.h \
- jni/../../Classes/Box2dSprite.h jni/../../Classes/b2Structure.h \
- jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
- jni/../../Classes/Rail.h jni/../../Classes/Sand.h \
- jni/../../Classes/Canfly.h
+ jni/../../Classes/LayerDefine.h jni/../../Classes/WindBehaviorStates.h \
+ jni/../../Classes/Behavior.h jni/../../Classes/Box2dSprite.h \
+ jni/../../Classes/b2Structure.h jni/../../Classes/ObjectManager.h \
+ jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h \
+ jni/../../Classes/RailProfile.h jni/../../Classes/Sand.h \
+ jni/../../Classes/Door.h jni/../../Classes/Canfly.h
 
 jni/../../Classes/WindBox.h:
 
@@ -1191,11 +1191,9 @@ jni/../../Classes/EDirection.h:
 
 jni/../../Classes/LayerDefine.h:
 
-jni/../../Classes/WindBehaviorState.h:
+jni/../../Classes/WindBehaviorStates.h:
 
 jni/../../Classes/Behavior.h:
-
-jni/../../Classes/WindDefaultState.h:
 
 jni/../../Classes/Box2dSprite.h:
 
@@ -1207,6 +1205,10 @@ jni/../../Classes/ObjectArray.h:
 
 jni/../../Classes/Rail.h:
 
+jni/../../Classes/RailProfile.h:
+
 jni/../../Classes/Sand.h:
+
+jni/../../Classes/Door.h:
 
 jni/../../Classes/Canfly.h:

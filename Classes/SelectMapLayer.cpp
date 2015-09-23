@@ -27,20 +27,70 @@ void CSelectMapLayer::init(Layer * a_pParentLayer)
 		}
 	}
 
-	m_pFriendList = std::shared_ptr<FriendList>(new FriendList);
-	m_pFriendList->init(a_pParentLayer);
-	m_pFriendList->GetDataFromJNI();
+	m_pSortClearPeoples = Sprite::create("stageselect/stage_clear_off.png");
+	m_pSortClearPeoples->setVisible(false);
+	m_pSortClearPeoples->setColor(Color3B::GRAY);
+	m_pSortClearPeoples->setAnchorPoint(Point(0, 0));
+	m_pSortClearPeoples->setPosition(Point(100, 530));
+	a_pParentLayer->addChild(m_pSortClearPeoples);
 
+	m_pSortMoveCountPeoples = Sprite::create("stageselect/stage_rank_off.png");
+	m_pSortMoveCountPeoples->setVisible(false);
+	m_pSortMoveCountPeoples->setColor(Color3B::GRAY);
+	m_pSortMoveCountPeoples->setAnchorPoint(Point(0, 0));
+	m_pSortMoveCountPeoples->setPosition(Point(350, 530));
+	a_pParentLayer->addChild(m_pSortMoveCountPeoples);
 
-	UpdateManager::getInstance()->Insert(m_pFriendList);
+	m_pGameStartButton = MenuItemImage::create(
+		"stageselect/rank_start.png",
+		"stageselect/rank_start.png",
+		std::bind([=]{
+		CDataManager::getInstance()->LoadMapData(
+			StringUtils::format("map/data/map3-2.txt"));
+		CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+	}));
+
+	// Close Button
+	m_pCloseButton = MenuItemImage::create(
+		"stageselect/close.png",
+		"stageselect/close.png",
+		std::bind([=]{
+		if (CDataManager::getInstance()->m_bConnectFacebook)
+			m_pFriendList->setVisibleProfileImage(false);
+		setVisible(false);
+	}));
+
+	m_pGameStartButton->setVisible(false);
+	m_pGameStartButton->setPosition(Point(1000, 70));
+
+	m_pCloseButton->setVisible(false);
+	m_pCloseButton->setPosition(Point(1100, 500));
+
+	auto _pButton = Menu::create(m_pGameStartButton, m_pCloseButton, NULL);
+	_pButton->setPosition(Vec2::ZERO);
+	a_pParentLayer->addChild(_pButton, 3);
+
+	if (CDataManager::getInstance()->m_bConnectFacebook)
+	{
+		// Friend List
+		m_pFriendList = std::shared_ptr<FriendList>(new FriendList);
+		m_pFriendList->init(a_pParentLayer);
+		m_pFriendList->GetDataFromJNI();
+
+		UpdateManager::getInstance()->Insert(m_pFriendList);
+	}
 }
 
 void CSelectMapLayer::FadeStageMaps(int a_nStageNumber, bool a_bVisible)
 {
 	m_nNowShowStage = a_nStageNumber;
-	
+
 	for (int i = 0; i < 10; i++)
 		m_pStagePuzzle[a_nStageNumber][i]->setVisible(a_bVisible);
+
+	if (CDataManager::getInstance()->m_bConnectFacebook)
+		m_pFriendList->setVisibleProfileImage(false);
+	setVisible(false);
 
 	m_isVisible = true;
 }
@@ -57,19 +107,42 @@ void CSelectMapLayer::TouchMap(Point a_ptTouchPosition)
 		if (m_pStagePuzzle[m_nNowShowStage][i]
 			->getBoundingBox().containsPoint(a_ptTouchPosition))
 		{
-			/*m_pFriendList->setSortStageFriendRank
-				(m_nNowShowStage * 10 + i);*/
-			//check = true;
+			if (!CDataManager::getInstance()->m_bConnectFacebook)
+			{
+				CDataManager::getInstance()->LoadMapData(
+					StringUtils::format("map/data/map3-2.txt"));
+				CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+			}
+			else
+			{
+				if (CDataManager::getInstance()->m_bConnectFacebook)
+				{
+					m_pFriendList->setSortStageFriendRank
+						((m_nNowShowStage + 1) * 10 + i);
+				}
 
-			CDataManager::getInstance()->LoadMapData(
-				StringUtils::format("map/data/map%d-%d.txt", m_nNowShowStage + 1, i + 1));
-			CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneStage1);
+				check = true;
+
+				setVisible(true);
+			}
 
 			break;
 		}
 	}
-	if (!check)
+
+	if (CDataManager::getInstance()->m_bConnectFacebook)
 	{
-		//m_pFriendList->setVisibleProfileImage(false);
+		if (m_pSortClearPeoples->getBoundingBox().containsPoint(a_ptTouchPosition))
+			m_pFriendList->setSortIndex(ESortIndex::eClearSort);
+		else if (m_pSortMoveCountPeoples->getBoundingBox().containsPoint(a_ptTouchPosition))
+			m_pFriendList->setSortIndex(ESortIndex::eMoveCountSort);
 	}
+}
+
+void CSelectMapLayer::setVisible(bool a_bVis)
+{
+	m_pCloseButton->setVisible(a_bVis);
+	m_pGameStartButton->setVisible(a_bVis);
+	m_pSortClearPeoples->setVisible(a_bVis);
+	m_pSortMoveCountPeoples->setVisible(a_bVis);
 }

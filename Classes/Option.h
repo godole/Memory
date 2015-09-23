@@ -1,9 +1,7 @@
 #pragma once
-#include "cocos2d.h"
-#include "ELayerState.h"
+#include "StageSelectDefine.h"
 
-USING_NS_CC;
-
+enum class ELayerState;
 class COption
 {
 public:
@@ -24,6 +22,5 @@ private:
 	bool	 m_isVisible;
 	bool	 m_isFading;
 
-	void FadingOptions();
+	void FadeOptions();
 };
-

@@ -1,11 +1,11 @@
 #include "DataManager.h"
-#include "json\document.h"
-#include "json\prettywriter.h"
-#include "json\filestream.h"
-#include "json\stringbuffer.h"
+//#include "json\document.h"
+//#include "json\prettywriter.h"
+//#include "json\filestream.h"
+//#include "json\stringbuffer.h"
 
 using namespace cocos2d;
-using namespace rapidjson;
+//using namespace rapidjson;
 
 void CDataManager::LoadMapData(string filename)
 {
@@ -112,56 +112,56 @@ void CDataManager::LoadPlayerData()
 		string data = string((const char*)stream, fileSize);
 		CC_SAFE_DELETE_ARRAY(stream);
 
-		Document doc;
+		//Document doc;
 
-		if (doc.Parse<0>(data.c_str()).HasParseError())
-			CCLOG(doc.GetParseError());
-		else
+		/*if (doc.Parse<0>(data.c_str()).HasParseError())
+			CCLOG(doc.GetParseError());*/
+		/*else
 		{
 			m_PlayerData.m_szName = doc["PlayerName"].GetString();
 			m_PlayerData.m_nStage1Count = doc["Stage1"].GetInt();
 			m_PlayerData.m_nStage2Count = doc["Stage2"].GetInt();
 			m_PlayerData.m_nStage3Count = doc["Stage3"].GetInt();
-		}
+		}*/
 	}
 }
 
 void CDataManager::SavePlayerData()
 {
 	//json 오브젝트 생성
-	Document doc;
+	//Document doc;
 
-	doc.SetObject();
-	rapidjson::Value playername(rapidjson::kStringType);
-	playername.SetString("Godole");
-	doc.AddMember("PlayerName", playername, doc.GetAllocator());
+	//doc.SetObject();
+	//rapidjson::Value playername(rapidjson::kStringType);
+	//playername.SetString("Godole");
+	//doc.AddMember("PlayerName", playername, doc.GetAllocator());
 
-	rapidjson::Value stage1(rapidjson::kNumberType);
-	stage1.SetInt(m_PlayerData.m_nStage1Count);
-	doc.AddMember("Stage1", stage1, doc.GetAllocator());
+	//rapidjson::Value stage1(rapidjson::kNumberType);
+	//stage1.SetInt(m_PlayerData.m_nStage1Count);
+	//doc.AddMember("Stage1", stage1, doc.GetAllocator());
 
-	rapidjson::Value stage2(rapidjson::kNumberType);
-	stage2.SetInt(m_PlayerData.m_nStage2Count);
-	doc.AddMember("Stage2", stage2, doc.GetAllocator());
+	//rapidjson::Value stage2(rapidjson::kNumberType);
+	//stage2.SetInt(m_PlayerData.m_nStage2Count);
+	//doc.AddMember("Stage2", stage2, doc.GetAllocator());
 
-	rapidjson::Value stage3(rapidjson::kNumberType);
-	stage3.SetInt(m_PlayerData.m_nStage3Count);
-	doc.AddMember("Stage3", stage3, doc.GetAllocator());
+	//rapidjson::Value stage3(rapidjson::kNumberType);
+	//stage3.SetInt(m_PlayerData.m_nStage3Count);
+	//doc.AddMember("Stage3", stage3, doc.GetAllocator());
 
-	//파일 저장
-	string path = CCFileUtils::sharedFileUtils()->getWritablePath();
-	string filename = path + "player_data.json";
+	////파일 저장
+	//string path = CCFileUtils::sharedFileUtils()->getWritablePath();
+	//string filename = path + "player_data.json";
 
-	rapidjson::GenericStringBuffer<UTF8<>> buffer;
-	rapidjson::PrettyWriter<rapidjson::GenericStringBuffer<UTF8<>>> writer(buffer);
-	doc.Accept(writer);
+	//rapidjson::GenericStringBuffer<UTF8<>> buffer;
+	//rapidjson::PrettyWriter<rapidjson::GenericStringBuffer<UTF8<>>> writer(buffer);
+	//doc.Accept(writer);
 
-	CCLOG("%s", buffer.GetString());
-	CCLOG("%s", filename.c_str());
+	/*CCLOG("%s", buffer.GetString());
+	CCLOG("%s", filename.c_str());*/
 
-	FILE* f = fopen(filename.c_str(), "wb");
+	/*FILE* f = fopen(filename.c_str(), "wb");
 	fputs(buffer.GetString(), f);
-	fclose(f);
+	fclose(f);*/
 }
 
 void CDataManager::Release()

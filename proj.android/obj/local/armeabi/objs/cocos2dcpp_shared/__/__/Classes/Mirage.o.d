@@ -1,7 +1,6 @@
 obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Mirage.o: \
  jni/../../Classes/Mirage.cpp jni/../../Classes/Mirage.h \
- jni/../../Classes/ThingsWithBody.h jni/../../Classes/Things.h \
- jni/../../cocos2d/cocos/3d/../cocos2d.h \
+ jni/../../Classes/Things.h jni/../../cocos2d/cocos/3d/../cocos2d.h \
  jni/../../cocos2d/cocos/3d/../base/ccConfig.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
  jni/../../cocos2d/cocos/3d/../base/CCRef.h \
@@ -393,15 +392,13 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/Mirage.o: \
  jni/../../Classes/DataStructure.h jni/../../Classes/EDirection.h \
  jni/../../Classes/MirageProfile.h jni/../../Classes/Box2dSprite.h \
  jni/../../Classes/b2Structure.h jni/../../Classes/Behavior.h \
- jni/../../Classes/LayerDefine.h jni/../../Classes/MirageBehaviorState.h \
- jni/../../Classes/MirageDefaultState.h \
- jni/../../Classes/MirageCrashedState.h jni/../../Classes/ObjectManager.h \
- jni/../../Classes/ObjectArray.h jni/../../Classes/Rail.h \
- jni/../../Classes/Sand.h jni/../../Classes/CTextureFactory.h
+ jni/../../Classes/LayerDefine.h jni/../../Classes/MirageBehaviorStates.h \
+ jni/../../Classes/ObjectManager.h jni/../../Classes/ObjectArray.h \
+ jni/../../Classes/Rail.h jni/../../Classes/RailProfile.h \
+ jni/../../Classes/Sand.h jni/../../Classes/Door.h \
+ jni/../../Classes/CTextureFactory.h
 
 jni/../../Classes/Mirage.h:
-
-jni/../../Classes/ThingsWithBody.h:
 
 jni/../../Classes/Things.h:
 
@@ -1203,11 +1200,7 @@ jni/../../Classes/Behavior.h:
 
 jni/../../Classes/LayerDefine.h:
 
-jni/../../Classes/MirageBehaviorState.h:
-
-jni/../../Classes/MirageDefaultState.h:
-
-jni/../../Classes/MirageCrashedState.h:
+jni/../../Classes/MirageBehaviorStates.h:
 
 jni/../../Classes/ObjectManager.h:
 
@@ -1215,6 +1208,10 @@ jni/../../Classes/ObjectArray.h:
 
 jni/../../Classes/Rail.h:
 
+jni/../../Classes/RailProfile.h:
+
 jni/../../Classes/Sand.h:
+
+jni/../../Classes/Door.h:
 
 jni/../../Classes/CTextureFactory.h:

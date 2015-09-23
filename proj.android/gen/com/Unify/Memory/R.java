@@ -506,11 +506,15 @@ containing a value of this type.
     }
     public static final class string {
         public static final int accept=0x7f050002;
-        public static final int achievement_asdf=0x7f050031;
-        public static final int achievements=0x7f050033;
+        public static final int achievement_test1=0x7f050031;
+        public static final int achievement_test2=0x7f050032;
+        public static final int achievement_test3=0x7f050033;
+        public static final int achievement_test4=0x7f050034;
+        public static final int achievement_test5=0x7f050035;
+        public static final int achievements=0x7f050036;
         public static final int app_id=0x7f050030;
-        public static final int app_misconfigured=0x7f050037;
-        public static final int app_name=0x7f050035;
+        public static final int app_misconfigured=0x7f05003a;
+        public static final int app_name=0x7f050038;
         /**  Brand name for Facebook [DO NOT TRANSLATE] 
          */
         public static final int auth_google_play_services_client_facebook_display_name=0x7f050007;
@@ -645,13 +649,12 @@ containing a value of this type.
         public static final int gamehelper_license_failed=0x7f05002e;
         public static final int gamehelper_sign_in_failed=0x7f05002c;
         public static final int gamehelper_unknown_error=0x7f05002f;
-        public static final int leaderboard_asdf=0x7f050032;
-        public static final int leaderboards=0x7f050034;
-        public static final int license_failed=0x7f050038;
-        public static final int sign_in_failed=0x7f050036;
+        public static final int leaderboards=0x7f050037;
+        public static final int license_failed=0x7f05003b;
+        public static final int sign_in_failed=0x7f050039;
         public static final int store_picture_message=0x7f050001;
         public static final int store_picture_title=0x7f050000;
-        public static final int unknown_error=0x7f050039;
+        public static final int unknown_error=0x7f05003c;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */

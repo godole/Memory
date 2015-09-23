@@ -47,7 +47,7 @@ bool Scene_Title::init()
 bool Scene_Title::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 {
 	CSceneManager::getInstance()->ChangeScene(ESceneType::e_SceneSelectStage);
-	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+//	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 	return true;
 }
 

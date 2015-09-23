@@ -7,7 +7,7 @@
 #include "Stage3Object.h"
 #include "Stage3Background.h"
 #include "PlayLayerMainLogic.h"
-#include "Scene_SelectState.h"
+#include "SceneSelectScene.h"
 #include "Scene_Title.h"
 
 
@@ -69,7 +69,7 @@ void CSceneManager::SceneChange(ESceneType e_type, float fadetime)
 		break;
 
 	case ESceneType::e_SceneSelectStage :
-		pScene = Scene_SelectState::createScene();
+		pScene = SceneSelectScene::createScene();
 		break;
 	}
 
